@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Alert } from "react-native";
 import { useRouter } from "expo-router";
 import { useLogin } from "@/presentation/hooks/useLogin";
+import { useAuthStore } from "@/presentation/hooks/useAuthStore";
 import { LoginForm } from "@/presentation/components/auth/LoginForm";
 
 const LoginScreen = () => {
   const router = useRouter();
   const { loginMutation } = useLogin();
+  const { login } = useAuthStore();
 
   const [form, setForm] = useState({
     username: "",
@@ -24,10 +26,9 @@ const LoginScreen = () => {
     }
 
     loginMutation.mutate(form, {
-      onSuccess: (data) => {
-        // TODO: guardar tokens (access, refresh) en storage seguro
-        console.log("Tokens recibidos:", data);
-        Alert.alert("Éxito", "Sesión iniciada correctamente");
+      onSuccess: async (data) => {
+        await login(data.access, data.refresh);
+        router.replace("/(tabs)");
       },
       onError: (error: any) => {
         const message =
