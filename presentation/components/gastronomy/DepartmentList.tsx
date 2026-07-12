@@ -1,4 +1,5 @@
 import { FlatList, Text, View } from "react-native";
+import { router } from "expo-router";
 import { Department } from "@/infrastructure/interfaces/gastronomy.interface";
 import DepartmentCard from "./DepartmentCard";
 
@@ -22,6 +23,9 @@ const DepartmentList = ({ title, departments }: Props) => {
             id={item.id}
             name={item.name}
             description={item.description}
+            onPress={() =>
+              router.push(`/department/${item.id}?name=${item.name}`)
+            }
           />
         )}
       />

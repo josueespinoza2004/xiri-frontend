@@ -1,4 +1,5 @@
 import { FlatList, Text, View } from "react-native";
+import { router } from "expo-router";
 import { Food } from "@/infrastructure/interfaces/gastronomy.interface";
 import FoodCard from "./FoodCard";
 
@@ -23,6 +24,7 @@ const FoodList = ({ title, foods }: Props) => {
             name={item.name}
             image={item.image}
             culturalOrigin={item.culturalOrigin}
+            onPress={() => router.push(`/food/${item.id}`)}
           />
         )}
       />
