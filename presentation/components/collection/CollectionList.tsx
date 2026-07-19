@@ -8,9 +8,18 @@ interface Props {
   collection: FoodCollection[];
   foods: Food[];
   onPressItem?: (foodId: number) => void;
+  onCompleteItem?: (itemId: number) => void;
+  onRemoveItem?: (itemId: number) => void;
 }
 
-const CollectionList = ({ title, collection, foods, onPressItem }: Props) => {
+const CollectionList = ({
+  title,
+  collection,
+  foods,
+  onPressItem,
+  onCompleteItem,
+  onRemoveItem,
+}: Props) => {
   const getFoodName = (foodId: number): string => {
     return foods.find((f) => f.id === foodId)?.name ?? "Comida desconocida";
   };
@@ -36,6 +45,8 @@ const CollectionList = ({ title, collection, foods, onPressItem }: Props) => {
             complete={item.complete}
             registeredDate={formatDate(item.registeredDate)}
             onPress={() => onPressItem?.(item.food)}
+            onComplete={() => onCompleteItem?.(item.id)}
+            onRemove={() => onRemoveItem?.(item.id)}
           />
         )}
         ListEmptyComponent={
