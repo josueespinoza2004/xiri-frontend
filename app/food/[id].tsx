@@ -1,13 +1,33 @@
 import { useLocalSearchParams } from "expo-router";
-import { ActivityIndicator, ScrollView, Text, View } from "react-native";
+import { ActivityIndicator, Alert, ScrollView, Text, View } from "react-native";
 import { useFood } from "@/presentation/hooks/useFood";
+import { useCollection } from "@/presentation/hooks/useCollection";
 import FoodHeader from "@/presentation/components/gastronomy/FoodHeader";
 import FoodDescription from "@/presentation/components/gastronomy/FoodDescription";
+import AddToCollectionButton from "@/presentation/components/gastronomy/AddToCollectionButton";
 
 const FoodScreen = () => {
   const { id } = useLocalSearchParams();
+  const foodId = +id;
 
-  const { foodQuery } = useFood(+id);
+  const { foodQuery } = useFood(foodId);
+  const { collectionQuery, addMutation } = useCollection();
+
+  const isInCollection =
+    collectionQuery.data?.some((item) => item.food === foodId) ?? false;
+
+  const handleAddToCollection = () => {
+    addMutation.mutate(foodId, {
+      onSuccess: () => {
+        Alert.alert("Éxito", "Comida agregada a tu colección");
+      },
+      onError: (error: any) => {
+        const message =
+          typeof error === "string" ? error : "No se pudo agregar";
+        Alert.alert("Error", message);
+      },
+    });
+  };
 
   if (foodQuery.isLoading || !foodQuery.data) {
     return (
@@ -20,11 +40,13 @@ const FoodScreen = () => {
 
   return (
     <ScrollView>
-      {/* Header con imagen y botón regresar */}
       <FoodHeader image={foodQuery.data.image} />
-
-      {/* Descripción completa */}
       <FoodDescription food={foodQuery.data} />
+      <AddToCollectionButton
+        isInCollection={isInCollection}
+        isPending={addMutation.isPending}
+        onPress={handleAddToCollection}
+      />
     </ScrollView>
   );
 };
