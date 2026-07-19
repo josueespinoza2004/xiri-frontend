@@ -17,11 +17,18 @@ xiriApi.interceptors.request.use(async (config) => {
   return config;
 });
 
-// Interceptor de response: si recibe 401/403, limpia tokens y redirige al login
+// Interceptor de response: si recibe 401 (token inválido), limpia sesión
 xiriApi.interceptors.response.use(
   (response) => response,
   async (error) => {
-    if (error.response?.status === 401 || error.response?.status === 403) {
+    const status = error.response?.status;
+    const requestUrl = error.config?.url || "";
+
+    const isAuthEndpoint =
+      requestUrl.includes("/auth/login") ||
+      requestUrl.includes("/auth/register");
+
+    if (status === 401 && !isAuthEndpoint) {
       await SecureStorage.removeTokens();
       router.replace("/(auth)/login");
     }

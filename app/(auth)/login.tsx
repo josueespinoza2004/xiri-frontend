@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Alert } from "react-native";
 import { useRouter } from "expo-router";
+import { useQueryClient } from "@tanstack/react-query";
 import { useLogin } from "@/presentation/hooks/useLogin";
 import { useAuthStore } from "@/presentation/hooks/useAuthStore";
 import { LoginForm } from "@/presentation/components/auth/LoginForm";
 
 const LoginScreen = () => {
   const router = useRouter();
+  const queryClient = useQueryClient();
   const { loginMutation } = useLogin();
   const { login } = useAuthStore();
 
@@ -28,7 +30,8 @@ const LoginScreen = () => {
     loginMutation.mutate(form, {
       onSuccess: async (data) => {
         await login(data.access, data.refresh);
-        router.replace("/(tabs)");
+        queryClient.clear();
+        router.replace("/(tabs)/home");
       },
       onError: (error: any) => {
         const message =
