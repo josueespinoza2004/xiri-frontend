@@ -1,6 +1,5 @@
-import { Ionicons } from "@expo/vector-icons";
-import { router } from "expo-router";
-import { Image, Pressable, useWindowDimensions, View } from "react-native";
+import { Image, useWindowDimensions, View } from "react-native";
+import BackButton from "@/presentation/components/shared/BackButton";
 
 interface Props {
   image: string;
@@ -11,22 +10,8 @@ const FoodHeader = ({ image }: Props) => {
 
   return (
     <>
-      {/* Flecha de regreso */}
-      <View
-        style={{
-          position: "absolute",
-          zIndex: 99,
-          elevation: 9,
-          top: 35,
-          left: 10,
-        }}
-      >
-        <Pressable onPress={() => router.back()}>
-          <Ionicons name="arrow-back" size={30} color="white" />
-        </Pressable>
-      </View>
+      <BackButton color="white" />
 
-      {/* Imagen de la comida */}
       <View
         style={{ height: screenHeight * 0.45 }}
         className="shadow-xl shadow-black/20"

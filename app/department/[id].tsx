@@ -3,6 +3,7 @@ import { ActivityIndicator, ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useFoodsByDepartment } from "@/presentation/hooks/useFoodsByDepartment";
 import FoodList from "@/presentation/components/gastronomy/FoodList";
+import BackButton from "@/presentation/components/shared/BackButton";
 
 const DepartmentScreen = () => {
   const { id, name } = useLocalSearchParams();
@@ -20,8 +21,9 @@ const DepartmentScreen = () => {
 
   return (
     <ScrollView>
+      <BackButton />
       <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-        <Text className="text-3xl font-bold px-4 mb-2">{name}</Text>
+        <Text className="text-3xl font-bold pl-14 pr-4 mb-2">{name}</Text>
 
         <FoodList
           title="Comidas del departamento"

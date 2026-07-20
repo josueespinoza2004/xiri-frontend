@@ -19,6 +19,15 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
+        name="routes"
+        options={{
+          title: "Rutas",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="map-outline" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="collection"
         options={{
           title: "Colección",

@@ -22,3 +22,25 @@ export interface LoginResponse {
   access: string;
   refresh: string;
 }
+
+export interface User {
+  id: number;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  contactNumber: string;
+  country: string;
+  rol: string;
+}
+
+export interface UserResponse {
+  id: number;
+  username: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  contact_number: string;
+  country: string;
+  rol: string;
+}
