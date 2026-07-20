@@ -29,7 +29,7 @@ const RouteDetailScreen = () => {
     <ScrollView className="bg-gray-50">
       <BackButton />
       <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-        <Text className="text-3xl font-bold px-14 mb-2">{name}</Text>
+        <Text className="text-3xl font-bold pl-14 pr-4 mb-2">{name}</Text>
         <Text className="text-base text-gray-500 px-4 mb-4">
           Negocios en esta ruta
         </Text>

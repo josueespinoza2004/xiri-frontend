@@ -34,7 +34,7 @@ const QualificationForm = ({
 }: Props) => {
   return (
     <View className="px-5 mt-4">
-      <Text className="text-lg font-bold text-gray-800 mb-4">
+      <Text className="text-lg font-bold text-gray-800 mb-4 pl-8">
         Calificar: {businessName}
       </Text>
 

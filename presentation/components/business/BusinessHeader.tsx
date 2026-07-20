@@ -9,7 +9,7 @@ interface Props {
 
 const BusinessHeader = ({ name, address, contactNumber }: Props) => {
   return (
-    <View className="px-5 mt-4">
+    <View className="pl-14 pr-5 mt-4">
       <Text className="text-2xl font-bold text-gray-800">{name}</Text>
 
       <View className="flex-row items-center mt-3">

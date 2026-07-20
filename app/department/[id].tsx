@@ -23,7 +23,7 @@ const DepartmentScreen = () => {
     <ScrollView>
       <BackButton />
       <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-        <Text className="text-3xl font-bold px-14 mb-2">{name}</Text>
+        <Text className="text-3xl font-bold pl-14 pr-4 mb-2">{name}</Text>
 
         <FoodList
           title="Comidas del departamento"
