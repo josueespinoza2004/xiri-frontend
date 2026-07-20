@@ -10,10 +10,12 @@ import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useMenu } from "@/presentation/hooks/useMenu";
 import { useQualification } from "@/presentation/hooks/useQualification";
+import { useBusinessQualifications } from "@/presentation/hooks/useBusinessQualifications";
 import { useGastronomy } from "@/presentation/hooks/useGastronomy";
 import BusinessHeader from "@/presentation/components/business/BusinessHeader";
 import BusinessMenu from "@/presentation/components/business/BusinessMenu";
 import QualificationBadge from "@/presentation/components/qualification/QualificationBadge";
+import ReviewList from "@/presentation/components/qualification/ReviewList";
 
 const BusinessDetailScreen = () => {
   const { id, name, address, contact } = useLocalSearchParams();
@@ -23,6 +25,7 @@ const BusinessDetailScreen = () => {
 
   const { menuQuery } = useMenu(businessId);
   const { qualificationsQuery } = useQualification();
+  const { businessQualificationsQuery } = useBusinessQualifications(businessId);
   const { foodsQuery } = useGastronomy();
 
   const existingQualification =
@@ -52,8 +55,8 @@ const BusinessDetailScreen = () => {
           foods={foodsQuery.data ?? []}
         />
 
-        {/* Calificación */}
-        <View className="px-5 mt-6 mb-8">
+        {/* Mi Calificación */}
+        <View className="px-5 mt-6">
           <Text className="text-lg font-bold text-gray-800 mb-3">
             Mi Calificación
           </Text>
@@ -81,6 +84,14 @@ const BusinessDetailScreen = () => {
             </TouchableOpacity>
           )}
         </View>
+
+        {/* Reseñas de otros usuarios */}
+        <ReviewList
+          title="Reseñas"
+          reviews={businessQualificationsQuery.data ?? []}
+        />
+
+        <View className="h-8" />
       </View>
     </ScrollView>
   );
