@@ -1,13 +1,19 @@
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 interface Props {
   qualification: number;
   comment: string | null;
+  evidenceImage: string | null;
   creationDate: string;
 }
 
-const QualificationBadge = ({ qualification, comment, creationDate }: Props) => {
+const QualificationBadge = ({
+  qualification,
+  comment,
+  evidenceImage,
+  creationDate,
+}: Props) => {
   const formatDate = (dateStr: string): string => {
     return new Date(dateStr).toLocaleDateString("es-NI", {
       day: "numeric",
@@ -43,6 +49,14 @@ const QualificationBadge = ({ qualification, comment, creationDate }: Props) => 
         <Text className="text-xs text-gray-600 mt-2 italic">
           "{comment}"
         </Text>
+      )}
+
+      {evidenceImage && (
+        <Image
+          source={{ uri: evidenceImage }}
+          className="w-full h-32 rounded-lg mt-3"
+          resizeMode="cover"
+        />
       )}
     </View>
   );

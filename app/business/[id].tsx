@@ -62,6 +62,7 @@ const BusinessDetailScreen = () => {
             <QualificationBadge
               qualification={existingQualification.qualification}
               comment={existingQualification.comment}
+              evidenceImage={existingQualification.evidenceImage}
               creationDate={existingQualification.creationDate}
             />
           ) : (
