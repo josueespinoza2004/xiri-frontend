@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { ActivityIndicator, FlatList, ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouteBusinesses } from "@/presentation/hooks/useRouteBusinesses";
@@ -6,6 +6,7 @@ import RouteBusinessCard from "@/presentation/components/routes/RouteBusinessCar
 
 const RouteDetailScreen = () => {
   const { id, name } = useLocalSearchParams();
+  const router = useRouter();
   const safeArea = useSafeAreaInsets();
   const { routeBusinessesQuery } = useRouteBusinesses(+id);
 
@@ -34,6 +35,11 @@ const RouteDetailScreen = () => {
               order={item.suggestedOrder}
               businessName={item.businessName}
               businessAddress={item.businessAddress}
+              onQualify={() =>
+                router.push(
+                  `/qualify/${item.business}?name=${encodeURIComponent(item.businessName)}`,
+                )
+              }
             />
           )}
           ListEmptyComponent={
