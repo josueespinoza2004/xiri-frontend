@@ -42,9 +42,9 @@ const RouteDetailScreen = () => {
               businessName={item.businessName}
               businessAddress={item.businessAddress}
               existingQualification={getQualificationForBusiness(item.business)}
-              onQualify={() =>
+              onPress={() =>
                 router.push(
-                  `/qualify/${item.business}?name=${encodeURIComponent(item.businessName)}`,
+                  `/business/${item.business}?name=${encodeURIComponent(item.businessName)}&address=${encodeURIComponent(item.businessAddress)}&contact=`,
                 )
               }
             />
