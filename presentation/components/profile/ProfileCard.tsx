@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { User } from "@/infrastructure/interfaces/auth.interface";
+import ProfileRow from "./ProfileRow";
 
 interface Props {
   user: User;
@@ -54,24 +55,6 @@ const ProfileCard = ({ user, onLogout }: Props) => {
           Cerrar sesión
         </Text>
       </TouchableOpacity>
-    </View>
-  );
-};
-
-interface ProfileRowProps {
-  icon: keyof typeof Ionicons.glyphMap;
-  label: string;
-  value: string;
-}
-
-const ProfileRow = ({ icon, label, value }: ProfileRowProps) => {
-  return (
-    <View className="flex-row items-center py-3 border-b border-gray-100">
-      <Ionicons name={icon} size={20} color="#6b7280" />
-      <View className="ml-3 flex-1">
-        <Text className="text-xs text-gray-400">{label}</Text>
-        <Text className="text-base text-gray-800">{value}</Text>
-      </View>
     </View>
   );
 };
