@@ -11,6 +11,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useMenu } from "@/presentation/hooks/useMenu";
 import { useQualification } from "@/presentation/hooks/useQualification";
 import { useBusinessQualifications } from "@/presentation/hooks/useBusinessQualifications";
+import { useProfile } from "@/presentation/hooks/useProfile";
 import { useGastronomy } from "@/presentation/hooks/useGastronomy";
 import BusinessHeader from "@/presentation/components/business/BusinessHeader";
 import BusinessMenu from "@/presentation/components/business/BusinessMenu";
@@ -26,6 +27,7 @@ const BusinessDetailScreen = () => {
   const { menuQuery } = useMenu(businessId);
   const { qualificationsQuery } = useQualification();
   const { businessQualificationsQuery } = useBusinessQualifications(businessId);
+  const { profileQuery } = useProfile();
   const { foodsQuery } = useGastronomy();
 
   const existingQualification =
@@ -85,10 +87,11 @@ const BusinessDetailScreen = () => {
           )}
         </View>
 
-        {/* Reseñas de otros usuarios */}
+        {/* Reseñas de todos los usuarios */}
         <ReviewList
           title="Reseñas"
           reviews={businessQualificationsQuery.data ?? []}
+          currentUserId={profileQuery.data?.id ?? null}
         />
 
         <View className="h-8" />

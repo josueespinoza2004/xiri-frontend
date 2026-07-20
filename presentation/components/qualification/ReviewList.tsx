@@ -5,9 +5,10 @@ import ReviewCard from "./ReviewCard";
 interface Props {
   title: string;
   reviews: Qualification[];
+  currentUserId: number | null;
 }
 
-const ReviewList = ({ title, reviews }: Props) => {
+const ReviewList = ({ title, reviews, currentUserId }: Props) => {
   return (
     <View className="px-5 mt-6">
       <Text className="text-lg font-bold text-gray-800 mb-3">{title}</Text>
@@ -18,7 +19,11 @@ const ReviewList = ({ title, reviews }: Props) => {
         </Text>
       ) : (
         reviews.map((review) => (
-          <ReviewCard key={review.id} review={review} />
+          <ReviewCard
+            key={review.id}
+            review={review}
+            isOwn={review.user === currentUserId}
+          />
         ))
       )}
     </View>

@@ -4,9 +4,10 @@ import { Qualification } from "@/infrastructure/interfaces/qualification.interfa
 
 interface Props {
   review: Qualification;
+  isOwn: boolean;
 }
 
-const ReviewCard = ({ review }: Props) => {
+const ReviewCard = ({ review, isOwn }: Props) => {
   const formatDate = (dateStr: string): string => {
     return new Date(dateStr).toLocaleDateString("es-NI", {
       day: "numeric",
@@ -19,18 +20,25 @@ const ReviewCard = ({ review }: Props) => {
     <View className="bg-gray-50 rounded-lg p-3 mb-3">
       <View className="flex-row items-center justify-between">
         <View className="flex-row items-center">
-          {[1, 2, 3, 4, 5].map((star) => (
-            <Ionicons
-              key={star}
-              name={star <= review.qualification ? "star" : "star-outline"}
-              size={14}
-              color={star <= review.qualification ? "#f59e0b" : "#d1d5db"}
-            />
-          ))}
+          <Ionicons name="person-circle-outline" size={18} color="#6b7280" />
+          <Text className="text-sm font-medium text-gray-700 ml-1">
+            {isOwn ? "Tú" : review.username}
+          </Text>
         </View>
         <Text className="text-xs text-gray-400">
           {formatDate(review.creationDate)}
         </Text>
+      </View>
+
+      <View className="flex-row items-center mt-2">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <Ionicons
+            key={star}
+            name={star <= review.qualification ? "star" : "star-outline"}
+            size={14}
+            color={star <= review.qualification ? "#f59e0b" : "#d1d5db"}
+          />
+        ))}
       </View>
 
       {review.comment && (
