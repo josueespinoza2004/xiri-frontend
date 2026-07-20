@@ -4,6 +4,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouteBusinesses } from "@/presentation/hooks/useRouteBusinesses";
 import { useQualification } from "@/presentation/hooks/useQualification";
 import RouteBusinessCard from "@/presentation/components/routes/RouteBusinessCard";
+import BackButton from "@/presentation/components/shared/BackButton";
 
 const RouteDetailScreen = () => {
   const { id, name } = useLocalSearchParams();
@@ -26,8 +27,9 @@ const RouteDetailScreen = () => {
 
   return (
     <ScrollView className="bg-gray-50">
+      <BackButton />
       <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-        <Text className="text-3xl font-bold px-4 mb-2">{name}</Text>
+        <Text className="text-3xl font-bold px-14 mb-2">{name}</Text>
         <Text className="text-base text-gray-500 px-4 mb-4">
           Negocios en esta ruta
         </Text>

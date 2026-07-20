@@ -5,6 +5,7 @@ import * as ImagePicker from "expo-image-picker";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useQualification } from "@/presentation/hooks/useQualification";
 import QualificationForm from "@/presentation/components/qualification/QualificationForm";
+import BackButton from "@/presentation/components/shared/BackButton";
 
 const QualifyScreen = () => {
   const { id, name } = useLocalSearchParams();
@@ -72,6 +73,7 @@ const QualifyScreen = () => {
 
   return (
     <ScrollView className="bg-white">
+      <BackButton />
       <View style={{ paddingTop: safeArea.top }}>
         <QualificationForm
           businessName={(name as string) ?? "Negocio"}

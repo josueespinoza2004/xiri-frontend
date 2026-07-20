@@ -17,6 +17,7 @@ import BusinessHeader from "@/presentation/components/business/BusinessHeader";
 import BusinessMenu from "@/presentation/components/business/BusinessMenu";
 import QualificationBadge from "@/presentation/components/qualification/QualificationBadge";
 import ReviewList from "@/presentation/components/qualification/ReviewList";
+import BackButton from "@/presentation/components/shared/BackButton";
 
 const BusinessDetailScreen = () => {
   const { id, name, address, contact } = useLocalSearchParams();
@@ -43,6 +44,7 @@ const BusinessDetailScreen = () => {
 
   return (
     <ScrollView className="bg-white">
+      <BackButton />
       <View style={{ paddingTop: safeArea.top }}>
         {/* Info del negocio */}
         <BusinessHeader
