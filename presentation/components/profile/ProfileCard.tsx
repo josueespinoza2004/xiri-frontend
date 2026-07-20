@@ -46,15 +46,17 @@ const ProfileCard = ({ user, onLogout }: Props) => {
       </View>
 
       {/* Logout */}
-      <TouchableOpacity
-        className="mt-10 bg-red-500 rounded-lg py-3 flex-row items-center justify-center"
-        onPress={onLogout}
-      >
-        <Ionicons name="log-out-outline" size={20} color="#fff" />
-        <Text className="text-white font-semibold text-base ml-2">
-          Cerrar sesión
-        </Text>
-      </TouchableOpacity>
+      <View className="items-center mt-10">
+        <TouchableOpacity
+          className="bg-red-500 rounded-lg py-3 px-8 flex-row items-center justify-center"
+          onPress={onLogout}
+        >
+          <Ionicons name="log-out-outline" size={20} color="#fff" />
+          <Text className="text-white font-semibold text-base ml-2">
+            Cerrar sesión
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
