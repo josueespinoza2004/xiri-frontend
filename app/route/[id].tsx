@@ -2,6 +2,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { ActivityIndicator, FlatList, ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouteBusinesses } from "@/presentation/hooks/useRouteBusinesses";
+import { useQualification } from "@/presentation/hooks/useQualification";
 import RouteBusinessCard from "@/presentation/components/routes/RouteBusinessCard";
 
 const RouteDetailScreen = () => {
@@ -9,14 +10,19 @@ const RouteDetailScreen = () => {
   const router = useRouter();
   const safeArea = useSafeAreaInsets();
   const { routeBusinessesQuery } = useRouteBusinesses(+id);
+  const { qualificationsQuery } = useQualification();
 
-  if (routeBusinessesQuery.isLoading) {
+  if (routeBusinessesQuery.isLoading || qualificationsQuery.isLoading) {
     return (
       <View className="flex-1 justify-center items-center">
         <ActivityIndicator color="#2563eb" size={50} />
       </View>
     );
   }
+
+  const getQualificationForBusiness = (businessId: number) => {
+    return qualificationsQuery.data?.find((q) => q.business === businessId) ?? null;
+  };
 
   return (
     <ScrollView className="bg-gray-50">
@@ -35,6 +41,7 @@ const RouteDetailScreen = () => {
               order={item.suggestedOrder}
               businessName={item.businessName}
               businessAddress={item.businessAddress}
+              existingQualification={getQualificationForBusiness(item.business)}
               onQualify={() =>
                 router.push(
                   `/qualify/${item.business}?name=${encodeURIComponent(item.businessName)}`,

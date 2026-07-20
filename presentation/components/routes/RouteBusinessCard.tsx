@@ -1,10 +1,13 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { Qualification } from "@/infrastructure/interfaces/qualification.interface";
+import QualificationBadge from "@/presentation/components/qualification/QualificationBadge";
 
 interface Props {
   order: number;
   businessName: string;
   businessAddress: string;
+  existingQualification?: Qualification | null;
   onQualify?: () => void;
 }
 
@@ -12,6 +15,7 @@ const RouteBusinessCard = ({
   order,
   businessName,
   businessAddress,
+  existingQualification,
   onQualify,
 }: Props) => {
   return (
@@ -34,15 +38,23 @@ const RouteBusinessCard = ({
         </View>
       </View>
 
-      <TouchableOpacity
-        className="flex-row items-center justify-center bg-amber-50 rounded-lg py-2 mt-3"
-        onPress={onQualify}
-      >
-        <Ionicons name="star-outline" size={16} color="#d97706" />
-        <Text className="text-xs text-amber-700 ml-1 font-medium">
-          Calificar
-        </Text>
-      </TouchableOpacity>
+      {existingQualification ? (
+        <QualificationBadge
+          qualification={existingQualification.qualification}
+          comment={existingQualification.comment}
+          creationDate={existingQualification.creationDate}
+        />
+      ) : (
+        <TouchableOpacity
+          className="flex-row items-center justify-center bg-amber-50 rounded-lg py-2 mt-3"
+          onPress={onQualify}
+        >
+          <Ionicons name="star-outline" size={16} color="#d97706" />
+          <Text className="text-xs text-amber-700 ml-1 font-medium">
+            Calificar
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
