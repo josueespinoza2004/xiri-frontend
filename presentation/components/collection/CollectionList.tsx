@@ -35,6 +35,7 @@ const CollectionList = ({
         renderItem={({ item }) => (
           <CollectionCard
             foodName={item.foodName}
+            foodImage={item.foodImage}
             complete={item.complete}
             registeredDate={formatDate(item.registeredDate)}
             onPress={() => onPressItem?.(item.traditionalFood)}

@@ -6,6 +6,7 @@ import ProfileRow from "./ProfileRow";
 interface Props {
   user: User;
   onLogout: () => void;
+  onRequestVerification?: () => void;
 }
 
 const rolLabels: Record<string, string> = {
@@ -15,7 +16,7 @@ const rolLabels: Record<string, string> = {
   auditor: "Auditor",
 };
 
-const ProfileCard = ({ user, onLogout }: Props) => {
+const ProfileCard = ({ user, onLogout, onRequestVerification }: Props) => {
   return (
     <View className="flex-1 bg-white px-6">
       {/* Avatar + nombre */}
@@ -45,8 +46,21 @@ const ProfileCard = ({ user, onLogout }: Props) => {
         <ProfileRow icon="globe-outline" label="País" value={user.country} />
       </View>
 
+      {/* Solicitar ser comerciante (solo para usuarios normales) */}
+      {user.rol === "user" && onRequestVerification && (
+        <TouchableOpacity
+          className="mt-8 border border-blue-600 rounded-lg py-3 flex-row items-center justify-center"
+          onPress={onRequestVerification}
+        >
+          <Ionicons name="storefront-outline" size={20} color="#2563eb" />
+          <Text className="text-blue-600 font-semibold text-base ml-2">
+            Solicitar ser Comerciante
+          </Text>
+        </TouchableOpacity>
+      )}
+
       {/* Logout */}
-      <View className="items-center mt-10">
+      <View className="items-center mt-8">
         <TouchableOpacity
           className="bg-red-500 rounded-lg py-3 px-8 flex-row items-center justify-center"
           onPress={onLogout}
