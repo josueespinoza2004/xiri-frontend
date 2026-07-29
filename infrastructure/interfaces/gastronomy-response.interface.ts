@@ -3,11 +3,11 @@ export interface DepartmentResponse {
   id: number;
   name: string;
   description: string;
-  latitude: string; // Django DecimalField devuelve string
+  latitude: string;
   longitude: string;
 }
 
-// Respuesta directa del API Django para Food
+// Respuesta directa del API Django para TraditionalFood
 export interface FoodResponse {
   id: number;
   name: string;
@@ -15,4 +15,6 @@ export interface FoodResponse {
   image: string;
   cultural_origin: string;
   department_origin: number;
+  department_name: string;
+  created_at: string;
 }

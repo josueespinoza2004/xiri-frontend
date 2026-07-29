@@ -11,6 +11,7 @@ export class RouteMapper {
       name: route.name,
       description: route.description,
       department: route.department,
+      departmentName: route.department_name,
     };
   };
 

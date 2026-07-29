@@ -13,4 +13,5 @@ export interface Food {
   image: string;
   culturalOrigin: string;
   departmentOrigin: number;
+  departmentName: string;
 }

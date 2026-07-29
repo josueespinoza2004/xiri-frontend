@@ -5,7 +5,7 @@ import { FoodCollectionMapper } from "@/infrastructure/mappers/food-collection.m
 export const completeCollectionItemAction = async (itemId: number) => {
   try {
     const { data } = await xiriApi.patch<FoodCollectionResponse>(
-      `/businesscollections/${itemId}/`,
+      `/gastronomycollections/${itemId}/`,
       { complete: true },
     );
 

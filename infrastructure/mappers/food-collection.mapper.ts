@@ -6,7 +6,10 @@ export class FoodCollectionMapper {
     return {
       id: item.id,
       user: item.user,
-      food: item.food,
+      traditionalFood: item.traditional_food,
+      foodName: item.food_name,
+      departmentName: item.department_name,
+      foodImage: item.food_image,
       complete: item.complete,
       registeredDate: item.registered_date,
     };

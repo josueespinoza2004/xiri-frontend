@@ -3,6 +3,7 @@ export interface GastronomicRouteResponse {
   name: string;
   description: string;
   department: number;
+  department_name: string;
 }
 
 export interface RouteBusinessResponse {

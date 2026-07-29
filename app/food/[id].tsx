@@ -14,7 +14,7 @@ const FoodScreen = () => {
   const { collectionQuery, addMutation } = useCollection();
 
   const isInCollection =
-    collectionQuery.data?.some((item) => item.food === foodId) ?? false;
+    collectionQuery.data?.some((item) => item.traditionalFood === foodId) ?? false;
 
   const handleAddToCollection = () => {
     addMutation.mutate(foodId, {
