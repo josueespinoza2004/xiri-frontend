@@ -10,6 +10,7 @@ export class FoodMapper {
       image: food.image,
       culturalOrigin: food.cultural_origin,
       departmentOrigin: food.department_origin,
+      departmentName: food.department_name,
     };
   };
 }

@@ -1,6 +1,8 @@
 export interface MenuItem {
   id: number;
   business: number;
-  food: number;
+  businessName: string;
+  menuItem: number;
+  menuItemName: string;
   price: number;
 }

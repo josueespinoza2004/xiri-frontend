@@ -6,7 +6,9 @@ export class MenuMapper {
     return {
       id: item.id,
       business: item.business,
-      food: item.food,
+      businessName: item.business_name,
+      menuItem: item.menu_item,
+      menuItemName: item.menu_item_name,
       price: parseFloat(item.price),
     };
   };

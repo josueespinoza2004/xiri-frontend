@@ -16,6 +16,10 @@ const ProfileScreen = () => {
     router.replace("/(auth)/login");
   };
 
+  const handleRequestVerification = () => {
+    router.push("/verification/request");
+  };
+
   if (profileQuery.isLoading || !profileQuery.data) {
     return (
       <View className="flex-1 justify-center items-center bg-white">
@@ -26,7 +30,11 @@ const ProfileScreen = () => {
 
   return (
     <View className="flex-1 bg-white" style={{ paddingTop: safeArea.top }}>
-      <ProfileCard user={profileQuery.data} onLogout={handleLogout} />
+      <ProfileCard
+        user={profileQuery.data}
+        onLogout={handleLogout}
+        onRequestVerification={handleRequestVerification}
+      />
     </View>
   );
 };

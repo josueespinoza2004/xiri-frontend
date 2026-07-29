@@ -12,7 +12,6 @@ import { useMenu } from "@/presentation/hooks/useMenu";
 import { useQualification } from "@/presentation/hooks/useQualification";
 import { useBusinessQualifications } from "@/presentation/hooks/useBusinessQualifications";
 import { useProfile } from "@/presentation/hooks/useProfile";
-import { useGastronomy } from "@/presentation/hooks/useGastronomy";
 import BusinessHeader from "@/presentation/components/business/BusinessHeader";
 import BusinessMenu from "@/presentation/components/business/BusinessMenu";
 import QualificationBadge from "@/presentation/components/qualification/QualificationBadge";
@@ -29,12 +28,11 @@ const BusinessDetailScreen = () => {
   const { qualificationsQuery } = useQualification();
   const { businessQualificationsQuery } = useBusinessQualifications(businessId);
   const { profileQuery } = useProfile();
-  const { foodsQuery } = useGastronomy();
 
   const existingQualification =
     qualificationsQuery.data?.find((q) => q.business === businessId) ?? null;
 
-  if (menuQuery.isLoading || qualificationsQuery.isLoading || foodsQuery.isLoading) {
+  if (menuQuery.isLoading || qualificationsQuery.isLoading) {
     return (
       <View className="flex-1 justify-center items-center">
         <ActivityIndicator color="#2563eb" size={40} />
@@ -54,10 +52,7 @@ const BusinessDetailScreen = () => {
         />
 
         {/* Menú */}
-        <BusinessMenu
-          menu={menuQuery.data ?? []}
-          foods={foodsQuery.data ?? []}
-        />
+        <BusinessMenu menu={menuQuery.data ?? []} />
 
         {/* Mi Calificación */}
         <View className="px-5 mt-6">

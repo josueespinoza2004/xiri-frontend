@@ -2,16 +2,14 @@ import { ActivityIndicator, Alert, ScrollView, Text, View } from "react-native";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useCollection } from "@/presentation/hooks/useCollection";
-import { useGastronomy } from "@/presentation/hooks/useGastronomy";
 import CollectionList from "@/presentation/components/collection/CollectionList";
 
 const CollectionScreen = () => {
   const safeArea = useSafeAreaInsets();
   const router = useRouter();
   const { collectionQuery, completeMutation, removeMutation } = useCollection();
-  const { foodsQuery } = useGastronomy();
 
-  if (collectionQuery.isLoading || foodsQuery.isLoading) {
+  if (collectionQuery.isLoading) {
     return (
       <View className="flex-1 justify-center items-center">
         <ActivityIndicator color="#2563eb" size={50} />
@@ -56,7 +54,6 @@ const CollectionScreen = () => {
         <CollectionList
           title="Comidas probadas"
           collection={collectionQuery.data ?? []}
-          foods={foodsQuery.data ?? []}
           onPressItem={(foodId) => router.push(`/food/${foodId}`)}
           onCompleteItem={handleComplete}
           onRemoveItem={handleRemove}

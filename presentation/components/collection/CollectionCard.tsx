@@ -1,8 +1,9 @@
-import { View, Text, Pressable, TouchableOpacity } from "react-native";
+import { View, Text, Image, Pressable, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 interface Props {
   foodName: string;
+  foodImage: string | null;
   complete: boolean;
   registeredDate: string;
   onPress?: () => void;
@@ -12,6 +13,7 @@ interface Props {
 
 const CollectionCard = ({
   foodName,
+  foodImage,
   complete,
   registeredDate,
   onPress,
@@ -24,16 +26,24 @@ const CollectionCard = ({
       onPress={onPress}
     >
       <View className="flex-row items-center">
-        <View
-          className="w-10 h-10 rounded-full justify-center items-center mr-3"
-          style={{ backgroundColor: complete ? "#dcfce7" : "#fef3c7" }}
-        >
-          <Ionicons
-            name={complete ? "checkmark-circle" : "time-outline"}
-            size={24}
-            color={complete ? "#16a34a" : "#d97706"}
+        {foodImage ? (
+          <Image
+            source={{ uri: foodImage }}
+            className="w-12 h-12 rounded-lg mr-3"
+            resizeMode="cover"
           />
-        </View>
+        ) : (
+          <View
+            className="w-12 h-12 rounded-lg justify-center items-center mr-3"
+            style={{ backgroundColor: complete ? "#dcfce7" : "#fef3c7" }}
+          >
+            <Ionicons
+              name={complete ? "checkmark-circle" : "time-outline"}
+              size={24}
+              color={complete ? "#16a34a" : "#d97706"}
+            />
+          </View>
+        )}
 
         <View className="flex-1">
           <Text className="text-base font-semibold text-gray-800" numberOfLines={1}>

@@ -1,12 +1,10 @@
 import { FlatList, Text, View } from "react-native";
 import { FoodCollection } from "@/infrastructure/interfaces/food-collection.interface";
-import { Food } from "@/infrastructure/interfaces/gastronomy.interface";
 import CollectionCard from "./CollectionCard";
 
 interface Props {
   title: string;
   collection: FoodCollection[];
-  foods: Food[];
   onPressItem?: (foodId: number) => void;
   onCompleteItem?: (itemId: number) => void;
   onRemoveItem?: (itemId: number) => void;
@@ -15,15 +13,10 @@ interface Props {
 const CollectionList = ({
   title,
   collection,
-  foods,
   onPressItem,
   onCompleteItem,
   onRemoveItem,
 }: Props) => {
-  const getFoodName = (foodId: number): string => {
-    return foods.find((f) => f.id === foodId)?.name ?? "Comida desconocida";
-  };
-
   const formatDate = (dateStr: string): string => {
     return new Date(dateStr).toLocaleDateString("es-NI", {
       day: "numeric",
@@ -41,10 +34,11 @@ const CollectionList = ({
         scrollEnabled={false}
         renderItem={({ item }) => (
           <CollectionCard
-            foodName={getFoodName(item.food)}
+            foodName={item.foodName}
+            foodImage={item.foodImage}
             complete={item.complete}
             registeredDate={formatDate(item.registeredDate)}
-            onPress={() => onPressItem?.(item.food)}
+            onPress={() => onPressItem?.(item.traditionalFood)}
             onComplete={() => onCompleteItem?.(item.id)}
             onRemove={() => onRemoveItem?.(item.id)}
           />

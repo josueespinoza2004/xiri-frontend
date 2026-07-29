@@ -5,8 +5,8 @@ import { FoodCollectionMapper } from "@/infrastructure/mappers/food-collection.m
 export const addToCollectionAction = async (foodId: number) => {
   try {
     const { data } = await xiriApi.post<FoodCollectionResponse>(
-      "/businesscollections/",
-      { food: foodId },
+      "/gastronomycollections/",
+      { traditional_food: foodId },
     );
 
     return FoodCollectionMapper.fromResponse(data);
