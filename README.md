@@ -97,14 +97,20 @@ Screen → Hook → Action → API → Mapper → Interface → Component (props
 - Expo Go en tu dispositivo (Android/iOS)
 - Backend Django corriendo ([xiri-backend](../xiri-backend))
 
-### 1. Instalar dependencias
+### 1. Clonar el repositorio
 
 ```bash
+git clone https://github.com/josueespinoza2004/xiri-frontend.git
 cd xiri-frontend
+```
+
+### 2. Instalar dependencias
+
+```bash
 npm install
 ```
 
-### 2. Configurar variables de entorno
+### 3. Configurar variables de entorno
 
 Creá un archivo `.env` en la raíz del proyecto:
 
@@ -114,7 +120,7 @@ EXPO_PUBLIC_API_URL=http://TU_IP_LOCAL:8000/api
 
 > Reemplazá `TU_IP_LOCAL` con la IP de tu máquina en la red local (ej: `192.168.1.69`).
 
-### 3. Iniciar la app
+### 4. Iniciar la app
 
 ```bash
 npx expo start
@@ -127,6 +133,16 @@ Escaneá el QR con Expo Go o presioná `a` para Android.
 ## 🔗 Conexión con el Backend
 
 La app se conecta al backend Django REST Framework a través de la variable `EXPO_PUBLIC_API_URL`.
+
+### Clonar e instalar el Backend
+
+```bash
+git clone https://github.com/xKendoVul/xiri-backend.git
+cd xiri-backend
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
 ### Configuración del Backend
 
