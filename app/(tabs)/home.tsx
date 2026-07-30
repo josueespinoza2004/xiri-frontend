@@ -3,10 +3,8 @@ import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useGastronomy } from "@/presentation/hooks/useGastronomy";
 import { useRoutes } from "@/presentation/hooks/useRoutes";
-import { useCollection } from "@/presentation/hooks/useCollection";
 import { useProfile } from "@/presentation/hooks/useProfile";
 import WelcomeBanner from "@/presentation/components/home/WelcomeBanner";
-import CollectionProgress from "@/presentation/components/home/CollectionProgress";
 import FoodList from "@/presentation/components/gastronomy/FoodList";
 import DepartmentList from "@/presentation/components/gastronomy/DepartmentList";
 import RouteList from "@/presentation/components/routes/RouteList";
@@ -16,7 +14,6 @@ const HomeScreen = () => {
   const router = useRouter();
   const { foodsQuery, departmentsQuery } = useGastronomy();
   const { routesQuery } = useRoutes();
-  const { collectionQuery } = useCollection();
   const { profileQuery } = useProfile();
 
   if (foodsQuery.isLoading || departmentsQuery.isLoading) {
@@ -26,9 +23,6 @@ const HomeScreen = () => {
       </View>
     );
   }
-
-  const totalFoods = foodsQuery.data?.length ?? 0;
-  const collectedFoods = collectionQuery.data?.length ?? 0;
 
   return (
     <ScrollView>
@@ -40,9 +34,6 @@ const HomeScreen = () => {
           firstName={profileQuery.data?.firstName ?? null}
           username={profileQuery.data?.username ?? null}
         />
-
-        {/* Progreso de colección */}
-        <CollectionProgress collected={collectedFoods} total={totalFoods} />
 
         {/* Departamentos */}
         <DepartmentList
