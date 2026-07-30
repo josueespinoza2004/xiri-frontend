@@ -23,7 +23,7 @@ const ProfileScreen = () => {
   if (profileQuery.isLoading || !profileQuery.data) {
     return (
       <View className="flex-1 justify-center items-center bg-white">
-        <ActivityIndicator color="#2563eb" size={40} />
+        <ActivityIndicator color="#2292A4" size={40} />
       </View>
     );
   }

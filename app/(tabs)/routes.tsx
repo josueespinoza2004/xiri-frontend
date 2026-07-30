@@ -12,7 +12,7 @@ const RoutesScreen = () => {
   if (routesQuery.isLoading) {
     return (
       <View className="flex-1 justify-center items-center">
-        <ActivityIndicator color="#2563eb" size={50} />
+        <ActivityIndicator color="#2292A4" size={50} />
       </View>
     );
   }

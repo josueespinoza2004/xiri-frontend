@@ -33,7 +33,7 @@ const FoodScreen = () => {
     return (
       <View className="flex-1 justify-center items-center">
         <Text className="mb-4">Cargando...</Text>
-        <ActivityIndicator color="#2563eb" size={30} />
+        <ActivityIndicator color="#2292A4" size={30} />
       </View>
     );
   }

@@ -22,13 +22,16 @@ export const LoginForm = ({
   onGoToRegister,
 }: Props) => {
   return (
-    <View className="flex-1 justify-center px-8 bg-white">
-      <Text className="text-3xl font-bold text-center text-gray-800 mb-8">
-        Iniciar Sesión
+    <View className="flex-1 justify-center px-8 bg-xiri-cream">
+      <Text className="text-3xl font-bold text-center text-xiri-dark mb-2">
+        Bienvenido a Xiri
+      </Text>
+      <Text className="text-sm text-center text-gray-500 mb-8">
+        Explorá la gastronomía de Nicaragua
       </Text>
 
       <TextInput
-        className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base"
+        className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base bg-white"
         placeholder="Username"
         autoCapitalize="none"
         value={form.username}
@@ -36,7 +39,7 @@ export const LoginForm = ({
       />
 
       <TextInput
-        className="border border-gray-300 rounded-lg px-4 py-3 mb-6 text-base"
+        className="border border-gray-300 rounded-lg px-4 py-3 mb-6 text-base bg-white"
         placeholder="Contraseña"
         secureTextEntry
         value={form.password}
@@ -44,7 +47,7 @@ export const LoginForm = ({
       />
 
       <TouchableOpacity
-        className="bg-blue-600 rounded-lg py-4 items-center"
+        className="bg-xiri-teal rounded-lg py-4 items-center"
         onPress={onSubmit}
         disabled={isPending}
       >
@@ -56,7 +59,7 @@ export const LoginForm = ({
       </TouchableOpacity>
 
       <TouchableOpacity className="mt-4 items-center" onPress={onGoToRegister}>
-        <Text className="text-blue-600 text-sm">
+        <Text className="text-xiri-teal text-sm">
           ¿No tenés cuenta? Registrate
         </Text>
       </TouchableOpacity>

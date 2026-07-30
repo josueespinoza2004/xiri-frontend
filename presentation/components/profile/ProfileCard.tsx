@@ -21,8 +21,8 @@ const ProfileCard = ({ user, onLogout, onRequestVerification }: Props) => {
     <View className="flex-1 bg-white px-6">
       {/* Avatar + nombre */}
       <View className="items-center mt-10">
-        <View className="w-24 h-24 rounded-full bg-blue-100 justify-center items-center">
-          <Ionicons name="person" size={48} color="#2563eb" />
+        <View className="w-24 h-24 rounded-full bg-xiri-teal/20 justify-center items-center">
+          <Ionicons name="person" size={48} color="#2292A4" />
         </View>
 
         <Text className="text-2xl font-bold text-gray-800 mt-4">
@@ -31,8 +31,8 @@ const ProfileCard = ({ user, onLogout, onRequestVerification }: Props) => {
             : user.username}
         </Text>
 
-        <View className="bg-blue-50 px-3 py-1 rounded-full mt-2">
-          <Text className="text-sm text-blue-700 font-medium">
+        <View className="bg-xiri-teal/10 px-3 py-1 rounded-full mt-2">
+          <Text className="text-sm text-xiri-teal font-medium">
             {rolLabels[user.rol] ?? user.rol}
           </Text>
         </View>
@@ -49,11 +49,11 @@ const ProfileCard = ({ user, onLogout, onRequestVerification }: Props) => {
       {/* Solicitar ser comerciante (solo para usuarios normales) */}
       {user.rol === "user" && onRequestVerification && (
         <TouchableOpacity
-          className="mt-8 border border-blue-600 rounded-lg py-3 flex-row items-center justify-center"
+          className="mt-8 border border-xiri-teal rounded-lg py-3 flex-row items-center justify-center"
           onPress={onRequestVerification}
         >
-          <Ionicons name="storefront-outline" size={20} color="#2563eb" />
-          <Text className="text-blue-600 font-semibold text-base ml-2">
+          <Ionicons name="storefront-outline" size={20} color="#2292A4" />
+          <Text className="text-xiri-teal font-semibold text-base ml-2">
             Solicitar ser Comerciante
           </Text>
         </TouchableOpacity>

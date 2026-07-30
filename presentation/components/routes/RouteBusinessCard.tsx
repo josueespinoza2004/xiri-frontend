@@ -23,8 +23,8 @@ const RouteBusinessCard = ({
       onPress={onPress}
     >
       <View className="flex-row items-center">
-        <View className="w-8 h-8 rounded-full bg-blue-100 justify-center items-center mr-3">
-          <Text className="text-sm font-bold text-blue-700">{order}</Text>
+        <View className="w-8 h-8 rounded-full bg-xiri-teal/20 justify-center items-center mr-3">
+          <Text className="text-sm font-bold text-xiri-teal">{order}</Text>
         </View>
 
         <View className="flex-1">
