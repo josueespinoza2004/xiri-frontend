@@ -1,5 +1,12 @@
 # Xiri Frontend
 
+![React Native](https://img.shields.io/badge/React_Native-0.81-053225?style=for-the-badge&logo=react&logoColor=white)
+![Expo](https://img.shields.io/badge/Expo-54-053225?style=for-the-badge&logo=expo&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-2292A4?style=for-the-badge&logo=typescript&logoColor=white)
+![NativeWind](https://img.shields.io/badge/NativeWind-4.2-2292A4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![React Query](https://img.shields.io/badge/React_Query-5.101-D96C06?style=for-the-badge&logo=reactquery&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-1.18-D96C06?style=for-the-badge&logo=axios&logoColor=white)
+
 > Explorá la gastronomía de Nicaragua desde tu dispositivo móvil.
 
 **Xiri** es una aplicación móvil de exploración gastronómica que permite a los usuarios descubrir comidas típicas, rutas gastronómicas, negocios locales y coleccionar sus experiencias culinarias. Construida con React Native + Expo.
