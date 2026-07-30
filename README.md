@@ -1,4 +1,4 @@
-# 🍽️ Xiri Frontend
+# Xiri Frontend
 
 > Explorá la gastronomía de Nicaragua desde tu dispositivo móvil.
 
