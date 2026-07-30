@@ -100,7 +100,14 @@ Screen → Hook → Action → API → Mapper → Interface → Component (props
 ### 1. Clonar el repositorio
 
 ```bash
+# HTTPS
 git clone https://github.com/josueespinoza2004/xiri-frontend.git
+
+# SSH
+git clone git@github.com:josueespinoza2004/xiri-frontend.git
+```
+
+```bash
 cd xiri-frontend
 ```
 
@@ -137,7 +144,14 @@ La app se conecta al backend Django REST Framework a través de la variable `EXP
 ### Clonar e instalar el Backend
 
 ```bash
+# HTTPS
 git clone https://github.com/xKendoVul/xiri-backend.git
+
+# SSH
+git clone git@github.com:xKendoVul/xiri-backend.git
+```
+
+```bash
 cd xiri-backend
 python -m venv venv
 source venv/bin/activate
