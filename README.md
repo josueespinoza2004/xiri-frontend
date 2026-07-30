@@ -185,6 +185,61 @@ python manage.py runserver 0.0.0.0:8000
 
 ---
 
+## 🌐 Endpoints del API
+
+Endpoints del backend que consume el frontend:
+
+### Autenticación
+
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| POST | `/api/auth/register/` | Registrar nuevo usuario |
+| POST | `/api/auth/login/` | Obtener tokens JWT |
+| GET | `/api/auth/me/` | Obtener perfil del usuario logueado |
+| GET | `/api/auth/verification-requests/` | Listar solicitudes de verificación |
+| POST | `/api/auth/verification-requests/` | Crear solicitud para ser comerciante |
+| POST | `/api/auth/verification-requests/:id/approve/` | Aprobar solicitud (admin) |
+| POST | `/api/auth/verification-requests/:id/reject/` | Rechazar solicitud (admin) |
+
+### Gastronomía
+
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| GET | `/api/gastronomydepartments/` | Listar departamentos |
+| POST | `/api/gastronomydepartments/` | Crear departamento (admin) |
+| DELETE | `/api/gastronomydepartments/:id/` | Eliminar departamento (admin) |
+| GET | `/api/gastronomyfoods/` | Listar comidas tradicionales |
+| GET | `/api/gastronomyfoods/?department_origin=:id` | Filtrar comidas por departamento |
+| GET | `/api/gastronomyfoods/:id/` | Detalle de una comida |
+| POST | `/api/gastronomyfoods/` | Crear comida (admin) |
+| DELETE | `/api/gastronomyfoods/:id/` | Eliminar comida (admin) |
+| GET | `/api/gastronomyroutes/` | Listar rutas gastronómicas |
+| POST | `/api/gastronomyroutes/` | Crear ruta (admin) |
+| DELETE | `/api/gastronomyroutes/:id/` | Eliminar ruta (admin) |
+| GET | `/api/gastronomycollections/` | Listar colección del usuario |
+| POST | `/api/gastronomycollections/` | Agregar comida a colección |
+| PATCH | `/api/gastronomycollections/:id/` | Marcar como completada |
+| DELETE | `/api/gastronomycollections/:id/` | Eliminar de colección |
+
+### Negocios
+
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| GET | `/api/businessbusiness/` | Listar negocios (admin: todos, owner: propios) |
+| GET | `/api/businessroute-business/?route=:id` | Negocios de una ruta |
+| POST | `/api/businessroute-business/` | Asignar negocio a ruta (admin) |
+| DELETE | `/api/businessroute-business/:id/` | Quitar negocio de ruta (admin) |
+| GET | `/api/businessmenu-items/?business=:id` | Platillos de un negocio |
+| POST | `/api/businessmenu-items/` | Crear platillo (admin/owner) |
+| DELETE | `/api/businessmenu-items/:id/` | Eliminar platillo (admin/owner) |
+| GET | `/api/businessmenus/?business=:id` | Menú de un negocio (precios) |
+| POST | `/api/businessmenus/` | Agregar item al menú con precio |
+| DELETE | `/api/businessmenus/:id/` | Eliminar item del menú |
+| GET | `/api/businessqualifications/?business=:id` | Reseñas de un negocio |
+| POST | `/api/businessqualifications/` | Calificar un negocio |
+
+---
+
 ## 👤 Roles de Usuario
 
 | Rol | Funcionalidades |
