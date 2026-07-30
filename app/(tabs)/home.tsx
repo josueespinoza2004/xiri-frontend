@@ -19,7 +19,7 @@ const HomeScreen = () => {
   if (foodsQuery.isLoading || departmentsQuery.isLoading) {
     return (
       <View className="flex-1 justify-center items-center">
-        <ActivityIndicator color="#2563eb" size={50} />
+        <ActivityIndicator color="#2292A4" size={50} />
       </View>
     );
   }
@@ -27,7 +27,7 @@ const HomeScreen = () => {
   return (
     <ScrollView>
       <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-        <Text className="text-3xl font-bold px-4 mb-2">Xiri</Text>
+        <Text className="text-3xl font-bold px-4 mb-2 text-xiri-dark">Xiri</Text>
 
         {/* Saludo */}
         <WelcomeBanner

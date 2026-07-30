@@ -29,7 +29,7 @@ const BusinessMenu = ({ menu }: Props) => {
           <Text className="text-base text-gray-700 flex-1" numberOfLines={1}>
             {item.menuItemName}
           </Text>
-          <Text className="text-base font-semibold text-blue-700">
+          <Text className="text-base font-semibold text-xiri-teal">
             C${item.price.toFixed(2)}
           </Text>
         </View>

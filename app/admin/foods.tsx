@@ -40,7 +40,7 @@ const AdminFoodsScreen = () => {
   if (foodsQuery.isLoading) {
     return (
       <View className="flex-1 justify-center items-center">
-        <ActivityIndicator color="#2563eb" size={50} />
+        <ActivityIndicator color="#2292A4" size={50} />
       </View>
     );
   }
@@ -91,7 +91,7 @@ const AdminFoodsScreen = () => {
 
       {/* Botón flotante */}
       <TouchableOpacity
-        className="absolute bottom-6 right-6 w-14 h-14 bg-blue-600 rounded-full justify-center items-center shadow-lg"
+        className="absolute bottom-6 right-6 w-14 h-14 bg-xiri-teal rounded-full justify-center items-center shadow-lg"
         onPress={() => router.push("/admin/create-food")}
       >
         <Ionicons name="add" size={28} color="#fff" />

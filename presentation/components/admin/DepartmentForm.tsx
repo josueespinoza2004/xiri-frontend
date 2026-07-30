@@ -59,7 +59,7 @@ const DepartmentForm = ({ form, isPending, onChangeField, onSubmit }: Props) => 
       </View>
 
       <TouchableOpacity
-        className="bg-blue-600 rounded-lg py-3 items-center mt-2"
+        className="bg-xiri-teal rounded-lg py-3 items-center mt-2"
         onPress={onSubmit}
         disabled={isPending}
       >

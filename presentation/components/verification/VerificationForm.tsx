@@ -83,7 +83,7 @@ const VerificationForm = ({
       </TouchableOpacity>
 
       <TouchableOpacity
-        className="bg-blue-600 rounded-lg py-3 items-center mb-8"
+        className="bg-xiri-teal rounded-lg py-3 items-center mb-8"
         onPress={onSubmit}
         disabled={isPending}
       >

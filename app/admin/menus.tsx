@@ -84,7 +84,7 @@ const AdminMenusScreen = () => {
   if (businessesQuery.isLoading) {
     return (
       <View className="flex-1 justify-center items-center">
-        <ActivityIndicator color="#2563eb" size={50} />
+        <ActivityIndicator color="#2292A4" size={50} />
       </View>
     );
   }
@@ -138,7 +138,7 @@ const AdminMenusScreen = () => {
             />
 
             <TouchableOpacity
-              className="bg-blue-600 rounded-lg py-3 items-center"
+              className="bg-xiri-teal rounded-lg py-3 items-center"
               onPress={handleCreate}
               disabled={createMutation.isPending}
             >
@@ -158,7 +158,7 @@ const AdminMenusScreen = () => {
           <View className="mt-6">
             <Text className="text-base font-bold px-4 mb-3">Menú actual</Text>
             {menuQuery.isLoading ? (
-              <ActivityIndicator color="#2563eb" size={30} />
+              <ActivityIndicator color="#2292A4" size={30} />
             ) : (
               <FlatList
                 data={menuQuery.data ?? []}
@@ -170,7 +170,7 @@ const AdminMenusScreen = () => {
                       <Text className="text-base font-medium text-gray-800">
                         {item.menuItemName}
                       </Text>
-                      <Text className="text-sm text-blue-700">
+                      <Text className="text-sm text-xiri-teal">
                         C${item.price.toFixed(2)}
                       </Text>
                     </View>

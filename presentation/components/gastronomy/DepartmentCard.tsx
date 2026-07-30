@@ -10,7 +10,7 @@ interface Props {
 const DepartmentCard = ({ name, description, onPress }: Props) => {
   return (
     <Pressable className="active:opacity-90 mr-4" onPress={onPress}>
-      <View className="w-36 h-28 bg-blue-50 rounded-2xl p-3 justify-between">
+      <View className="w-36 h-28 bg-xiri-teal/10 rounded-2xl p-3 justify-between">
         <Text className="text-sm font-bold text-gray-800" numberOfLines={1}>
           {name}
         </Text>

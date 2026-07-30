@@ -35,7 +35,7 @@ const BusinessDetailScreen = () => {
   if (menuQuery.isLoading || qualificationsQuery.isLoading) {
     return (
       <View className="flex-1 justify-center items-center">
-        <ActivityIndicator color="#2563eb" size={40} />
+        <ActivityIndicator color="#2292A4" size={40} />
       </View>
     );
   }
@@ -69,7 +69,7 @@ const BusinessDetailScreen = () => {
             />
           ) : (
             <TouchableOpacity
-              className="bg-blue-600 rounded-lg py-3 flex-row items-center justify-center"
+              className="bg-xiri-teal rounded-lg py-3 flex-row items-center justify-center"
               onPress={() =>
                 router.push(
                   `/qualify/${businessId}?name=${encodeURIComponent((name as string) ?? "Negocio")}`,

@@ -79,7 +79,7 @@ const QualificationForm = ({
 
       {/* Botón enviar */}
       <TouchableOpacity
-        className="bg-blue-600 rounded-lg py-3 mt-6 mb-8 items-center"
+        className="bg-xiri-teal rounded-lg py-3 mt-6 mb-8 items-center"
         onPress={onSubmit}
         disabled={isPending}
       >

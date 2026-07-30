@@ -11,7 +11,7 @@ const TabsLayout = () => {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: "#2563eb",
+        tabBarActiveTintColor: "#2292A4",
       }}
     >
       <Tabs.Screen

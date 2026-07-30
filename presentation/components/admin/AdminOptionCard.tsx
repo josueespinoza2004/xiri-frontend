@@ -14,8 +14,8 @@ const AdminOptionCard = ({ icon, title, description, onPress }: Props) => {
       className="bg-white rounded-2xl p-4 mb-3 mx-4 shadow-sm shadow-black/10 flex-row items-center active:opacity-90"
       onPress={onPress}
     >
-      <View className="w-10 h-10 rounded-full bg-blue-100 justify-center items-center mr-3">
-        <Ionicons name={icon} size={22} color="#2563eb" />
+      <View className="w-10 h-10 rounded-full bg-xiri-teal/20 justify-center items-center mr-3">
+        <Ionicons name={icon} size={22} color="#2292A4" />
       </View>
 
       <View className="flex-1">

@@ -80,7 +80,7 @@ const AdminRouteDetailScreen = () => {
   if (routeBusinessesQuery.isLoading) {
     return (
       <View className="flex-1 justify-center items-center">
-        <ActivityIndicator color="#2563eb" size={50} />
+        <ActivityIndicator color="#2292A4" size={50} />
       </View>
     );
   }
@@ -110,8 +110,8 @@ const AdminRouteDetailScreen = () => {
             scrollEnabled={false}
             renderItem={({ item }) => (
               <View className="bg-white rounded-lg p-3 mb-2 mx-4 flex-row items-center">
-                <View className="w-7 h-7 rounded-full bg-blue-100 justify-center items-center mr-3">
-                  <Text className="text-xs font-bold text-blue-700">
+                <View className="w-7 h-7 rounded-full bg-xiri-teal/20 justify-center items-center mr-3">
+                  <Text className="text-xs font-bold text-xiri-teal">
                     {item.suggestedOrder}
                   </Text>
                 </View>

@@ -50,7 +50,7 @@ const AssignBusinessForm = ({
       />
 
       <TouchableOpacity
-        className="bg-blue-600 rounded-lg py-3 items-center"
+        className="bg-xiri-teal rounded-lg py-3 items-center"
         onPress={onSubmit}
         disabled={isPending}
       >

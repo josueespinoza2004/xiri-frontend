@@ -24,7 +24,7 @@ const AddToCollectionButton = ({ isInCollection, isPending, onPress }: Props) =>
 
   return (
     <TouchableOpacity
-      className="mx-5 mt-5 mb-8 bg-blue-600 rounded-lg py-3 flex-row items-center justify-center"
+      className="mx-5 mt-5 mb-8 bg-xiri-teal rounded-lg py-3 flex-row items-center justify-center"
       onPress={onPress}
       disabled={isPending}
     >

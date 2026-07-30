@@ -24,7 +24,7 @@ const ChipSelector = ({ label, items, selectedId, onSelect }: Props) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             className={`mr-2 px-4 py-2 rounded-full ${
-              selectedId === item.id ? "bg-blue-600" : "bg-gray-200"
+              selectedId === item.id ? "bg-xiri-teal" : "bg-gray-200"
             }`}
             onPress={() => onSelect(item.id)}
           >

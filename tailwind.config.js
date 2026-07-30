@@ -7,8 +7,17 @@ module.exports = {
   ],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        xiri: {
+          dark: "#053225",
+          cream: "#F5EFED",
+          teal: "#2292A4",
+          olive: "#BDBF09",
+          orange: "#D96C06",
+        },
+      },
+    },
   },
   plugins: [],
-}
-
+};

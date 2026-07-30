@@ -12,7 +12,7 @@ const FoodDescription = ({ food }: Props) => {
       <Text className="font-bold text-2xl text-gray-800">{food.name}</Text>
 
       {/* Origen cultural */}
-      <Text className="text-sm text-blue-600 mt-1">{food.culturalOrigin}</Text>
+      <Text className="text-sm text-xiri-teal mt-1">{food.culturalOrigin}</Text>
 
       {/* Descripción */}
       <Text className="font-bold mt-5 text-gray-700">Descripción</Text>

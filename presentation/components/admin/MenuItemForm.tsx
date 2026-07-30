@@ -68,7 +68,7 @@ const MenuItemForm = ({
         <Switch
           value={form.isTraditionalVariant}
           onValueChange={(v) => onChangeField("isTraditionalVariant", v)}
-          trackColor={{ true: "#2563eb" }}
+          trackColor={{ true: "#2292A4" }}
         />
       </View>
 
@@ -102,7 +102,7 @@ const MenuItemForm = ({
       </TouchableOpacity>
 
       <TouchableOpacity
-        className="bg-blue-600 rounded-lg py-3 items-center mt-2"
+        className="bg-xiri-teal rounded-lg py-3 items-center mt-2"
         onPress={onSubmit}
         disabled={isPending}
       >
