@@ -177,6 +177,35 @@ El backend debe tener:
 python manage.py runserver 0.0.0.0:8000
 ```
 
+### Variables de entorno del Backend
+
+Creá un archivo `.env` en la raíz de `xiri-backend`:
+
+```env
+# Base de datos (PostgreSQL local)
+DB_NAME=xiri_backend
+DB_USER=postgres
+DB_PASSWORD=tu_password_seguro
+DB_HOST=localhost
+DB_PORT=5432
+
+# Django
+DEBUG=True
+SECRET_KEY=tu-clave-secreta-muy-larga-y-aleatoria
+ALLOWED_HOSTS=localhost,127.0.0.1
+
+# CORS (para desarrollo con Expo)
+CORS_ALLOWED_ORIGINS=http://localhost:8081
+```
+
+### Migraciones y datos iniciales
+
+```bash
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py seed_data
+```
+
 ### Autenticación
 
 - Los tokens JWT (access + refresh) se guardan en **Expo Secure Store** (encriptados en el dispositivo)
