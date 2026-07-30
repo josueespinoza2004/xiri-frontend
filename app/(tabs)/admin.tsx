@@ -44,9 +44,16 @@ const AdminScreen = () => {
         />
 
         <AdminOptionCard
+          icon="pizza-outline"
+          title="Platillos de Negocios"
+          description="Crear y gestionar platillos por negocio"
+          onPress={() => router.push("/admin/menu-items")}
+        />
+
+        <AdminOptionCard
           icon="restaurant-outline"
-          title="Menús"
-          description="Gestionar menús de los negocios"
+          title="Menús (Precios)"
+          description="Asignar precios a platillos en el menú"
           onPress={() => router.push("/admin/menus")}
         />
       </View>
