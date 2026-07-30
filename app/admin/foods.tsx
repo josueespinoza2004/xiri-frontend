@@ -26,7 +26,7 @@ const AdminFoodsScreen = () => {
     name: "",
     description: "",
     culturalOrigin: "",
-    departmentOrigin: "",
+    departmentOrigin: null as number | null,
   });
 
   const [image, setImage] = useState<{
@@ -35,7 +35,7 @@ const AdminFoodsScreen = () => {
     type: string;
   } | null>(null);
 
-  const handleChangeField = (field: string, value: string) => {
+  const handleChangeField = (field: string, value: string | number) => {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
@@ -72,13 +72,13 @@ const AdminFoodsScreen = () => {
         name: form.name,
         description: form.description,
         culturalOrigin: form.culturalOrigin,
-        departmentOrigin: parseInt(form.departmentOrigin),
+        departmentOrigin: form.departmentOrigin,
         image,
       },
       {
         onSuccess: () => {
           Alert.alert("Éxito", "Comida creada");
-          setForm({ name: "", description: "", culturalOrigin: "", departmentOrigin: "" });
+          setForm({ name: "", description: "", culturalOrigin: "", departmentOrigin: null });
           setImage(null);
         },
         onError: (error: any) => {

@@ -6,16 +6,22 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { Department } from "@/infrastructure/interfaces/gastronomy.interface";
+import ChipSelector from "@/presentation/components/shared/ChipSelector";
 
 interface Props {
-  form: { name: string; description: string; department: string };
+  form: { name: string; description: string; department: number | null };
   departments: Department[];
   isPending: boolean;
-  onChangeField: (field: string, value: string) => void;
+  onChangeField: (field: string, value: string | number) => void;
   onSubmit: () => void;
 }
 
 const RouteForm = ({ form, departments, isPending, onChangeField, onSubmit }: Props) => {
+  const departmentItems = departments.map((d) => ({
+    id: d.id,
+    label: d.name,
+  }));
+
   return (
     <View className="px-4 mt-4">
       <Text className="text-base font-bold text-gray-800 mb-3">
@@ -38,15 +44,11 @@ const RouteForm = ({ form, departments, isPending, onChangeField, onSubmit }: Pr
         onChangeText={(v) => onChangeField("description", v)}
       />
 
-      <Text className="text-xs text-gray-500 mb-1">
-        ID del departamento ({departments.map((d) => `${d.id}=${d.name}`).join(", ")})
-      </Text>
-      <TextInput
-        className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
-        placeholder="ID departamento"
-        keyboardType="number-pad"
-        value={form.department}
-        onChangeText={(v) => onChangeField("department", v)}
+      <ChipSelector
+        label="Departamento"
+        items={departmentItems}
+        selectedId={form.department}
+        onSelect={(id) => onChangeField("department", id)}
       />
 
       <TouchableOpacity

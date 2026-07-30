@@ -26,11 +26,11 @@ const AdminRouteDetailScreen = () => {
   const { businessesQuery } = useAdminMenus();
 
   const [form, setForm] = useState({
-    business: "",
+    business: null as number | null,
     suggestedOrder: "",
   });
 
-  const handleChangeField = (field: string, value: string) => {
+  const handleChangeField = (field: string, value: string | number) => {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
@@ -43,13 +43,13 @@ const AdminRouteDetailScreen = () => {
     addBusinessMutation.mutate(
       {
         route: routeId,
-        business: parseInt(form.business),
+        business: form.business,
         suggestedOrder: parseInt(form.suggestedOrder),
       },
       {
         onSuccess: () => {
           Alert.alert("Éxito", "Negocio asignado a la ruta");
-          setForm({ business: "", suggestedOrder: "" });
+          setForm({ business: null, suggestedOrder: "" });
         },
         onError: (error: any) => {
           const msg = typeof error === "string" ? error : "Error al asignar";

@@ -12,35 +12,48 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAdminMenus } from "@/presentation/hooks/useAdminMenus";
+import { getMenuItemsAction, BusinessMenuItemResponse } from "@/core/actions/admin/get-menu-items.action";
+import ChipSelector from "@/presentation/components/shared/ChipSelector";
 import BackButton from "@/presentation/components/shared/BackButton";
 
 const AdminMenusScreen = () => {
   const safeArea = useSafeAreaInsets();
   const [selectedBusiness, setSelectedBusiness] = useState<number | undefined>();
+  const [menuItems, setMenuItems] = useState<BusinessMenuItemResponse[]>([]);
+  const [selectedMenuItem, setSelectedMenuItem] = useState<number | null>(null);
+  const [price, setPrice] = useState("");
+
   const { businessesQuery, menuQuery, createMutation, deleteMutation } =
     useAdminMenus(selectedBusiness);
 
-  const [form, setForm] = useState({
-    menuItem: "",
-    price: "",
-  });
+  const handleSelectBusiness = async (id: number) => {
+    setSelectedBusiness(id);
+    setSelectedMenuItem(null);
+    try {
+      const items = await getMenuItemsAction(id);
+      setMenuItems(items);
+    } catch {
+      setMenuItems([]);
+    }
+  };
 
   const handleCreate = () => {
-    if (!selectedBusiness || !form.menuItem || !form.price) {
-      Alert.alert("Error", "Seleccioná un negocio y completá los campos");
+    if (!selectedBusiness || !selectedMenuItem || !price) {
+      Alert.alert("Error", "Seleccioná un platillo y poné el precio");
       return;
     }
 
     createMutation.mutate(
       {
         business: selectedBusiness,
-        menuItem: parseInt(form.menuItem),
-        price: form.price,
+        menuItem: selectedMenuItem,
+        price,
       },
       {
         onSuccess: () => {
           Alert.alert("Éxito", "Menú creado");
-          setForm({ menuItem: "", price: "" });
+          setSelectedMenuItem(null);
+          setPrice("");
         },
         onError: (error: any) => {
           const msg = typeof error === "string" ? error : "Error al crear";
@@ -76,6 +89,16 @@ const AdminMenusScreen = () => {
     );
   }
 
+  const businessItems = (businessesQuery.data ?? []).map((b) => ({
+    id: b.id,
+    label: b.name,
+  }));
+
+  const menuItemChips = menuItems.map((m) => ({
+    id: m.id,
+    label: m.name,
+  }));
+
   return (
     <ScrollView className="bg-gray-50">
       <BackButton />
@@ -84,52 +107,34 @@ const AdminMenusScreen = () => {
 
         {/* Selector de negocio */}
         <View className="px-4">
-          <Text className="text-sm text-gray-500 mb-2">Seleccioná un negocio:</Text>
-          <FlatList
-            data={businessesQuery.data ?? []}
-            keyExtractor={(item) => item.id.toString()}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                className={`mr-2 px-4 py-2 rounded-full ${
-                  selectedBusiness === item.id ? "bg-blue-600" : "bg-gray-200"
-                }`}
-                onPress={() => setSelectedBusiness(item.id)}
-              >
-                <Text
-                  className={`text-sm font-medium ${
-                    selectedBusiness === item.id ? "text-white" : "text-gray-700"
-                  }`}
-                >
-                  {item.name}
-                </Text>
-              </TouchableOpacity>
-            )}
+          <ChipSelector
+            label="Seleccioná un negocio"
+            items={businessItems}
+            selectedId={selectedBusiness ?? null}
+            onSelect={handleSelectBusiness}
           />
         </View>
 
         {/* Formulario para agregar al menú */}
         {selectedBusiness && (
-          <View className="px-4 mt-6">
+          <View className="px-4 mt-4">
             <Text className="text-base font-bold text-gray-800 mb-3">
               Agregar al menú
             </Text>
 
-            <TextInput
-              className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
-              placeholder="ID del menu item (BusinessMenuItem)"
-              keyboardType="number-pad"
-              value={form.menuItem}
-              onChangeText={(v) => setForm((p) => ({ ...p, menuItem: v }))}
+            <ChipSelector
+              label="Platillo (BusinessMenuItem)"
+              items={menuItemChips}
+              selectedId={selectedMenuItem}
+              onSelect={(id) => setSelectedMenuItem(id)}
             />
 
             <TextInput
               className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
               placeholder="Precio (ej: 150.00)"
               keyboardType="decimal-pad"
-              value={form.price}
-              onChangeText={(v) => setForm((p) => ({ ...p, price: v }))}
+              value={price}
+              onChangeText={setPrice}
             />
 
             <TouchableOpacity

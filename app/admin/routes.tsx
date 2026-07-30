@@ -25,10 +25,10 @@ const AdminRoutesScreen = () => {
   const [form, setForm] = useState({
     name: "",
     description: "",
-    department: "",
+    department: null as number | null,
   });
 
-  const handleChangeField = (field: string, value: string) => {
+  const handleChangeField = (field: string, value: string | number) => {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
@@ -42,12 +42,12 @@ const AdminRoutesScreen = () => {
       {
         name: form.name,
         description: form.description,
-        department: parseInt(form.department),
+        department: form.department,
       },
       {
         onSuccess: () => {
           Alert.alert("Éxito", "Ruta creada");
-          setForm({ name: "", description: "", department: "" });
+          setForm({ name: "", description: "", department: null });
         },
         onError: (error: any) => {
           const msg = typeof error === "string" ? error : "Error al crear";

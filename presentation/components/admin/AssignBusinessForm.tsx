@@ -6,12 +6,13 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { Business } from "@/infrastructure/interfaces/business.interface";
+import ChipSelector from "@/presentation/components/shared/ChipSelector";
 
 interface Props {
-  form: { business: string; suggestedOrder: string };
+  form: { business: number | null; suggestedOrder: string };
   businesses: Business[];
   isPending: boolean;
-  onChangeField: (field: string, value: string) => void;
+  onChangeField: (field: string, value: string | number) => void;
   onSubmit: () => void;
 }
 
@@ -22,21 +23,22 @@ const AssignBusinessForm = ({
   onChangeField,
   onSubmit,
 }: Props) => {
+  const businessItems = businesses.map((b) => ({
+    id: b.id,
+    label: b.name,
+  }));
+
   return (
     <View className="px-4 mt-4">
       <Text className="text-base font-bold text-gray-800 mb-3">
         Asignar Negocio a Ruta
       </Text>
 
-      <Text className="text-xs text-gray-500 mb-1">
-        ID del negocio ({businesses.map((b) => `${b.id}=${b.name}`).join(", ")})
-      </Text>
-      <TextInput
-        className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
-        placeholder="ID negocio"
-        keyboardType="number-pad"
-        value={form.business}
-        onChangeText={(v) => onChangeField("business", v)}
+      <ChipSelector
+        label="Negocio"
+        items={businessItems}
+        selectedId={form.business}
+        onSelect={(id) => onChangeField("business", id)}
       />
 
       <TextInput

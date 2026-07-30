@@ -8,18 +8,19 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Department } from "@/infrastructure/interfaces/gastronomy.interface";
+import ChipSelector from "@/presentation/components/shared/ChipSelector";
 
 interface Props {
   form: {
     name: string;
     description: string;
     culturalOrigin: string;
-    departmentOrigin: string;
+    departmentOrigin: number | null;
   };
   imageUri: string | null;
   departments: Department[];
   isPending: boolean;
-  onChangeField: (field: string, value: string) => void;
+  onChangeField: (field: string, value: string | number) => void;
   onPickImage: () => void;
   onSubmit: () => void;
 }
@@ -33,6 +34,11 @@ const FoodForm = ({
   onPickImage,
   onSubmit,
 }: Props) => {
+  const departmentItems = departments.map((d) => ({
+    id: d.id,
+    label: d.name,
+  }));
+
   return (
     <View className="px-4 mt-4">
       <Text className="text-base font-bold text-gray-800 mb-3">
@@ -62,16 +68,11 @@ const FoodForm = ({
         onChangeText={(v) => onChangeField("culturalOrigin", v)}
       />
 
-      {/* Selector de departamento (simple text por ahora) */}
-      <Text className="text-xs text-gray-500 mb-1">
-        ID del departamento ({departments.map((d) => `${d.id}=${d.name}`).join(", ")})
-      </Text>
-      <TextInput
-        className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
-        placeholder="ID departamento"
-        keyboardType="number-pad"
-        value={form.departmentOrigin}
-        onChangeText={(v) => onChangeField("departmentOrigin", v)}
+      <ChipSelector
+        label="Departamento"
+        items={departmentItems}
+        selectedId={form.departmentOrigin}
+        onSelect={(id) => onChangeField("departmentOrigin", id)}
       />
 
       {/* Imagen */}
