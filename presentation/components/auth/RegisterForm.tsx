@@ -30,8 +30,11 @@ export const RegisterForm = ({
 }: Props) => {
   return (
     <View className="flex-1 justify-center px-8 bg-xiri-cream">
-      <Text className="text-3xl font-bold text-center text-xiri-dark mb-8">
-        Crear Cuenta
+      <Text className="text-3xl font-bold text-center text-xiri-dark mb-2">
+        Únete a Xiri
+      </Text>
+      <Text className="text-sm text-center text-gray-500 mb-8">
+        Descubrí comidas típicas de todo el país
       </Text>
 
       <TextInput
