@@ -42,6 +42,13 @@ const AdminScreen = () => {
           description="Administrar rutas y negocios asignados"
           onPress={() => router.push("/admin/routes")}
         />
+
+        <AdminOptionCard
+          icon="restaurant-outline"
+          title="Menús"
+          description="Gestionar menús de los negocios"
+          onPress={() => router.push("/admin/menus")}
+        />
       </View>
     </ScrollView>
   );
