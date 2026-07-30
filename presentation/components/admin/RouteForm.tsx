@@ -23,8 +23,8 @@ const RouteForm = ({ form, departments, isPending, onChangeField, onSubmit }: Pr
   }));
 
   return (
-    <View className="px-4 mt-4">
-      <Text className="text-base font-bold text-gray-800 mb-3">
+    <View className="px-5 mt-4">
+      <Text className="text-xl font-bold text-gray-800 pl-8 mb-6">
         Nueva Ruta Gastronómica
       </Text>
 

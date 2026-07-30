@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -9,44 +8,15 @@ import {
   View,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAdminDepartments } from "@/presentation/hooks/useAdminDepartments";
-import DepartmentForm from "@/presentation/components/admin/DepartmentForm";
 import BackButton from "@/presentation/components/shared/BackButton";
 
 const AdminDepartmentsScreen = () => {
   const safeArea = useSafeAreaInsets();
-  const { departmentsQuery, createMutation, deleteMutation } =
-    useAdminDepartments();
-
-  const [form, setForm] = useState({
-    name: "",
-    description: "",
-    latitude: "",
-    longitude: "",
-  });
-
-  const handleChangeField = (field: string, value: string) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
-  };
-
-  const handleCreate = () => {
-    if (!form.name || !form.description || !form.latitude || !form.longitude) {
-      Alert.alert("Error", "Todos los campos son requeridos");
-      return;
-    }
-
-    createMutation.mutate(form, {
-      onSuccess: () => {
-        Alert.alert("Éxito", "Departamento creado");
-        setForm({ name: "", description: "", latitude: "", longitude: "" });
-      },
-      onError: (error: any) => {
-        const msg = typeof error === "string" ? error : "Error al crear";
-        Alert.alert("Error", msg);
-      },
-    });
-  };
+  const router = useRouter();
+  const { departmentsQuery, deleteMutation } = useAdminDepartments();
 
   const handleDelete = (id: number, name: string) => {
     Alert.alert("Eliminar", `¿Eliminar "${name}"?`, [
@@ -75,22 +45,14 @@ const AdminDepartmentsScreen = () => {
   }
 
   return (
-    <ScrollView className="bg-gray-50">
+    <View className="flex-1 bg-gray-50">
       <BackButton />
-      <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-        <Text className="text-2xl font-bold pl-14 pr-4 mb-4">
-          Departamentos
-        </Text>
+      <ScrollView>
+        <View className="mt-2" style={{ paddingTop: safeArea.top }}>
+          <Text className="text-2xl font-bold pl-14 pr-4 mb-4">
+            Departamentos
+          </Text>
 
-        <DepartmentForm
-          form={form}
-          isPending={createMutation.isPending}
-          onChangeField={handleChangeField}
-          onSubmit={handleCreate}
-        />
-
-        <View className="mt-6">
-          <Text className="text-base font-bold px-4 mb-3">Existentes</Text>
           <FlatList
             data={departmentsQuery.data ?? []}
             keyExtractor={(item) => item.id.toString()}
@@ -110,10 +72,23 @@ const AdminDepartmentsScreen = () => {
                 </TouchableOpacity>
               </View>
             )}
+            ListEmptyComponent={
+              <Text className="text-center text-gray-400 mt-8">
+                No hay departamentos
+              </Text>
+            }
           />
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+
+      {/* Botón flotante */}
+      <TouchableOpacity
+        className="absolute bottom-6 right-6 w-14 h-14 bg-blue-600 rounded-full justify-center items-center shadow-lg"
+        onPress={() => router.push("/admin/create-department")}
+      >
+        <Ionicons name="add" size={28} color="#fff" />
+      </TouchableOpacity>
+    </View>
   );
 };
 

@@ -20,8 +20,8 @@ interface Props {
 
 const DepartmentForm = ({ form, isPending, onChangeField, onSubmit }: Props) => {
   return (
-    <View className="px-4 mt-4">
-      <Text className="text-base font-bold text-gray-800 mb-3">
+    <View className="px-5 mt-4">
+      <Text className="text-xl font-bold text-gray-800 pl-8 mb-6">
         Nuevo Departamento
       </Text>
 
@@ -33,9 +33,10 @@ const DepartmentForm = ({ form, isPending, onChangeField, onSubmit }: Props) => 
       />
 
       <TextInput
-        className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
+        className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base min-h-[80px]"
         placeholder="Descripción"
         multiline
+        textAlignVertical="top"
         value={form.description}
         onChangeText={(v) => onChangeField("description", v)}
       />
@@ -58,7 +59,7 @@ const DepartmentForm = ({ form, isPending, onChangeField, onSubmit }: Props) => 
       </View>
 
       <TouchableOpacity
-        className="bg-blue-600 rounded-lg py-3 items-center"
+        className="bg-blue-600 rounded-lg py-3 items-center mt-2"
         onPress={onSubmit}
         disabled={isPending}
       >
