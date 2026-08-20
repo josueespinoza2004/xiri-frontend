@@ -3,6 +3,8 @@ import { ActivityIndicator, FlatList, ScrollView, Text, View } from "react-nativ
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouteBusinesses } from "@/presentation/hooks/useRouteBusinesses";
 import { useQualification } from "@/presentation/hooks/useQualification";
+import { useRoute } from "@/presentation/hooks/useRoute";
+import RouteHeader from "@/presentation/components/routes/RouteHeader";
 import RouteBusinessCard from "@/presentation/components/routes/RouteBusinessCard";
 import BackButton from "@/presentation/components/shared/BackButton";
 
@@ -12,6 +14,7 @@ const RouteDetailScreen = () => {
   const safeArea = useSafeAreaInsets();
   const { routeBusinessesQuery } = useRouteBusinesses(+id);
   const { qualificationsQuery } = useQualification();
+  const { routeQuery } = useRoute(+id);
 
   if (routeBusinessesQuery.isLoading || qualificationsQuery.isLoading) {
     return (
@@ -30,7 +33,10 @@ const RouteDetailScreen = () => {
       <BackButton />
       <View className="mt-2" style={{ paddingTop: safeArea.top }}>
         <Text className="text-3xl font-bold pl-14 pr-4 mb-2">{name}</Text>
-        <Text className="text-base text-gray-500 px-4 mb-4">
+
+        {routeQuery.data && <RouteHeader route={routeQuery.data} />}
+
+        <Text className="text-base font-semibold text-gray-700 px-4 mb-3">
           Negocios en esta ruta
         </Text>
 

@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 interface Props {
   foodName: string;
   foodImage: string | null;
+  departmentName?: string;
   complete: boolean;
   registeredDate: string;
   onPress?: () => void;
@@ -14,6 +15,7 @@ interface Props {
 const CollectionCard = ({
   foodName,
   foodImage,
+  departmentName,
   complete,
   registeredDate,
   onPress,
@@ -29,12 +31,12 @@ const CollectionCard = ({
         {foodImage ? (
           <Image
             source={{ uri: foodImage }}
-            className="w-12 h-12 rounded-lg mr-3"
+            style={{ width: 48, height: 48, borderRadius: 8 }}
             resizeMode="cover"
           />
         ) : (
           <View
-            className="w-12 h-12 rounded-lg justify-center items-center mr-3"
+            className="w-12 h-12 rounded-lg justify-center items-center"
             style={{ backgroundColor: complete ? "#dcfce7" : "#fef3c7" }}
           >
             <Ionicons
@@ -45,14 +47,23 @@ const CollectionCard = ({
           </View>
         )}
 
-        <View className="flex-1">
+        <View className="flex-1 ml-3">
           <Text className="text-base font-semibold text-gray-800" numberOfLines={1}>
             {foodName}
           </Text>
+          {departmentName && (
+            <Text className="text-xs text-gray-400" numberOfLines={1}>
+              {departmentName}
+            </Text>
+          )}
           <Text className="text-xs text-gray-500 mt-1">
             {complete ? "Completada" : "Pendiente"} · {registeredDate}
           </Text>
         </View>
+
+        {complete && (
+          <Ionicons name="checkmark-circle" size={22} color="#16a34a" />
+        )}
       </View>
 
       {/* Acciones */}

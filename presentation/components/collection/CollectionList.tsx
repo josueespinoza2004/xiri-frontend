@@ -36,6 +36,7 @@ const CollectionList = ({
           <CollectionCard
             foodName={item.foodName}
             foodImage={item.foodImage}
+            departmentName={item.departmentName}
             complete={item.complete}
             registeredDate={formatDate(item.registeredDate)}
             onPress={() => onPressItem?.(item.traditionalFood)}
