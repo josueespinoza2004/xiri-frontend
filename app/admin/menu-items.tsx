@@ -13,7 +13,6 @@ import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAdminMenuItems } from "@/presentation/hooks/useAdminMenuItems";
 import { useAdminMenus } from "@/presentation/hooks/useAdminMenus";
-import { useAdminFoods } from "@/presentation/hooks/useAdminFoods";
 import ChipSelector from "@/presentation/components/shared/ChipSelector";
 import BackButton from "@/presentation/components/shared/BackButton";
 import { useState } from "react";
@@ -23,9 +22,7 @@ const AdminMenuItemsScreen = () => {
   const router = useRouter();
   const [selectedBusiness, setSelectedBusiness] = useState<number | undefined>();
   const { businessesQuery } = useAdminMenus();
-  const { menuItemsQuery, deleteMutation, validateMutation } =
-    useAdminMenuItems(selectedBusiness);
-  const { foodsQuery } = useAdminFoods();
+  const { menuItemsQuery, deleteMutation } = useAdminMenuItems(selectedBusiness);
 
   const handleDelete = (id: number, name: string) => {
     Alert.alert("Eliminar", `¿Eliminar platillo "${name}"?`, [
@@ -43,41 +40,6 @@ const AdminMenuItemsScreen = () => {
         },
       },
     ]);
-  };
-
-  const handleValidateForAlbum = (menuItemId: number, itemName: string) => {
-    const foodItems = foodsQuery.data ?? [];
-
-    if (foodItems.length === 0) {
-      Alert.alert("Error", "No hay comidas tradicionales disponibles");
-      return;
-    }
-
-    const foodOptions = foodItems.map((f) => ({
-      text: f.name,
-      onPress: () => {
-        validateMutation.mutate(
-          { menuItemId, traditionalFoodId: f.id },
-          {
-            onSuccess: () =>
-              Alert.alert("Éxito", `"${itemName}" validado para el álbum`),
-            onError: (error: any) => {
-              const msg = typeof error === "string" ? error : "Error al validar";
-              Alert.alert("Error", msg);
-            },
-          },
-        );
-      },
-    }));
-
-    Alert.alert(
-      "Validar para Álbum",
-      `Asociar "${itemName}" con una comida tradicional:`,
-      [
-        ...foodOptions.slice(0, 5),
-        { text: "Cancelar", style: "cancel" },
-      ],
-    );
   };
 
   if (businessesQuery.isLoading) {
@@ -160,7 +122,11 @@ const AdminMenuItemsScreen = () => {
                       {!item.countsForAlbum && (
                         <TouchableOpacity
                           className="flex-row items-center justify-center bg-xiri-olive/10 rounded-lg py-2 mt-3"
-                          onPress={() => handleValidateForAlbum(item.id, item.name)}
+                          onPress={() =>
+                            router.push(
+                              `/admin/validate-album/${item.id}?name=${encodeURIComponent(item.name)}`,
+                            )
+                          }
                         >
                           <Ionicons name="ribbon-outline" size={16} color="#BDBF09" />
                           <Text className="text-xs text-xiri-olive ml-1 font-medium">
