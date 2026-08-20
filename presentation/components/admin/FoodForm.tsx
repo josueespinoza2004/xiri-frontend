@@ -23,6 +23,7 @@ interface Props {
   onChangeField: (field: string, value: string | number) => void;
   onPickImage: () => void;
   onSubmit: () => void;
+  submitLabel?: string;
 }
 
 const FoodForm = ({
@@ -33,6 +34,7 @@ const FoodForm = ({
   onChangeField,
   onPickImage,
   onSubmit,
+  submitLabel,
 }: Props) => {
   const departmentItems = departments.map((d) => ({
     id: d.id,
@@ -102,7 +104,7 @@ const FoodForm = ({
         {isPending ? (
           <ActivityIndicator color="#fff" />
         ) : (
-          <Text className="text-white font-semibold text-base">Crear</Text>
+          <Text className="text-white font-semibold text-base">{submitLabel ?? "Crear"}</Text>
         )}
       </TouchableOpacity>
     </View>

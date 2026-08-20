@@ -59,14 +59,21 @@ const AdminDepartmentsScreen = () => {
             scrollEnabled={false}
             renderItem={({ item }) => (
               <View className="bg-white rounded-lg p-3 mb-2 mx-4 flex-row items-center justify-between">
-                <View className="flex-1">
+                <TouchableOpacity
+                  className="flex-1"
+                  onPress={() =>
+                    router.push(
+                      `/admin/edit-department/${item.id}?name=${encodeURIComponent(item.name)}&description=${encodeURIComponent(item.description)}&latitude=${item.latitude}&longitude=${item.longitude}`,
+                    )
+                  }
+                >
                   <Text className="text-base font-medium text-gray-800">
                     {item.name}
                   </Text>
                   <Text className="text-xs text-gray-500" numberOfLines={1}>
                     {item.description}
                   </Text>
-                </View>
+                </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleDelete(item.id, item.name)}>
                   <Ionicons name="trash-outline" size={20} color="#dc2626" />
                 </TouchableOpacity>
