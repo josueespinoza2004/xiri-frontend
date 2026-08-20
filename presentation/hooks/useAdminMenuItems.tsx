@@ -1,6 +1,7 @@
 import { getAllMenuItemsAction } from "@/core/actions/admin/get-all-menu-items.action";
 import { createMenuItemAction } from "@/core/actions/admin/create-menu-item.action";
 import { deleteMenuItemAction } from "@/core/actions/admin/delete-menu-item.action";
+import { updateMenuItemAction } from "@/core/actions/admin/update-menu-item.action";
 import { validateForAlbumAction } from "@/core/actions/admin/validate-for-album.action";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
@@ -10,6 +11,13 @@ interface CreateParams {
   business: number;
   traditionalFood?: number | null;
   isTraditionalVariant: boolean;
+  image?: { uri: string; name: string; type: string };
+}
+
+interface UpdateParams {
+  id: number;
+  name: string;
+  description: string;
   image?: { uri: string; name: string; type: string };
 }
 
@@ -35,6 +43,13 @@ export const useAdminMenuItems = (selectedBusinessId?: number) => {
     },
   });
 
+  const updateMutation = useMutation({
+    mutationFn: (params: UpdateParams) => updateMenuItemAction(params),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["admin", "menu-items"] });
+    },
+  });
+
   const deleteMutation = useMutation({
     mutationFn: (id: number) => deleteMenuItemAction(id),
     onSuccess: () => {
@@ -52,6 +67,7 @@ export const useAdminMenuItems = (selectedBusinessId?: number) => {
   return {
     menuItemsQuery,
     createMutation,
+    updateMutation,
     deleteMutation,
     validateMutation,
   };

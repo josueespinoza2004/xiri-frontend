@@ -2,8 +2,10 @@ import { getRoutesAction } from "@/core/actions/routes/get-routes.action";
 import { getRouteBusinessesAction } from "@/core/actions/routes/get-route-businesses.action";
 import { createRouteAction } from "@/core/actions/admin/create-route.action";
 import { deleteRouteAction } from "@/core/actions/admin/delete-route.action";
+import { updateRouteAction } from "@/core/actions/admin/update-route.action";
 import { createRouteBusinessAction } from "@/core/actions/admin/create-route-business.action";
 import { deleteRouteBusinessAction } from "@/core/actions/admin/delete-route-business.action";
+import { updateRouteBusinessAction } from "@/core/actions/admin/update-route-business.action";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 interface CreateRouteParams {
@@ -12,9 +14,21 @@ interface CreateRouteParams {
   department: number;
 }
 
+interface UpdateRouteParams {
+  id: number;
+  name: string;
+  description: string;
+  department: number;
+}
+
 interface CreateRouteBusinessParams {
   route: number;
   business: number;
+  suggestedOrder: number;
+}
+
+interface UpdateRouteBusinessParams {
+  id: number;
   suggestedOrder: number;
 }
 
@@ -48,6 +62,13 @@ export const useAdminRoutes = (selectedRouteId?: number) => {
     },
   });
 
+  const updateRouteMutation = useMutation({
+    mutationFn: (params: UpdateRouteParams) => updateRouteAction(params),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["routes"] });
+    },
+  });
+
   const addBusinessMutation = useMutation({
     mutationFn: (params: CreateRouteBusinessParams) =>
       createRouteBusinessAction(params),
@@ -63,12 +84,21 @@ export const useAdminRoutes = (selectedRouteId?: number) => {
     },
   });
 
+  const updateBusinessOrderMutation = useMutation({
+    mutationFn: (params: UpdateRouteBusinessParams) => updateRouteBusinessAction(params),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["routes", "businesses"] });
+    },
+  });
+
   return {
     routesQuery,
     routeBusinessesQuery,
     createRouteMutation,
+    updateRouteMutation,
     deleteRouteMutation,
     addBusinessMutation,
     removeBusinessMutation,
+    updateBusinessOrderMutation,
   };
 };

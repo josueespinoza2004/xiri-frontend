@@ -92,7 +92,14 @@ const AdminMenuItemsScreen = () => {
                             resizeMode="cover"
                           />
                         )}
-                        <View className="flex-1">
+                        <TouchableOpacity
+                          className="flex-1"
+                          onPress={() =>
+                            router.push(
+                              `/admin/edit-menu-item/${item.id}?name=${encodeURIComponent(item.name)}&description=${encodeURIComponent(item.description)}`,
+                            )
+                          }
+                        >
                           <Text className="text-base font-medium text-gray-800">
                             {item.name}
                           </Text>
@@ -112,7 +119,7 @@ const AdminMenuItemsScreen = () => {
                               </Text>
                             </View>
                           )}
-                        </View>
+                        </TouchableOpacity>
                         <TouchableOpacity onPress={() => handleDelete(item.id, item.name)}>
                           <Ionicons name="trash-outline" size={20} color="#dc2626" />
                         </TouchableOpacity>

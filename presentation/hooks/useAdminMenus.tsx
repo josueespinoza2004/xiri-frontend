@@ -1,12 +1,18 @@
 import { getMenuByBusinessAction } from "@/core/actions/menu/get-menu-by-business.action";
 import { createMenuAction } from "@/core/actions/admin/create-menu.action";
 import { deleteMenuAction } from "@/core/actions/admin/delete-menu.action";
+import { updateMenuAction } from "@/core/actions/admin/update-menu.action";
 import { getAllBusinessesAction } from "@/core/actions/admin/get-all-businesses.action";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 interface CreateMenuParams {
   business: number;
   menuItem: number;
+  price: string;
+}
+
+interface UpdateMenuParams {
+  id: number;
   price: string;
 }
 
@@ -33,6 +39,13 @@ export const useAdminMenus = (selectedBusinessId?: number) => {
     },
   });
 
+  const updateMutation = useMutation({
+    mutationFn: (params: UpdateMenuParams) => updateMenuAction(params),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["menu"] });
+    },
+  });
+
   const deleteMutation = useMutation({
     mutationFn: (id: number) => deleteMenuAction(id),
     onSuccess: () => {
@@ -44,6 +57,7 @@ export const useAdminMenus = (selectedBusinessId?: number) => {
     businessesQuery,
     menuQuery,
     createMutation,
+    updateMutation,
     deleteMutation,
   };
 };

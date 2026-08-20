@@ -14,9 +14,10 @@ interface Props {
   isPending: boolean;
   onChangeField: (field: string, value: string | number) => void;
   onSubmit: () => void;
+  submitLabel?: string;
 }
 
-const RouteForm = ({ form, departments, isPending, onChangeField, onSubmit }: Props) => {
+const RouteForm = ({ form, departments, isPending, onChangeField, onSubmit, submitLabel }: Props) => {
   const departmentItems = departments.map((d) => ({
     id: d.id,
     label: d.name,
@@ -59,7 +60,7 @@ const RouteForm = ({ form, departments, isPending, onChangeField, onSubmit }: Pr
         {isPending ? (
           <ActivityIndicator color="#fff" />
         ) : (
-          <Text className="text-white font-semibold text-base">Crear Ruta</Text>
+          <Text className="text-white font-semibold text-base">{submitLabel ?? "Crear Ruta"}</Text>
         )}
       </TouchableOpacity>
     </View>

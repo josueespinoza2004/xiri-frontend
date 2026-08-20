@@ -64,6 +64,11 @@ const AdminRoutesScreen = () => {
                   onPress={() =>
                     router.push(`/admin/route-detail/${item.id}?name=${encodeURIComponent(item.name)}`)
                   }
+                  onLongPress={() =>
+                    router.push(
+                      `/admin/edit-route/${item.id}?name=${encodeURIComponent(item.name)}&description=${encodeURIComponent(item.description)}&department=${item.department}`,
+                    )
+                  }
                 >
                   <View className="w-8 h-8 rounded-full bg-orange-100 justify-center items-center mr-3">
                     <Ionicons name="map-outline" size={18} color="#ea580c" />
