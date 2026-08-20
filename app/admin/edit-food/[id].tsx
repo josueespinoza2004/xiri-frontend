@@ -1,27 +1,28 @@
 import { useState } from "react";
-import { Alert, ScrollView, View } from "react-native";
+import { ActivityIndicator, Alert, ScrollView, View } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useFood } from "@/presentation/hooks/useFood";
 import { useAdminFoods } from "@/presentation/hooks/useAdminFoods";
 import { useAdminDepartments } from "@/presentation/hooks/useAdminDepartments";
 import FoodForm from "@/presentation/components/admin/FoodForm";
 import BackButton from "@/presentation/components/shared/BackButton";
 
 const EditFoodScreen = () => {
-  const { id, name, description, culturalOrigin, departmentOrigin } =
-    useLocalSearchParams();
+  const { id } = useLocalSearchParams();
   const safeArea = useSafeAreaInsets();
   const router = useRouter();
+  const { foodQuery } = useFood(+id);
   const { updateMutation } = useAdminFoods();
   const { departmentsQuery } = useAdminDepartments();
 
-  const [form, setForm] = useState({
-    name: (name as string) ?? "",
-    description: (description as string) ?? "",
-    culturalOrigin: (culturalOrigin as string) ?? "",
-    departmentOrigin: departmentOrigin ? +departmentOrigin : null,
-  });
+  const [form, setForm] = useState<{
+    name: string;
+    description: string;
+    culturalOrigin: string;
+    departmentOrigin: number | null;
+  } | null>(null);
 
   const [image, setImage] = useState<{
     uri: string;
@@ -29,8 +30,18 @@ const EditFoodScreen = () => {
     type: string;
   } | null>(null);
 
+  // Inicializar form cuando la data llega
+  if (foodQuery.data && !form) {
+    setForm({
+      name: foodQuery.data.name,
+      description: foodQuery.data.description,
+      culturalOrigin: foodQuery.data.culturalOrigin,
+      departmentOrigin: foodQuery.data.departmentOrigin,
+    });
+  }
+
   const handleChangeField = (field: string, value: string | number) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
+    setForm((prev) => (prev ? { ...prev, [field]: value } : prev));
   };
 
   const handlePickImage = async () => {
@@ -51,7 +62,7 @@ const EditFoodScreen = () => {
   };
 
   const handleUpdate = () => {
-    if (!form.name || !form.description || !form.culturalOrigin || !form.departmentOrigin) {
+    if (!form || !form.name || !form.description || !form.culturalOrigin || !form.departmentOrigin) {
       Alert.alert("Error", "Todos los campos son requeridos");
       return;
     }
@@ -79,6 +90,14 @@ const EditFoodScreen = () => {
     );
   };
 
+  if (foodQuery.isLoading || !form) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator color="#2292A4" size={40} />
+      </View>
+    );
+  }
+
   return (
     <ScrollView className="bg-white">
       <BackButton />
@@ -86,6 +105,7 @@ const EditFoodScreen = () => {
         <FoodForm
           form={form}
           imageUri={image?.uri ?? null}
+          currentImageUri={foodQuery.data?.image ?? null}
           departments={departmentsQuery.data ?? []}
           isPending={updateMutation.isPending}
           onChangeField={handleChangeField}

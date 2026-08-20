@@ -63,9 +63,7 @@ const AdminFoodsScreen = () => {
                 <TouchableOpacity
                   className="flex-1 flex-row items-center"
                   onPress={() =>
-                    router.push(
-                      `/admin/edit-food/${item.id}?name=${encodeURIComponent(item.name)}&description=${encodeURIComponent(item.description)}&culturalOrigin=${encodeURIComponent(item.culturalOrigin)}&departmentOrigin=${item.departmentOrigin}`,
-                    )
+                    router.push(`/admin/edit-food/${item.id}`)
                   }
                 >
                   {item.image && (

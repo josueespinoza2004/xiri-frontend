@@ -1,29 +1,46 @@
 import { useState } from "react";
-import { Alert, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Alert, ScrollView, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAdminMenuItems } from "@/presentation/hooks/useAdminMenuItems";
+import { useQuery } from "@tanstack/react-query";
+import { getAllMenuItemsAction } from "@/core/actions/admin/get-all-menu-items.action";
 import BackButton from "@/presentation/components/shared/BackButton";
 import { Ionicons } from "@expo/vector-icons";
-import { Image } from "react-native";
 
 const EditMenuItemScreen = () => {
-  const { id, name, description } = useLocalSearchParams();
+  const { id } = useLocalSearchParams();
   const safeArea = useSafeAreaInsets();
   const router = useRouter();
   const { updateMutation } = useAdminMenuItems();
 
-  const [form, setForm] = useState({
-    name: (name as string) ?? "",
-    description: (description as string) ?? "",
+  // Fetch del item específico
+  const itemQuery = useQuery({
+    queryKey: ["admin", "menu-item-detail", +id],
+    queryFn: async () => {
+      const items = await getAllMenuItemsAction();
+      return items.find((i) => i.id === +id) ?? null;
+    },
   });
+
+  const [form, setForm] = useState<{
+    name: string;
+    description: string;
+  } | null>(null);
 
   const [image, setImage] = useState<{
     uri: string;
     name: string;
     type: string;
   } | null>(null);
+
+  if (itemQuery.data && !form) {
+    setForm({
+      name: itemQuery.data.name,
+      description: itemQuery.data.description,
+    });
+  }
 
   const handlePickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -43,7 +60,7 @@ const EditMenuItemScreen = () => {
   };
 
   const handleUpdate = () => {
-    if (!form.name || !form.description) {
+    if (!form || !form.name || !form.description) {
       Alert.alert("Error", "Nombre y descripción son requeridos");
       return;
     }
@@ -69,6 +86,16 @@ const EditMenuItemScreen = () => {
     );
   };
 
+  if (itemQuery.isLoading || !form) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator color="#2292A4" size={40} />
+      </View>
+    );
+  }
+
+  const currentImage = itemQuery.data?.image ?? null;
+
   return (
     <ScrollView className="bg-white">
       <BackButton />
@@ -82,7 +109,7 @@ const EditMenuItemScreen = () => {
             className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
             placeholder="Nombre"
             value={form.name}
-            onChangeText={(v) => setForm((p) => ({ ...p, name: v }))}
+            onChangeText={(v) => setForm((p) => (p ? { ...p, name: v } : p))}
           />
 
           <TextInput
@@ -91,7 +118,7 @@ const EditMenuItemScreen = () => {
             multiline
             textAlignVertical="top"
             value={form.description}
-            onChangeText={(v) => setForm((p) => ({ ...p, description: v }))}
+            onChangeText={(v) => setForm((p) => (p ? { ...p, description: v } : p))}
           />
 
           <TouchableOpacity
@@ -101,14 +128,25 @@ const EditMenuItemScreen = () => {
             {image ? (
               <Image
                 source={{ uri: image.uri }}
-                className="w-full h-32 rounded-lg"
+                style={{ width: "100%", height: 128, borderRadius: 8 }}
                 resizeMode="cover"
               />
+            ) : currentImage ? (
+              <View className="items-center w-full">
+                <Image
+                  source={{ uri: currentImage }}
+                  style={{ width: "100%", height: 128, borderRadius: 8 }}
+                  resizeMode="cover"
+                />
+                <Text className="text-xs text-gray-400 mt-2">
+                  Tocar para cambiar
+                </Text>
+              </View>
             ) : (
               <View className="items-center">
                 <Ionicons name="image-outline" size={32} color="#9ca3af" />
                 <Text className="text-sm text-gray-400 mt-2">
-                  Cambiar imagen (opcional)
+                  Agregar imagen (opcional)
                 </Text>
               </View>
             )}

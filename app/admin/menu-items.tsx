@@ -95,9 +95,7 @@ const AdminMenuItemsScreen = () => {
                         <TouchableOpacity
                           className="flex-1"
                           onPress={() =>
-                            router.push(
-                              `/admin/edit-menu-item/${item.id}?name=${encodeURIComponent(item.name)}&description=${encodeURIComponent(item.description)}`,
-                            )
+                            router.push(`/admin/edit-menu-item/${item.id}`)
                           }
                         >
                           <Text className="text-base font-medium text-gray-800">
