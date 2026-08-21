@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ActivityIndicator, Alert, FlatList, ScrollView, Text, View } from "react-native";
+import { ActivityIndicator, Alert, FlatList, Text, View } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
@@ -7,6 +7,7 @@ import { useVerification } from "@/presentation/hooks/useVerification";
 import VerificationForm from "@/presentation/components/verification/VerificationForm";
 import RequestStatusCard from "@/presentation/components/verification/RequestStatusCard";
 import BackButton from "@/presentation/components/shared/BackButton";
+import KeyboardAware from "@/presentation/components/shared/KeyboardAware";
 
 const VerificationRequestScreen = () => {
   const safeArea = useSafeAreaInsets();
@@ -92,7 +93,7 @@ const VerificationRequestScreen = () => {
   );
 
   return (
-    <ScrollView className="bg-white">
+    <KeyboardAware className="bg-white">
       <BackButton />
       <View style={{ paddingTop: safeArea.top }}>
         {/* Solicitudes existentes */}
@@ -128,7 +129,7 @@ const VerificationRequestScreen = () => {
           </Text>
         )}
       </View>
-    </ScrollView>
+    </KeyboardAware>
   );
 };
 

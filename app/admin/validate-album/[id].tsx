@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Alert, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Alert, ScrollView, Text, TouchableOpacity, View } from "react-native"
+import KeyboardAware from "@/presentation/components/shared/KeyboardAware";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAdminMenuItems } from "@/presentation/hooks/useAdminMenuItems";
@@ -44,7 +45,7 @@ const ValidateAlbumScreen = () => {
   };
 
   return (
-    <ScrollView className="bg-white">
+    <KeyboardAware className="bg-white">
       <BackButton />
       <View style={{ paddingTop: safeArea.top }}>
         <View className="px-5 mt-4">
@@ -73,7 +74,7 @@ const ValidateAlbumScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </ScrollView>
+    </KeyboardAware>
   );
 };
 

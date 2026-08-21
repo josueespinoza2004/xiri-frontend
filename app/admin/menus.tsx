@@ -100,7 +100,7 @@ const AdminMenusScreen = () => {
   }));
 
   return (
-    <ScrollView className="bg-gray-50">
+    <KeyboardAware className="bg-gray-50">
       <BackButton />
       <View className="mt-2" style={{ paddingTop: safeArea.top }}>
         <Text className="text-2xl font-bold pl-14 pr-4 mb-4">Menús</Text>
@@ -189,7 +189,7 @@ const AdminMenusScreen = () => {
           </View>
         )}
       </View>
-    </ScrollView>
+    </KeyboardAware>
   );
 };
 

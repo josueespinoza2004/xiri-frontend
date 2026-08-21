@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Alert, ScrollView, View } from "react-native";
+import { Alert, ScrollView, View } from "react-native"
+import KeyboardAware from "@/presentation/components/shared/KeyboardAware";
 import * as ImagePicker from "expo-image-picker";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -79,7 +80,7 @@ const CreateMenuItemScreen = () => {
   };
 
   return (
-    <ScrollView className="bg-white">
+    <KeyboardAware className="bg-white">
       <BackButton />
       <View style={{ paddingTop: safeArea.top }}>
         <MenuItemForm
@@ -92,7 +93,7 @@ const CreateMenuItemScreen = () => {
           onSubmit={handleCreate}
         />
       </View>
-    </ScrollView>
+    </KeyboardAware>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Alert, ScrollView, View } from "react-native";
+import { Alert, ScrollView, View } from "react-native"
+import KeyboardAware from "@/presentation/components/shared/KeyboardAware";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAdminRoutes } from "@/presentation/hooks/useAdminRoutes";
@@ -50,7 +51,7 @@ const CreateRouteScreen = () => {
   };
 
   return (
-    <ScrollView className="bg-white">
+    <KeyboardAware className="bg-white">
       <BackButton />
       <View style={{ paddingTop: safeArea.top }}>
         <RouteForm
@@ -61,7 +62,7 @@ const CreateRouteScreen = () => {
           onSubmit={handleCreate}
         />
       </View>
-    </ScrollView>
+    </KeyboardAware>
   );
 };
 
