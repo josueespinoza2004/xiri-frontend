@@ -18,6 +18,7 @@ import BusinessMenu from "@/presentation/components/business/BusinessMenu";
 import QualificationBadge from "@/presentation/components/qualification/QualificationBadge";
 import ReviewList from "@/presentation/components/qualification/ReviewList";
 import BackButton from "@/presentation/components/shared/BackButton";
+import LocationMap from "@/presentation/components/shared/LocationMap";
 
 const BusinessDetailScreen = () => {
   const { id } = useLocalSearchParams();
@@ -60,6 +61,15 @@ const BusinessDetailScreen = () => {
 
         {/* Menú */}
         <BusinessMenu menu={menuQuery.data ?? []} />
+
+        {/* Mapa */}
+        {business?.latitude && business?.longitude && (
+          <LocationMap
+            latitude={business.latitude}
+            longitude={business.longitude}
+            title={business.name}
+          />
+        )}
 
         {/* Mi Calificación */}
         <View className="px-5 mt-6">

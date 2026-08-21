@@ -6,6 +6,7 @@ import { useDepartment } from "@/presentation/hooks/useDepartment";
 import FoodList from "@/presentation/components/gastronomy/FoodList";
 import DepartmentHeader from "@/presentation/components/gastronomy/DepartmentHeader";
 import BackButton from "@/presentation/components/shared/BackButton";
+import LocationMap from "@/presentation/components/shared/LocationMap";
 
 const DepartmentScreen = () => {
   const { id, name } = useLocalSearchParams();
@@ -29,7 +30,14 @@ const DepartmentScreen = () => {
         <Text className="text-3xl font-bold pl-14 pr-4 mb-2">{name}</Text>
 
         {departmentQuery.data && (
-          <DepartmentHeader department={departmentQuery.data} />
+          <>
+            <DepartmentHeader department={departmentQuery.data} />
+            <LocationMap
+              latitude={departmentQuery.data.latitude}
+              longitude={departmentQuery.data.longitude}
+              title={departmentQuery.data.name}
+            />
+          </>
         )}
 
         <FoodList
