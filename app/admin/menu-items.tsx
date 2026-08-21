@@ -83,30 +83,62 @@ const AdminMenuItemsScreen = () => {
                   keyExtractor={(item) => item.id.toString()}
                   scrollEnabled={false}
                   renderItem={({ item }) => (
-                    <View className="bg-white rounded-lg p-3 mb-2 mx-4 flex-row items-center">
-                      {item.image && (
-                        <Image
-                          source={{ uri: item.image }}
-                          className="w-10 h-10 rounded-lg mr-3"
-                          resizeMode="cover"
-                        />
-                      )}
-                      <View className="flex-1">
-                        <Text className="text-base font-medium text-gray-800">
-                          {item.name}
-                        </Text>
-                        <Text className="text-xs text-gray-500" numberOfLines={1}>
-                          {item.description}
-                        </Text>
-                        {item.traditionalFoodName && (
-                          <Text className="text-xs text-blue-500 mt-1">
-                            Variante de: {item.traditionalFoodName}
-                          </Text>
+                    <View className="bg-white rounded-lg p-3 mb-2 mx-4">
+                      <View className="flex-row items-center">
+                        {item.image && (
+                          <Image
+                            source={{ uri: item.image }}
+                            className="w-10 h-10 rounded-lg mr-3"
+                            resizeMode="cover"
+                          />
                         )}
+                        <TouchableOpacity
+                          className="flex-1"
+                          onPress={() =>
+                            router.push(`/admin/edit-menu-item/${item.id}`)
+                          }
+                        >
+                          <Text className="text-base font-medium text-gray-800">
+                            {item.name}
+                          </Text>
+                          <Text className="text-xs text-gray-500" numberOfLines={1}>
+                            {item.description}
+                          </Text>
+                          {item.traditionalFoodName && (
+                            <Text className="text-xs text-xiri-teal mt-1">
+                              Variante de: {item.traditionalFoodName}
+                            </Text>
+                          )}
+                          {item.countsForAlbum && (
+                            <View className="flex-row items-center mt-1">
+                              <Ionicons name="checkmark-circle" size={12} color="#16a34a" />
+                              <Text className="text-xs text-green-600 ml-1">
+                                Cuenta para álbum
+                              </Text>
+                            </View>
+                          )}
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => handleDelete(item.id, item.name)}>
+                          <Ionicons name="trash-outline" size={20} color="#dc2626" />
+                        </TouchableOpacity>
                       </View>
-                      <TouchableOpacity onPress={() => handleDelete(item.id, item.name)}>
-                        <Ionicons name="trash-outline" size={20} color="#dc2626" />
-                      </TouchableOpacity>
+
+                      {/* Botón validar para álbum (solo si no está validado) */}
+                      {!item.countsForAlbum && (
+                        <TouchableOpacity
+                          className="flex-row items-center justify-center bg-xiri-olive/10 rounded-lg py-2 mt-3"
+                          onPress={() =>
+                            router.push(
+                              `/admin/validate-album/${item.id}?name=${encodeURIComponent(item.name)}`,
+                            )
+                          }
+                        >
+                          <Ionicons name="ribbon-outline" size={16} color="#BDBF09" />
+                          <Text className="text-xs text-xiri-olive ml-1 font-medium">
+                            Validar para Álbum
+                          </Text>
+                        </TouchableOpacity>
+                      )}
                     </View>
                   )}
                   ListEmptyComponent={

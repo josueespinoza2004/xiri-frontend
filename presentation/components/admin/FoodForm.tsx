@@ -18,21 +18,25 @@ interface Props {
     departmentOrigin: number | null;
   };
   imageUri: string | null;
+  currentImageUri?: string | null;
   departments: Department[];
   isPending: boolean;
   onChangeField: (field: string, value: string | number) => void;
   onPickImage: () => void;
   onSubmit: () => void;
+  submitLabel?: string;
 }
 
 const FoodForm = ({
   form,
   imageUri,
+  currentImageUri,
   departments,
   isPending,
   onChangeField,
   onPickImage,
   onSubmit,
+  submitLabel,
 }: Props) => {
   const departmentItems = departments.map((d) => ({
     id: d.id,
@@ -83,9 +87,18 @@ const FoodForm = ({
         {imageUri ? (
           <Image
             source={{ uri: imageUri }}
-            className="w-full h-32 rounded-lg"
+            style={{ width: "100%", height: 128, borderRadius: 8 }}
             resizeMode="cover"
           />
+        ) : currentImageUri ? (
+          <View className="items-center w-full">
+            <Image
+              source={{ uri: currentImageUri }}
+              style={{ width: "100%", height: 128, borderRadius: 8 }}
+              resizeMode="cover"
+            />
+            <Text className="text-xs text-gray-400 mt-2">Tocar para cambiar</Text>
+          </View>
         ) : (
           <View className="items-center">
             <Ionicons name="image-outline" size={32} color="#9ca3af" />
@@ -102,7 +115,7 @@ const FoodForm = ({
         {isPending ? (
           <ActivityIndicator color="#fff" />
         ) : (
-          <Text className="text-white font-semibold text-base">Crear</Text>
+          <Text className="text-white font-semibold text-base">{submitLabel ?? "Crear"}</Text>
         )}
       </TouchableOpacity>
     </View>

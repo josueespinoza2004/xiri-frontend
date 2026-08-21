@@ -1,6 +1,7 @@
 import { getFoodsAction } from "@/core/actions/gastronomy/get-foods.action";
 import { createFoodAction } from "@/core/actions/admin/create-food.action";
 import { deleteFoodAction } from "@/core/actions/admin/delete-food.action";
+import { updateFoodAction } from "@/core/actions/admin/update-food.action";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 interface CreateParams {
@@ -9,6 +10,15 @@ interface CreateParams {
   culturalOrigin: string;
   departmentOrigin: number;
   image: { uri: string; name: string; type: string };
+}
+
+interface UpdateParams {
+  id: number;
+  name: string;
+  description: string;
+  culturalOrigin: string;
+  departmentOrigin: number;
+  image?: { uri: string; name: string; type: string };
 }
 
 export const useAdminFoods = () => {
@@ -27,6 +37,13 @@ export const useAdminFoods = () => {
     },
   });
 
+  const updateMutation = useMutation({
+    mutationFn: (params: UpdateParams) => updateFoodAction(params),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["gastronomy", "foods"] });
+    },
+  });
+
   const deleteMutation = useMutation({
     mutationFn: (id: number) => deleteFoodAction(id),
     onSuccess: () => {
@@ -37,6 +54,7 @@ export const useAdminFoods = () => {
   return {
     foodsQuery,
     createMutation,
+    updateMutation,
     deleteMutation,
   };
 };

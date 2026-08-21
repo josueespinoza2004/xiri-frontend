@@ -16,9 +16,10 @@ interface Props {
   isPending: boolean;
   onChangeField: (field: string, value: string) => void;
   onSubmit: () => void;
+  submitLabel?: string;
 }
 
-const DepartmentForm = ({ form, isPending, onChangeField, onSubmit }: Props) => {
+const DepartmentForm = ({ form, isPending, onChangeField, onSubmit, submitLabel }: Props) => {
   return (
     <View className="px-5 mt-4">
       <Text className="text-xl font-bold text-gray-800 pl-8 mb-6">
@@ -66,7 +67,7 @@ const DepartmentForm = ({ form, isPending, onChangeField, onSubmit }: Props) => 
         {isPending ? (
           <ActivityIndicator color="#fff" />
         ) : (
-          <Text className="text-white font-semibold text-base">Crear</Text>
+          <Text className="text-white font-semibold text-base">{submitLabel ?? "Crear"}</Text>
         )}
       </TouchableOpacity>
     </View>

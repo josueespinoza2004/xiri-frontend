@@ -60,21 +60,28 @@ const AdminFoodsScreen = () => {
             scrollEnabled={false}
             renderItem={({ item }) => (
               <View className="bg-white rounded-lg p-3 mb-2 mx-4 flex-row items-center">
-                {item.image && (
-                  <Image
-                    source={{ uri: item.image }}
-                    className="w-10 h-10 rounded-lg mr-3"
-                    resizeMode="cover"
-                  />
-                )}
-                <View className="flex-1">
-                  <Text className="text-base font-medium text-gray-800">
-                    {item.name}
-                  </Text>
-                  <Text className="text-xs text-gray-500">
-                    {item.departmentName}
-                  </Text>
-                </View>
+                <TouchableOpacity
+                  className="flex-1 flex-row items-center"
+                  onPress={() =>
+                    router.push(`/admin/edit-food/${item.id}`)
+                  }
+                >
+                  {item.image && (
+                    <Image
+                      source={{ uri: item.image }}
+                      className="w-10 h-10 rounded-lg mr-3"
+                      resizeMode="cover"
+                    />
+                  )}
+                  <View className="flex-1">
+                    <Text className="text-base font-medium text-gray-800">
+                      {item.name}
+                    </Text>
+                    <Text className="text-xs text-gray-500">
+                      {item.departmentName}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleDelete(item.id, item.name)}>
                   <Ionicons name="trash-outline" size={20} color="#dc2626" />
                 </TouchableOpacity>
