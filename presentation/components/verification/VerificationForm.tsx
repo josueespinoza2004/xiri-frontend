@@ -31,7 +31,7 @@ const VerificationForm = ({
 }: Props) => {
   return (
     <View className="px-5 mt-4">
-      <Text className="text-lg font-bold text-gray-800 mb-2">
+      <Text className="text-lg font-bold text-gray-800 mb-2 pl-10">
         Solicitar ser Comerciante
       </Text>
       <Text className="text-sm text-gray-500 mb-6">

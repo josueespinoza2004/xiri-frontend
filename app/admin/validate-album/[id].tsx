@@ -49,7 +49,7 @@ const ValidateAlbumScreen = () => {
       <BackButton />
       <View style={{ paddingTop: safeArea.top }}>
         <View className="px-5 mt-4">
-          <Text className="text-xl font-bold text-gray-800 pl-8 mb-2">
+          <Text className="text-xl font-bold text-gray-800 pl-10 mb-2">
             Validar para Álbum
           </Text>
           <Text className="text-sm text-gray-500 mb-6">

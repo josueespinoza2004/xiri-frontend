@@ -15,6 +15,7 @@ import { useAdminMenus } from "@/presentation/hooks/useAdminMenus";
 import { getMenuItemsAction, BusinessMenuItemResponse } from "@/core/actions/admin/get-menu-items.action";
 import ChipSelector from "@/presentation/components/shared/ChipSelector";
 import BackButton from "@/presentation/components/shared/BackButton";
+import KeyboardAware from "@/presentation/components/shared/KeyboardAware";
 
 const AdminMenusScreen = () => {
   const safeArea = useSafeAreaInsets();
