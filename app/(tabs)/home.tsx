@@ -5,6 +5,7 @@ import { useGastronomy } from "@/presentation/hooks/useGastronomy";
 import { useRoutes } from "@/presentation/hooks/useRoutes";
 import { useProfile } from "@/presentation/hooks/useProfile";
 import WelcomeBanner from "@/presentation/components/home/WelcomeBanner";
+import Logo from "@/presentation/components/shared/Logo";
 import FoodList from "@/presentation/components/gastronomy/FoodList";
 import DepartmentList from "@/presentation/components/gastronomy/DepartmentList";
 import RouteList from "@/presentation/components/routes/RouteList";
@@ -27,7 +28,9 @@ const HomeScreen = () => {
   return (
     <ScrollView>
       <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-        <Text className="text-3xl font-bold px-4 mb-2 text-xiri-dark">Xiri</Text>
+        <View className="flex-row items-center px-4 mb-2">
+          <Logo size="sm" />
+        </View>
 
         {/* Saludo */}
         <WelcomeBanner

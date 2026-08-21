@@ -4,7 +4,9 @@ import {
   TextInput,
   TouchableOpacity,
   ActivityIndicator,
+  ScrollView,
 } from "react-native";
+import Logo from "@/presentation/components/shared/Logo";
 
 interface Props {
   form: {
@@ -29,8 +31,13 @@ export const RegisterForm = ({
   onGoToLogin,
 }: Props) => {
   return (
-    <View className="flex-1 justify-center px-8 bg-xiri-cream">
-      <Text className="text-3xl font-bold text-center text-xiri-dark mb-2">
+    <ScrollView
+      className="flex-1 bg-xiri-cream"
+      contentContainerStyle={{ justifyContent: "center", paddingHorizontal: 32, paddingVertical: 40 }}
+    >
+      <Logo size="md" />
+
+      <Text className="text-3xl font-bold text-center text-xiri-dark mb-2 mt-4">
         Únete a Xiri
       </Text>
       <Text className="text-sm text-center text-gray-500 mb-8">
@@ -103,6 +110,6 @@ export const RegisterForm = ({
           ¿Ya tenés cuenta? Iniciar sesión
         </Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
