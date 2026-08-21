@@ -1,5 +1,4 @@
-import { View, Text } from "react-native";
-import Logo from "@/presentation/components/shared/Logo";
+import { View, Text, Image } from "react-native";
 
 interface Props {
   firstName: string | null;
@@ -20,7 +19,11 @@ const WelcomeBanner = ({ firstName, username }: Props) => {
             ¿Qué vamos a explorar hoy?
           </Text>
         </View>
-        <Logo size="sm" />
+        <Image
+          source={require("@/assets/images/logo.png")}
+          style={{ width: 60, height: 60 }}
+          resizeMode="contain"
+        />
       </View>
     </View>
   );

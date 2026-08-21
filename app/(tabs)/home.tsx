@@ -6,6 +6,7 @@ import { useRoutes } from "@/presentation/hooks/useRoutes";
 import { useBusinesses } from "@/presentation/hooks/useBusinesses";
 import { useProfile } from "@/presentation/hooks/useProfile";
 import WelcomeBanner from "@/presentation/components/home/WelcomeBanner";
+import Logo from "@/presentation/components/shared/Logo";
 import FoodList from "@/presentation/components/gastronomy/FoodList";
 import DepartmentList from "@/presentation/components/gastronomy/DepartmentList";
 import RouteList from "@/presentation/components/routes/RouteList";
@@ -30,6 +31,11 @@ const HomeScreen = () => {
   return (
     <ScrollView className="bg-xiri-cream">
       <View style={{ paddingTop: safeArea.top + 10 }}>
+        {/* Logo */}
+        <View className="flex-row items-center px-4 mb-2">
+          <Logo size="sm" />
+        </View>
+
         {/* Banner de bienvenida */}
         <WelcomeBanner
           firstName={profileQuery.data?.firstName ?? null}
