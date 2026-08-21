@@ -46,7 +46,7 @@ const BusinessDetailScreen = () => {
   const business = businessQuery.data;
 
   return (
-    <ScrollView className="bg-white">
+    <ScrollView className="bg-xiri-cream">
       <BackButton />
       <View style={{ paddingTop: safeArea.top }}>
         {/* Info del negocio */}

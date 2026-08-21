@@ -98,7 +98,7 @@ const EditMenuItemScreen = () => {
   const currentImage = itemQuery.data?.image ?? null;
 
   return (
-    <KeyboardAware className="bg-white">
+    <KeyboardAware className="bg-xiri-cream">
       <BackButton />
       <View style={{ paddingTop: safeArea.top }}>
         <View className="px-5 mt-4">

@@ -22,14 +22,14 @@ const ProfileScreen = () => {
 
   if (profileQuery.isLoading || !profileQuery.data) {
     return (
-      <View className="flex-1 justify-center items-center bg-white">
+      <View className="flex-1 justify-center items-center bg-xiri-cream">
         <ActivityIndicator color="#2292A4" size={40} />
       </View>
     );
   }
 
   return (
-    <View className="flex-1 bg-white" style={{ paddingTop: safeArea.top }}>
+    <View className="flex-1 bg-xiri-cream" style={{ paddingTop: safeArea.top }}>
       <ProfileCard
         user={profileQuery.data}
         onLogout={handleLogout}

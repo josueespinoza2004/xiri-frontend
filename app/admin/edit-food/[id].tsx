@@ -100,7 +100,7 @@ const EditFoodScreen = () => {
   }
 
   return (
-    <KeyboardAware className="bg-white">
+    <KeyboardAware className="bg-xiri-cream">
       <BackButton />
       <View style={{ paddingTop: safeArea.top }}>
         <FoodForm

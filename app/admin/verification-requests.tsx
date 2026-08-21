@@ -72,10 +72,10 @@ const VerificationRequestsScreen = () => {
   };
 
   return (
-    <ScrollView className="bg-gray-50">
+    <ScrollView className="bg-xiri-cream">
       <BackButton />
       <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-        <Text className="text-2xl font-bold pl-14 pr-4 mb-4">
+        <Text className="text-2xl font-bold pl-14 text-xiri-dark pr-4 mb-4">
           Solicitudes de Verificación
         </Text>
 

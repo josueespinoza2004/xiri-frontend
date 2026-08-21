@@ -17,7 +17,7 @@ const ReviewCard = ({ review, isOwn }: Props) => {
   };
 
   return (
-    <View className="bg-gray-50 rounded-lg p-3 mb-3">
+    <View className="bg-xiri-cream rounded-lg p-3 mb-3">
       <View className="flex-row items-center justify-between">
         <View className="flex-row items-center">
           <Ionicons name="person-circle-outline" size={18} color="#6b7280" />

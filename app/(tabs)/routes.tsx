@@ -18,9 +18,9 @@ const RoutesScreen = () => {
   }
 
   return (
-    <ScrollView className="bg-gray-50">
+    <ScrollView className="bg-xiri-cream">
       <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-        <Text className="text-3xl font-bold px-4 mb-2">Rutas</Text>
+        <Text className="text-3xl font-bold px-4 text-xiri-dark mb-2">Rutas</Text>
 
         <RouteList
           title="Rutas Gastronómicas"

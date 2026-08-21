@@ -101,10 +101,10 @@ const AdminMenusScreen = () => {
   }));
 
   return (
-    <KeyboardAware className="bg-gray-50">
+    <KeyboardAware className="bg-xiri-cream">
       <BackButton />
       <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-        <Text className="text-2xl font-bold pl-14 pr-4 mb-4">Menús</Text>
+        <Text className="text-2xl font-bold pl-14 text-xiri-dark pr-4 mb-4">Menús</Text>
 
         {/* Selector de negocio */}
         <View className="px-4">

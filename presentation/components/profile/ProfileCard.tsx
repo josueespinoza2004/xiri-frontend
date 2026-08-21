@@ -18,7 +18,7 @@ const rolLabels: Record<string, string> = {
 
 const ProfileCard = ({ user, onLogout, onRequestVerification }: Props) => {
   return (
-    <View className="flex-1 bg-white px-6">
+    <View className="flex-1 bg-xiri-cream px-6">
       {/* Avatar + nombre */}
       <View className="items-center mt-10">
         <View className="w-24 h-24 rounded-full bg-xiri-teal/20 justify-center items-center">
