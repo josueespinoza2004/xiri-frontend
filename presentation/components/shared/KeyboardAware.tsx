@@ -12,7 +12,9 @@ const KeyboardAware = ({ children, className }: Props) => {
       className={className ?? "flex-1"}
       contentContainerStyle={{ flexGrow: 1 }}
       enableOnAndroid={true}
-      extraScrollHeight={20}
+      enableAutomaticScroll={true}
+      extraScrollHeight={80}
+      extraHeight={120}
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}
     >
