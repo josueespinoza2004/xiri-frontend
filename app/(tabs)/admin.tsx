@@ -30,6 +30,13 @@ const AdminScreen = () => {
         />
 
         <AdminOptionCard
+          icon="storefront-outline"
+          title="Negocios"
+          description="Ver, editar y eliminar negocios"
+          onPress={() => router.push("/admin/businesses")}
+        />
+
+        <AdminOptionCard
           icon="fast-food-outline"
           title="Comidas Tradicionales"
           description="Gestionar el catálogo de comidas"
