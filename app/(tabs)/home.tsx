@@ -53,15 +53,6 @@ const HomeScreen = () => {
           foods={foodsQuery.data ?? []}
         />
 
-        {/* Rutas */}
-        <RouteList
-          title="Rutas Gastronómicas"
-          routes={routesQuery.data ?? []}
-          onPressRoute={(id, name) =>
-            router.push(`/route/${id}?name=${encodeURIComponent(name)}`)
-          }
-        />
-
         {/* Negocios */}
         <BusinessHorizontalList
           title="Negocios"
@@ -70,6 +61,15 @@ const HomeScreen = () => {
             router.push(
               `/business/${biz.id}?name=${encodeURIComponent(biz.name)}&address=${encodeURIComponent(biz.address)}&contact=${encodeURIComponent(biz.contactNumber)}`,
             )
+          }
+        />
+
+        {/* Rutas */}
+        <RouteList
+          title="Rutas Gastronómicas"
+          routes={routesQuery.data ?? []}
+          onPressRoute={(id, name) =>
+            router.push(`/route/${id}?name=${encodeURIComponent(name)}`)
           }
         />
 
