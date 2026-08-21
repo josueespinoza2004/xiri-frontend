@@ -2,7 +2,6 @@ import {
   ActivityIndicator,
   Alert,
   FlatList,
-  Image,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -11,16 +10,16 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useAdminFoods } from "@/presentation/hooks/useAdminFoods";
+import { useAdminBusinesses } from "@/presentation/hooks/useAdminBusinesses";
 import BackButton from "@/presentation/components/shared/BackButton";
 
-const AdminFoodsScreen = () => {
+const AdminBusinessesScreen = () => {
   const safeArea = useSafeAreaInsets();
   const router = useRouter();
-  const { foodsQuery, deleteMutation } = useAdminFoods();
+  const { businessesQuery, deleteMutation } = useAdminBusinesses();
 
   const handleDelete = (id: number, name: string) => {
-    Alert.alert("Eliminar", `¿Eliminar "${name}"?`, [
+    Alert.alert("Eliminar", `¿Eliminar negocio "${name}"?`, [
       { text: "Cancelar", style: "cancel" },
       {
         text: "Eliminar",
@@ -37,7 +36,7 @@ const AdminFoodsScreen = () => {
     ]);
   };
 
-  if (foodsQuery.isLoading) {
+  if (businessesQuery.isLoading) {
     return (
       <View className="flex-1 justify-center items-center">
         <ActivityIndicator color="#2292A4" size={50} />
@@ -51,36 +50,36 @@ const AdminFoodsScreen = () => {
       <ScrollView>
         <View className="mt-2" style={{ paddingTop: safeArea.top }}>
           <Text className="text-2xl font-bold pl-14 text-xiri-dark pr-4 mb-4">
-            Comidas Tradicionales
+            Negocios
           </Text>
 
           <FlatList
-            data={foodsQuery.data ?? []}
+            data={businessesQuery.data ?? []}
             keyExtractor={(item) => item.id.toString()}
             scrollEnabled={false}
             renderItem={({ item }) => (
               <View className="bg-white rounded-lg p-3 mb-2 mx-4 flex-row items-center">
                 <TouchableOpacity
-                  className="flex-1 flex-row items-center"
-                  onPress={() =>
-                    router.push(`/admin/edit-food/${item.id}`)
-                  }
+                  className="flex-1"
+                  onPress={() => router.push(`/admin/edit-business/${item.id}`)}
                 >
-                  {item.image && (
-                    <Image
-                      source={{ uri: item.image }}
-                      className="w-10 h-10 rounded-lg mr-3"
-                      resizeMode="cover"
-                    />
-                  )}
-                  <View className="flex-1">
-                    <Text className="text-base font-medium text-gray-800">
-                      {item.name}
-                    </Text>
-                    <Text className="text-xs text-gray-500">
-                      {item.departmentName}
+                  <Text className="text-base font-medium text-gray-800">
+                    {item.name}
+                  </Text>
+                  <View className="flex-row items-center mt-1">
+                    <Ionicons name="location-outline" size={14} color="#6b7280" />
+                    <Text className="text-xs text-gray-500 ml-1" numberOfLines={1}>
+                      {item.address}
                     </Text>
                   </View>
+                  {item.contactNumber && (
+                    <View className="flex-row items-center mt-1">
+                      <Ionicons name="call-outline" size={14} color="#6b7280" />
+                      <Text className="text-xs text-gray-500 ml-1">
+                        {item.contactNumber}
+                      </Text>
+                    </View>
+                  )}
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleDelete(item.id, item.name)}>
                   <Ionicons name="trash-outline" size={20} color="#dc2626" />
@@ -89,22 +88,14 @@ const AdminFoodsScreen = () => {
             )}
             ListEmptyComponent={
               <Text className="text-center text-gray-400 mt-8">
-                No hay comidas registradas
+                No hay negocios registrados
               </Text>
             }
           />
         </View>
       </ScrollView>
-
-      {/* Botón flotante */}
-      <TouchableOpacity
-        className="absolute bottom-6 right-6 w-14 h-14 bg-xiri-teal rounded-full justify-center items-center shadow-lg"
-        onPress={() => router.push("/admin/create-food")}
-      >
-        <Ionicons name="add" size={28} color="#fff" />
-      </TouchableOpacity>
     </View>
   );
 };
 
-export default AdminFoodsScreen;
+export default AdminBusinessesScreen;

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Alert, ScrollView, View } from "react-native";
+import { Alert, ScrollView, View } from "react-native"
+import KeyboardAware from "@/presentation/components/shared/KeyboardAware";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAdminDepartments } from "@/presentation/hooks/useAdminDepartments";
@@ -42,7 +43,7 @@ const CreateDepartmentScreen = () => {
   };
 
   return (
-    <ScrollView className="bg-white">
+    <KeyboardAware className="bg-xiri-cream">
       <BackButton />
       <View style={{ paddingTop: safeArea.top }}>
         <DepartmentForm
@@ -52,7 +53,7 @@ const CreateDepartmentScreen = () => {
           onSubmit={handleCreate}
         />
       </View>
-    </ScrollView>
+    </KeyboardAware>
   );
 };
 

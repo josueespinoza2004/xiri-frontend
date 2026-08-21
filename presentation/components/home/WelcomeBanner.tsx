@@ -1,5 +1,4 @@
-import { View, Text } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { View, Text, Image } from "react-native";
 
 interface Props {
   firstName: string | null;
@@ -10,12 +9,21 @@ const WelcomeBanner = ({ firstName, username }: Props) => {
   const displayName = firstName || username || "Explorador";
 
   return (
-    <View className="px-4 mb-4">
-      <View className="flex-row items-center">
-        <Ionicons name="hand-right-outline" size={22} color="#f59e0b" />
-        <Text className="text-base text-gray-600 ml-2">
-          Hola, {displayName}
-        </Text>
+    <View className="mx-4 mb-4 bg-xiri-orange rounded-3xl px-5 py-5">
+      <View className="flex-row items-center justify-between">
+        <View className="flex-1">
+          <Text className="text-xl font-bold text-white">
+            Hola, {displayName}
+          </Text>
+          <Text className="text-sm text-white/80 mt-1">
+            ¿Qué vamos a explorar hoy?
+          </Text>
+        </View>
+        <Image
+          source={require("@/assets/images/logo.png")}
+          style={{ width: 60, height: 60 }}
+          resizeMode="contain"
+        />
       </View>
     </View>
   );

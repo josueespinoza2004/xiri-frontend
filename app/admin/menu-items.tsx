@@ -56,11 +56,11 @@ const AdminMenuItemsScreen = () => {
   }));
 
   return (
-    <View className="flex-1 bg-gray-50">
+    <View className="flex-1 bg-xiri-cream">
       <BackButton />
       <ScrollView>
         <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-          <Text className="text-2xl font-bold pl-14 pr-4 mb-4">
+          <Text className="text-2xl font-bold pl-14 text-xiri-dark pr-4 mb-4">
             Platillos de Negocios
           </Text>
 

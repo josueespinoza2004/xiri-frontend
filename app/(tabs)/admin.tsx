@@ -8,9 +8,9 @@ const AdminScreen = () => {
   const router = useRouter();
 
   return (
-    <ScrollView className="bg-gray-50">
+    <ScrollView className="bg-xiri-cream">
       <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-        <Text className="text-3xl font-bold px-4 mb-2">Administración</Text>
+        <Text className="text-3xl font-bold px-4 text-xiri-dark mb-2">Administración</Text>
         <Text className="text-base text-gray-500 px-4 mb-6">
           Gestión del sistema
         </Text>
@@ -27,6 +27,13 @@ const AdminScreen = () => {
           title="Departamentos"
           description="Crear, editar y eliminar departamentos"
           onPress={() => router.push("/admin/departments")}
+        />
+
+        <AdminOptionCard
+          icon="storefront-outline"
+          title="Negocios"
+          description="Ver, editar y eliminar negocios"
+          onPress={() => router.push("/admin/businesses")}
         />
 
         <AdminOptionCard

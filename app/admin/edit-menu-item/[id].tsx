@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ActivityIndicator, Alert, ScrollView, Text, TextInput, TouchableOpacity, View, Image } from "react-native";
+import { ActivityIndicator, Alert, ScrollView, Text, TextInput, TouchableOpacity, View, Image } from "react-native"
+import KeyboardAware from "@/presentation/components/shared/KeyboardAware";
 import * as ImagePicker from "expo-image-picker";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -97,11 +98,11 @@ const EditMenuItemScreen = () => {
   const currentImage = itemQuery.data?.image ?? null;
 
   return (
-    <ScrollView className="bg-white">
+    <KeyboardAware className="bg-xiri-cream">
       <BackButton />
       <View style={{ paddingTop: safeArea.top }}>
         <View className="px-5 mt-4">
-          <Text className="text-xl font-bold text-gray-800 pl-8 mb-6">
+          <Text className="text-xl font-bold text-gray-800 pl-10 mb-6">
             Editar Platillo
           </Text>
 
@@ -163,7 +164,7 @@ const EditMenuItemScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </ScrollView>
+    </KeyboardAware>
   );
 };
 

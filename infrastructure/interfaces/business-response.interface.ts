@@ -6,4 +6,5 @@ export interface BusinessResponse {
   latitude: string | null;
   longitude: string | null;
   owner: number;
+  owner_name: string;
 }

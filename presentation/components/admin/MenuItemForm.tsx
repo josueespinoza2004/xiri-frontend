@@ -42,7 +42,7 @@ const MenuItemForm = ({
 
   return (
     <View className="px-5 mt-4">
-      <Text className="text-xl font-bold text-gray-800 pl-8 mb-6">
+      <Text className="text-xl font-bold text-gray-800 pl-10 mb-6">
         Nuevo Platillo
       </Text>
 

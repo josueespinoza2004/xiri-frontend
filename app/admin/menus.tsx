@@ -15,6 +15,7 @@ import { useAdminMenus } from "@/presentation/hooks/useAdminMenus";
 import { getMenuItemsAction, BusinessMenuItemResponse } from "@/core/actions/admin/get-menu-items.action";
 import ChipSelector from "@/presentation/components/shared/ChipSelector";
 import BackButton from "@/presentation/components/shared/BackButton";
+import KeyboardAware from "@/presentation/components/shared/KeyboardAware";
 
 const AdminMenusScreen = () => {
   const safeArea = useSafeAreaInsets();
@@ -100,10 +101,10 @@ const AdminMenusScreen = () => {
   }));
 
   return (
-    <ScrollView className="bg-gray-50">
+    <KeyboardAware className="bg-xiri-cream">
       <BackButton />
       <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-        <Text className="text-2xl font-bold pl-14 pr-4 mb-4">Menús</Text>
+        <Text className="text-2xl font-bold pl-14 text-xiri-dark pr-4 mb-4">Menús</Text>
 
         {/* Selector de negocio */}
         <View className="px-4">
@@ -189,7 +190,7 @@ const AdminMenusScreen = () => {
           </View>
         )}
       </View>
-    </ScrollView>
+    </KeyboardAware>
   );
 };
 

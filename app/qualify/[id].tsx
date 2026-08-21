@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Alert, ScrollView, View } from "react-native";
+import { Alert, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import * as ImagePicker from "expo-image-picker";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useQualification } from "@/presentation/hooks/useQualification";
 import QualificationForm from "@/presentation/components/qualification/QualificationForm";
 import BackButton from "@/presentation/components/shared/BackButton";
+import KeyboardAware from "@/presentation/components/shared/KeyboardAware";
 
 const QualifyScreen = () => {
   const { id, name } = useLocalSearchParams();
@@ -72,7 +73,7 @@ const QualifyScreen = () => {
   };
 
   return (
-    <ScrollView className="bg-white">
+    <KeyboardAware className="bg-xiri-cream">
       <BackButton />
       <View style={{ paddingTop: safeArea.top }}>
         <QualificationForm
@@ -87,7 +88,7 @@ const QualifyScreen = () => {
           onSubmit={handleSubmit}
         />
       </View>
-    </ScrollView>
+    </KeyboardAware>
   );
 };
 

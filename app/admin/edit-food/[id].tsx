@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ActivityIndicator, Alert, ScrollView, View } from "react-native";
+import { ActivityIndicator, Alert, ScrollView, View } from "react-native"
+import KeyboardAware from "@/presentation/components/shared/KeyboardAware";
 import * as ImagePicker from "expo-image-picker";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -99,7 +100,7 @@ const EditFoodScreen = () => {
   }
 
   return (
-    <ScrollView className="bg-white">
+    <KeyboardAware className="bg-xiri-cream">
       <BackButton />
       <View style={{ paddingTop: safeArea.top }}>
         <FoodForm
@@ -114,7 +115,7 @@ const EditFoodScreen = () => {
           submitLabel="Guardar Cambios"
         />
       </View>
-    </ScrollView>
+    </KeyboardAware>
   );
 };
 

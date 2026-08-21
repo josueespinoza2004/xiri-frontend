@@ -6,4 +6,5 @@ export interface Business {
   latitude: number | null;
   longitude: number | null;
   owner: number;
+  ownerName: string;
 }
