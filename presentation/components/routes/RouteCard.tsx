@@ -11,15 +11,15 @@ interface Props {
 const RouteCard = ({ name, description, onPress }: Props) => {
   return (
     <Pressable
-      className="bg-white rounded-2xl p-4 mb-3 mx-4 shadow-sm shadow-black/10 flex-row items-center"
+      className="bg-white rounded-2xl p-4 mb-3 flex-row items-center active:opacity-90 border border-gray-100"
       onPress={onPress}
     >
-      <View className="w-10 h-10 rounded-full bg-orange-100 justify-center items-center mr-3">
-        <Ionicons name="map-outline" size={22} color="#ea580c" />
+      <View className="w-12 h-12 rounded-full bg-xiri-olive/15 justify-center items-center mr-3">
+        <Ionicons name="map" size={22} color="#BDBF09" />
       </View>
 
       <View className="flex-1">
-        <Text className="text-base font-bold text-gray-800" numberOfLines={1}>
+        <Text className="text-base font-bold text-xiri-dark" numberOfLines={1}>
           {name}
         </Text>
         <Text className="text-xs text-gray-500 mt-1" numberOfLines={2}>
@@ -27,7 +27,7 @@ const RouteCard = ({ name, description, onPress }: Props) => {
         </Text>
       </View>
 
-      <Ionicons name="chevron-forward" size={20} color="#9ca3af" />
+      <Ionicons name="chevron-forward" size={20} color="#D96C06" />
     </Pressable>
   );
 };

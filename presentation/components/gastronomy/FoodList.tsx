@@ -1,7 +1,8 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
 import { router } from "expo-router";
 import { Food } from "@/infrastructure/interfaces/gastronomy.interface";
 import FoodCard from "./FoodCard";
+import SectionTitle from "@/presentation/components/shared/SectionTitle";
 
 interface Props {
   title: string;
@@ -11,7 +12,7 @@ interface Props {
 const FoodList = ({ title, foods }: Props) => {
   return (
     <View className="mt-6">
-      <Text className="text-xl font-bold px-4 mb-3">{title}</Text>
+      <SectionTitle title={title} />
       <FlatList
         data={foods}
         keyExtractor={(item) => item.id.toString()}

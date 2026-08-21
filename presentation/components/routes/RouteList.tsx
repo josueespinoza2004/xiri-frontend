@@ -1,6 +1,7 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
 import { GastronomicRoute } from "@/infrastructure/interfaces/route.interface";
 import RouteCard from "./RouteCard";
+import SectionTitle from "@/presentation/components/shared/SectionTitle";
 
 interface Props {
   title: string;
@@ -10,12 +11,13 @@ interface Props {
 
 const RouteList = ({ title, routes, onPressRoute }: Props) => {
   return (
-    <View className="mt-4">
-      <Text className="text-xl font-bold px-4 mb-3">{title}</Text>
+    <View className="mt-6">
+      <SectionTitle title={title} />
       <FlatList
         data={routes}
         keyExtractor={(item) => item.id.toString()}
         scrollEnabled={false}
+        contentContainerStyle={{ paddingHorizontal: 16 }}
         renderItem={({ item }) => (
           <RouteCard
             id={item.id}
@@ -24,11 +26,6 @@ const RouteList = ({ title, routes, onPressRoute }: Props) => {
             onPress={() => onPressRoute?.(item.id, item.name)}
           />
         )}
-        ListEmptyComponent={
-          <Text className="text-center text-gray-400 mt-8">
-            No hay rutas disponibles
-          </Text>
-        }
       />
     </View>
   );
