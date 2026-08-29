@@ -6,6 +6,7 @@ const TabsLayout = () => {
   const { profileQuery } = useProfile();
   const isAdmin =
     profileQuery.data?.rol === "admin" || profileQuery.data?.rol === "auditor";
+  const isOwner = profileQuery.data?.rol === "owner";
 
   return (
     <Tabs
@@ -54,6 +55,16 @@ const TabsLayout = () => {
             <Ionicons name="shield-outline" size={size} color={color} />
           ),
           href: isAdmin ? "/(tabs)/admin" : null,
+        }}
+      />
+      <Tabs.Screen
+        name="my-business"
+        options={{
+          title: "Mi Negocio",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="briefcase-outline" size={size} color={color} />
+          ),
+          href: isOwner ? "/(tabs)/my-business" : null,
         }}
       />
       <Tabs.Screen
