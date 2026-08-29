@@ -23,12 +23,15 @@ export class SecureStorage {
     await SecureStore.deleteItemAsync(REFRESH_TOKEN_KEY);
   }
 
-  static async getSeenBadges(): Promise<string[]> {
-    const raw = await SecureStore.getItemAsync(SEEN_BADGES_KEY);
+  static async getSeenBadges(userId: number): Promise<string[]> {
+    const raw = await SecureStore.getItemAsync(`${SEEN_BADGES_KEY}_${userId}`);
     return raw ? JSON.parse(raw) : [];
   }
 
-  static async setSeenBadges(badgeIds: string[]): Promise<void> {
-    await SecureStore.setItemAsync(SEEN_BADGES_KEY, JSON.stringify(badgeIds));
+  static async setSeenBadges(userId: number, badgeIds: string[]): Promise<void> {
+    await SecureStore.setItemAsync(
+      `${SEEN_BADGES_KEY}_${userId}`,
+      JSON.stringify(badgeIds),
+    );
   }
 }

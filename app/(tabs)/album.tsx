@@ -3,6 +3,7 @@ import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAlbum } from "@/presentation/hooks/useAlbum";
 import { useBadgeUnlock } from "@/presentation/hooks/useBadgeUnlock";
+import { useProfile } from "@/presentation/hooks/useProfile";
 import { getBadges } from "@/config/helpers/badges";
 import AlbumProgress from "@/presentation/components/album/AlbumProgress";
 import BadgeList from "@/presentation/components/album/BadgeList";
@@ -13,9 +14,14 @@ const AlbumScreen = () => {
   const safeArea = useSafeAreaInsets();
   const router = useRouter();
   const { isLoading, albumFoods, total, collected } = useAlbum();
+  const { profileQuery } = useProfile();
 
   const badges = getBadges(collected);
-  const { newBadge, dismissBadge } = useBadgeUnlock(badges, isLoading);
+  const { newBadge, dismissBadge } = useBadgeUnlock(
+    badges,
+    isLoading,
+    profileQuery.data?.id ?? null,
+  );
 
   if (isLoading) {
     return (
