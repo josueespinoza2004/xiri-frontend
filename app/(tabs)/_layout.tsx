@@ -39,6 +39,15 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
+        name="album"
+        options={{
+          title: "Álbum",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="images-outline" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="collection"
         options={{
           title: "Colección",
