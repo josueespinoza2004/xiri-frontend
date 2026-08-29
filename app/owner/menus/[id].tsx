@@ -9,7 +9,7 @@ import {
   View,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAdminMenus } from "@/presentation/hooks/useAdminMenus";
 import { useAdminMenuItems } from "@/presentation/hooks/useAdminMenuItems";
@@ -20,6 +20,7 @@ import KeyboardAware from "@/presentation/components/shared/KeyboardAware";
 const OwnerMenusScreen = () => {
   const { id, name } = useLocalSearchParams();
   const safeArea = useSafeAreaInsets();
+  const router = useRouter();
   const businessId = +id;
 
   const { menuQuery, createMutation, deleteMutation } = useAdminMenus(businessId);
@@ -135,14 +136,21 @@ const OwnerMenusScreen = () => {
               scrollEnabled={false}
               renderItem={({ item }) => (
                 <View className="bg-white rounded-lg p-3 mb-2 mx-4 flex-row items-center">
-                  <View className="flex-1">
+                  <TouchableOpacity
+                    className="flex-1"
+                    onPress={() =>
+                      router.push(
+                        `/owner/edit-menu/${item.id}?itemName=${encodeURIComponent(item.menuItemName)}&currentPrice=${item.price}`,
+                      )
+                    }
+                  >
                     <Text className="text-base font-medium text-gray-800">
                       {item.menuItemName}
                     </Text>
                     <Text className="text-sm text-xiri-teal">
                       C${item.price.toFixed(2)}
                     </Text>
-                  </View>
+                  </TouchableOpacity>
                   <TouchableOpacity onPress={() => handleDelete(item.id)}>
                     <Ionicons name="trash-outline" size={20} color="#dc2626" />
                   </TouchableOpacity>

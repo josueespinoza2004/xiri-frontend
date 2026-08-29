@@ -63,21 +63,26 @@ const OwnerMenuItemsScreen = () => {
             scrollEnabled={false}
             renderItem={({ item }) => (
               <View className="bg-white rounded-lg p-3 mb-2 mx-4 flex-row items-center">
-                {item.image && (
-                  <Image
-                    source={{ uri: item.image }}
-                    style={{ width: 40, height: 40, borderRadius: 8, marginRight: 12 }}
-                    resizeMode="cover"
-                  />
-                )}
-                <View className="flex-1">
-                  <Text className="text-base font-medium text-gray-800">
-                    {item.name}
-                  </Text>
-                  <Text className="text-xs text-gray-500" numberOfLines={1}>
-                    {item.description}
-                  </Text>
-                </View>
+                <TouchableOpacity
+                  className="flex-1 flex-row items-center"
+                  onPress={() => router.push(`/owner/edit-menu-item/${item.id}`)}
+                >
+                  {item.image && (
+                    <Image
+                      source={{ uri: item.image }}
+                      style={{ width: 40, height: 40, borderRadius: 8, marginRight: 12 }}
+                      resizeMode="cover"
+                    />
+                  )}
+                  <View className="flex-1">
+                    <Text className="text-base font-medium text-gray-800">
+                      {item.name}
+                    </Text>
+                    <Text className="text-xs text-gray-500" numberOfLines={1}>
+                      {item.description}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleDelete(item.id, item.name)}>
                   <Ionicons name="trash-outline" size={20} color="#dc2626" />
                 </TouchableOpacity>
