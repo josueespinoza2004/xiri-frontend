@@ -10,9 +10,17 @@ interface Props {
 
 const stateConfig: Record<string, { label: string; color: string; bg: string }> = {
   pending: { label: "Pendiente", color: "#d97706", bg: "#fef3c7" },
+  pendiente: { label: "Pendiente", color: "#d97706", bg: "#fef3c7" },
   approved: { label: "Aprobada", color: "#16a34a", bg: "#dcfce7" },
   denied: { label: "Rechazada", color: "#dc2626", bg: "#fee2e2" },
+  denegated: { label: "Rechazada", color: "#dc2626", bg: "#fee2e2" },
 };
+
+const isPending = (state: string) =>
+  state === "pending" || state === "pendiente";
+
+const isDenied = (state: string) =>
+  state === "denied" || state === "denegated";
 
 const VerificationRequestCard = ({ request, onApprove, onReject }: Props) => {
   const config = stateConfig[request.state] ?? stateConfig.pending;
@@ -61,7 +69,7 @@ const VerificationRequestCard = ({ request, onApprove, onReject }: Props) => {
       )}
 
       {/* Acciones (solo si pendiente) */}
-      {request.state === "pending" && (
+      {isPending(request.state) && (
         <View className="flex-row gap-3 mt-4">
           <TouchableOpacity
             className="flex-1 flex-row items-center justify-center bg-green-50 py-2 rounded-lg"
@@ -86,7 +94,7 @@ const VerificationRequestCard = ({ request, onApprove, onReject }: Props) => {
       )}
 
       {/* Reviews si rechazada */}
-      {request.state === "denied" && request.reviews && (
+      {isDenied(request.state) && request.reviews && (
         <Text className="text-xs text-gray-600 mt-3 italic">
           Motivo: "{request.reviews}"
         </Text>
