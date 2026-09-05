@@ -8,6 +8,8 @@ interface Props {
   ownerName?: string;
   latitude?: number | null;
   longitude?: number | null;
+  averageRating?: number;
+  totalReviews?: number;
 }
 
 const BusinessHeader = ({
@@ -17,10 +19,26 @@ const BusinessHeader = ({
   ownerName,
   latitude,
   longitude,
+  averageRating,
+  totalReviews,
 }: Props) => {
   return (
     <View className="pl-14 pr-5 mt-4">
       <Text className="text-2xl font-bold text-gray-800">{name}</Text>
+
+      {averageRating !== undefined && averageRating > 0 ? (
+        <View className="flex-row items-center mt-2">
+          <Ionicons name="star" size={18} color="#f59e0b" />
+          <Text className="text-base font-bold text-gray-800 ml-1">
+            {averageRating.toFixed(1)}
+          </Text>
+          {totalReviews !== undefined ? (
+            <Text className="text-sm text-gray-500 ml-1">
+              ({totalReviews} {totalReviews === 1 ? "calificación" : "calificaciones"})
+            </Text>
+          ) : null}
+        </View>
+      ) : null}
 
       {ownerName && (
         <View className="flex-row items-center mt-2">

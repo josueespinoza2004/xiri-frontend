@@ -6,6 +6,7 @@ interface UpdateMenuItemParams {
   id: number;
   name: string;
   description: string;
+  price?: number | string;
   image?: { uri: string; name: string; type: string };
 }
 
@@ -14,6 +15,9 @@ export const updateMenuItemAction = async (params: UpdateMenuItemParams) => {
     const formData = new FormData();
     formData.append("name", params.name);
     formData.append("description", params.description);
+    if (params.price !== undefined) {
+      formData.append("price", params.price.toString());
+    }
 
     if (params.image) {
       formData.append("image", {
@@ -24,7 +28,7 @@ export const updateMenuItemAction = async (params: UpdateMenuItemParams) => {
     }
 
     const { data } = await xiriApi.patch<BusinessMenuItemResponse>(
-      `/businessmenu-items/${params.id}/`,
+      `/business/menu-items/${params.id}/`,
       formData,
       { headers: { "Content-Type": "multipart/form-data" } },
     );

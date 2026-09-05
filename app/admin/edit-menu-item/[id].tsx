@@ -28,6 +28,7 @@ const EditMenuItemScreen = () => {
   const [form, setForm] = useState<{
     name: string;
     description: string;
+    price: string;
   } | null>(null);
 
   const [image, setImage] = useState<{
@@ -40,6 +41,7 @@ const EditMenuItemScreen = () => {
     setForm({
       name: itemQuery.data.name,
       description: itemQuery.data.description,
+      price: itemQuery.data.price !== undefined ? itemQuery.data.price.toString() : "",
     });
   }
 
@@ -71,6 +73,7 @@ const EditMenuItemScreen = () => {
         id: +id,
         name: form.name,
         description: form.description,
+        price: form.price ? parseFloat(form.price) : 0,
         image: image ?? undefined,
       },
       {
@@ -120,6 +123,14 @@ const EditMenuItemScreen = () => {
             textAlignVertical="top"
             value={form.description}
             onChangeText={(v) => setForm((p) => (p ? { ...p, description: v } : p))}
+          />
+
+          <TextInput
+            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
+            placeholder="Precio (C$)"
+            keyboardType="decimal-pad"
+            value={form.price}
+            onChangeText={(v) => setForm((p) => (p ? { ...p, price: v } : p))}
           />
 
           <TouchableOpacity

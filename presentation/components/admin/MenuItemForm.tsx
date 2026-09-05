@@ -15,6 +15,7 @@ interface Props {
   form: {
     name: string;
     description: string;
+    price: string;
     isTraditionalVariant: boolean;
     traditionalFood: number | null;
   };
@@ -60,6 +61,14 @@ const MenuItemForm = ({
         textAlignVertical="top"
         value={form.description}
         onChangeText={(v) => onChangeField("description", v)}
+      />
+
+      <TextInput
+        className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
+        placeholder="Precio (C$)"
+        keyboardType="decimal-pad"
+        value={form.price}
+        onChangeText={(v) => onChangeField("price", v)}
       />
 
       {/* Toggle variante tradicional */}

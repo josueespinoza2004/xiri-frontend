@@ -53,7 +53,7 @@ const VerificationRequestsScreen = () => {
         {
           text: "Rechazar",
           style: "destructive",
-          onPress: (reviews) => {
+          onPress: (reviews?: string) => {
             rejectMutation.mutate(
               { requestId, reviews: reviews || "Sin motivo" },
               {

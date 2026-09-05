@@ -11,7 +11,7 @@ interface CreateMenuParams {
 export const createMenuAction = async (params: CreateMenuParams) => {
   try {
     const { data } = await xiriApi.post<MenuItemResponse>(
-      "/businessmenus/",
+      "/business/menus/",
       {
         business: params.business,
         menu_item: params.menuItem,

@@ -17,14 +17,18 @@ const CollectionScreen = () => {
     );
   }
 
-  const handleComplete = (itemId: number) => {
-    completeMutation.mutate(itemId, {
-      onError: (error: any) => {
-        const message =
-          typeof error === "string" ? error : "No se pudo completar";
-        Alert.alert("Error", message);
-      },
-    });
+  const handleComplete = (foodId: number) => {
+    Alert.alert(
+      "Desbloquear platillo",
+      "Para desbloquear este platillo en tu colección y álbum digital, visita un negocio que lo prepare y califícalo subiendo una foto como evidencia.",
+      [
+        { text: "Cancelar", style: "cancel" },
+        {
+          text: "Ver negocios",
+          onPress: () => router.push(`/food/${foodId}`),
+        },
+      ]
+    );
   };
 
   const handleRemove = (itemId: number) => {

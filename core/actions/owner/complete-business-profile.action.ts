@@ -13,7 +13,7 @@ export const completeBusinessProfileAction = async (params: CompleteProfileParam
   try {
     const { id, ...body } = params;
     const { data } = await xiriApi.patch<{ data: BusinessResponse }>(
-      `/businessbusiness/${id}/complete_profile/`,
+      `/business/business/${id}/complete_profile/`,
       body,
     );
 

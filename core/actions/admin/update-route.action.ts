@@ -12,7 +12,7 @@ interface UpdateRouteParams {
 export const updateRouteAction = async (params: UpdateRouteParams) => {
   try {
     const { data } = await xiriApi.patch<GastronomicRouteResponse>(
-      `/gastronomyroutes/${params.id}/`,
+      `/gastronomy/routes/${params.id}/`,
       {
         name: params.name,
         description: params.description,

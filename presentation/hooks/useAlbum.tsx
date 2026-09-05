@@ -16,7 +16,9 @@ export const useAlbum = () => {
   const isLoading = foodsQuery.isLoading || collectionQuery.isLoading;
 
   const collectedIds = new Set(
-    (collectionQuery.data ?? []).map((item) => item.traditionalFood),
+    (collectionQuery.data ?? [])
+      .filter((item) => item.complete)
+      .map((item) => item.traditionalFood),
   );
 
   const albumFoods: AlbumFood[] = (foodsQuery.data ?? []).map((food) => ({

@@ -9,7 +9,7 @@ interface Props {
 const stateConfig: Record<string, { icon: string; color: string; bg: string }> = {
   pending: { icon: "time-outline", color: "#d97706", bg: "#fef3c7" },
   approved: { icon: "checkmark-circle", color: "#16a34a", bg: "#dcfce7" },
-  denied: { icon: "close-circle", color: "#dc2626", bg: "#fee2e2" },
+  rejected: { icon: "close-circle", color: "#dc2626", bg: "#fee2e2" },
 };
 
 const RequestStatusCard = ({ request }: Props) => {
@@ -33,7 +33,7 @@ const RequestStatusCard = ({ request }: Props) => {
         <Text className="text-sm font-medium ml-2" style={{ color: config.color }}>
           {request.state === "pending" && "Solicitud pendiente"}
           {request.state === "approved" && "Solicitud aprobada"}
-          {request.state === "denied" && "Solicitud rechazada"}
+          {request.state === "rejected" && "Solicitud rechazada"}
         </Text>
       </View>
 

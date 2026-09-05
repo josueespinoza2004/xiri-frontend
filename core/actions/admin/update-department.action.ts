@@ -13,7 +13,7 @@ interface UpdateDepartmentParams {
 export const updateDepartmentAction = async (params: UpdateDepartmentParams) => {
   try {
     const { data } = await xiriApi.patch<DepartmentResponse>(
-      `/gastronomydepartments/${params.id}/`,
+      `/gastronomy/departments/${params.id}/`,
       {
         name: params.name,
         description: params.description,

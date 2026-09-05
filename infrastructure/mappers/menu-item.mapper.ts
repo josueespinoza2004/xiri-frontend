@@ -7,6 +7,7 @@ export class MenuItemMapper {
       id: item.id,
       name: item.name,
       description: item.description,
+      price: Number(item.price) || 0,
       image: item.image,
       business: item.business,
       businessName: item.business_name,

@@ -10,7 +10,7 @@ interface UpdateMenuParams {
 export const updateMenuAction = async (params: UpdateMenuParams) => {
   try {
     const { data } = await xiriApi.patch<MenuItemResponse>(
-      `/businessmenus/${params.id}/`,
+      `/business/menus/${params.id}/`,
       { price: params.price },
     );
 

@@ -13,7 +13,7 @@ interface CreateBusinessParams {
 export const createBusinessAction = async (params: CreateBusinessParams) => {
   try {
     const { data } = await xiriApi.post<BusinessResponse>(
-      "/businessbusiness/",
+      "/business/business/",
       params,
     );
 

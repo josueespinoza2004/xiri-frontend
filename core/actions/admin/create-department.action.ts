@@ -12,7 +12,7 @@ interface CreateDepartmentParams {
 export const createDepartmentAction = async (params: CreateDepartmentParams) => {
   try {
     const { data } = await xiriApi.post<DepartmentResponse>(
-      "/gastronomydepartments/",
+      "/gastronomy/departments/",
       params,
     );
 

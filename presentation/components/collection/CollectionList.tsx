@@ -40,7 +40,7 @@ const CollectionList = ({
             complete={item.complete}
             registeredDate={formatDate(item.registeredDate)}
             onPress={() => onPressItem?.(item.traditionalFood)}
-            onComplete={() => onCompleteItem?.(item.id)}
+            onComplete={() => onCompleteItem?.(item.traditionalFood)}
             onRemove={() => onRemoveItem?.(item.id)}
           />
         )}

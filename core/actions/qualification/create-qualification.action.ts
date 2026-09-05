@@ -28,7 +28,7 @@ export const createQualificationAction = async (
     } as any);
 
     const { data } = await xiriApi.post<QualificationResponse>(
-      "/businessqualifications/",
+      "/business/qualifications/",
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },

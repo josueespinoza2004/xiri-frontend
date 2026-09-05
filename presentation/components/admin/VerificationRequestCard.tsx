@@ -10,17 +10,15 @@ interface Props {
 
 const stateConfig: Record<string, { label: string; color: string; bg: string }> = {
   pending: { label: "Pendiente", color: "#d97706", bg: "#fef3c7" },
-  pendiente: { label: "Pendiente", color: "#d97706", bg: "#fef3c7" },
   approved: { label: "Aprobada", color: "#16a34a", bg: "#dcfce7" },
-  denied: { label: "Rechazada", color: "#dc2626", bg: "#fee2e2" },
-  denegated: { label: "Rechazada", color: "#dc2626", bg: "#fee2e2" },
+  rejected: { label: "Rechazada", color: "#dc2626", bg: "#fee2e2" },
 };
 
 const isPending = (state: string) =>
   state === "pending" || state === "pendiente";
 
-const isDenied = (state: string) =>
-  state === "denied" || state === "denegated";
+const isRejected = (state: string) =>
+  state === "denied" || state === "denegated" || state === "rejected";
 
 const VerificationRequestCard = ({ request, onApprove, onReject }: Props) => {
   const config = stateConfig[request.state] ?? stateConfig.pending;
@@ -94,7 +92,7 @@ const VerificationRequestCard = ({ request, onApprove, onReject }: Props) => {
       )}
 
       {/* Reviews si rechazada */}
-      {isDenied(request.state) && request.reviews && (
+      {isRejected(request.state) && request.reviews && (
         <Text className="text-xs text-gray-600 mt-3 italic">
           Motivo: "{request.reviews}"
         </Text>

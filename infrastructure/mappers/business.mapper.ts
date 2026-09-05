@@ -12,6 +12,8 @@ export class BusinessMapper {
       longitude: biz.longitude ? parseFloat(biz.longitude) : null,
       owner: biz.owner,
       ownerName: biz.owner_name,
+      average_rating: biz.average_rating ? Number(biz.average_rating): 0,
+      total_reviews: biz.total_reviews ?? 0,
     };
   };
 }
