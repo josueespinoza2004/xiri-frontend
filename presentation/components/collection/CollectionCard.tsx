@@ -70,12 +70,12 @@ const CollectionCard = ({
       <View className="flex-row justify-end mt-3 gap-3">
         {!complete && (
           <TouchableOpacity
-            className="flex-row items-center bg-green-50 px-3 py-2 rounded-lg"
+            className="flex-row items-center bg-amber-50 px-3 py-2 rounded-lg"
             onPress={onComplete}
           >
-            <Ionicons name="checkmark" size={16} color="#16a34a" />
-            <Text className="text-xs text-green-700 ml-1 font-medium">
-              Probada
+            <Ionicons name="ribbon-outline" size={16} color="#d97706" />
+            <Text className="text-xs text-amber-700 ml-1 font-medium">
+              ¿Cómo completar?
             </Text>
           </TouchableOpacity>
         )}

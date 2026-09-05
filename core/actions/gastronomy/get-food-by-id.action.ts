@@ -5,7 +5,7 @@ import { FoodMapper } from "@/infrastructure/mappers/food.mapper";
 export const getFoodByIdAction = async (id: number | string) => {
   try {
     const { data } = await xiriApi.get<FoodResponse>(
-      `/gastronomyfoods/${id}/`,
+      `/gastronomy/foods/${id}/`,
     );
 
     return FoodMapper.fromFoodResponse(data);

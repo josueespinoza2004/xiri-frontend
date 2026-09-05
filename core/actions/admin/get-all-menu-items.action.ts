@@ -5,8 +5,8 @@ import { MenuItemMapper } from "@/infrastructure/mappers/menu-item.mapper";
 export const getAllMenuItemsAction = async (businessId?: number) => {
   try {
     const url = businessId
-      ? `/businessmenu-items/?business=${businessId}`
-      : "/businessmenu-items/";
+      ? `/business/menu-items/?business=${businessId}`
+      : "/business/menu-items/";
 
     const { data } = await xiriApi.get<BusinessMenuItemResponse[]>(url);
 

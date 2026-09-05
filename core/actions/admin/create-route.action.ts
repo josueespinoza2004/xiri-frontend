@@ -11,7 +11,7 @@ interface CreateRouteParams {
 export const createRouteAction = async (params: CreateRouteParams) => {
   try {
     const { data } = await xiriApi.post<GastronomicRouteResponse>(
-      "/gastronomyroutes/",
+      "/gastronomy/routes/",
       params,
     );
 

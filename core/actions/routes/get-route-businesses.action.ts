@@ -5,7 +5,7 @@ import { RouteMapper } from "@/infrastructure/mappers/route.mapper";
 export const getRouteBusinessesAction = async (routeId: number) => {
   try {
     const { data } = await xiriApi.get<RouteBusinessResponse[]>(
-      `/businessroute-business/?route=${routeId}`,
+      `/business/route-business/?route=${routeId}`,
     );
 
     return data.map(RouteMapper.fromRouteBusinessResponse);

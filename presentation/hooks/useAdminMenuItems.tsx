@@ -8,6 +8,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 interface CreateParams {
   name: string;
   description: string;
+  price?: number | string;
   business: number;
   traditionalFood?: number | null;
   isTraditionalVariant: boolean;
@@ -18,6 +19,7 @@ interface UpdateParams {
   id: number;
   name: string;
   description: string;
+  price?: number | string;
   image?: { uri: string; name: string; type: string };
 }
 

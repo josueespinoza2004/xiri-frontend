@@ -2,6 +2,7 @@ export interface BusinessMenuItemResponse {
   id: number;
   name: string;
   description: string;
+  price: string | number
   image: string | null;
   business: number;
   business_name: string;

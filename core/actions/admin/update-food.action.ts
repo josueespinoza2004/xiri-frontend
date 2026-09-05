@@ -28,7 +28,7 @@ export const updateFoodAction = async (params: UpdateFoodParams) => {
     }
 
     const { data } = await xiriApi.patch<FoodResponse>(
-      `/gastronomyfoods/${params.id}/`,
+      `/gastronomy/foods/${params.id}/`,
       formData,
       { headers: { "Content-Type": "multipart/form-data" } },
     );

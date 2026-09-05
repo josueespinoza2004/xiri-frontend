@@ -30,6 +30,19 @@ const BusinessHorizontalList = ({ title, businesses, onPressBusiness }: Props) =
             <Text className="text-sm font-bold text-xiri-dark" numberOfLines={1}>
               {item.name}
             </Text>
+            {item.average_rating ? (
+              <View className="flex-row items-center mt-1">
+                <Ionicons name="star" size={12} color="#f59e0b" />
+                <Text className="text-xs font-semibold text-gray-700 ml-1">
+                  {Number(item.average_rating).toFixed(1)}
+                </Text>
+                {item.total_reviews ? (
+                  <Text className="text-xs text-gray-400 ml-1">
+                    ({item.total_reviews})
+                  </Text>
+                ) : null}
+              </View>
+            ) : null}
             <View className="flex-row items-center mt-2">
               <Ionicons name="location-outline" size={12} color="#6b7280" />
               <Text className="text-xs text-gray-500 ml-1" numberOfLines={1}>

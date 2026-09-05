@@ -14,7 +14,7 @@ export const validateForAlbumAction = async (params: ValidateForAlbumParams) => 
     }
 
     const { data } = await xiriApi.patch(
-      `/businessmenu-items/${params.menuItemId}/validate_for_album/`,
+      `/business/menu-items/${params.menuItemId}/validate_for_album/`,
       body,
     );
 

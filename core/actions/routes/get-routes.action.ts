@@ -5,7 +5,7 @@ import { RouteMapper } from "@/infrastructure/mappers/route.mapper";
 export const getRoutesAction = async () => {
   try {
     const { data } = await xiriApi.get<GastronomicRouteResponse[]>(
-      "/gastronomyroutes/",
+      "/gastronomy/routes/",
     );
 
     return data.map(RouteMapper.fromRouteResponse);

@@ -9,7 +9,7 @@ export interface BusinessMenuItemResponse {
 export const getMenuItemsAction = async (businessId: number) => {
   try {
     const { data } = await xiriApi.get<BusinessMenuItemResponse[]>(
-      `/businessmenu-items/?business=${businessId}`,
+      `/business/menu-items/?business=${businessId}`,
     );
 
     return data;

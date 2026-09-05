@@ -100,7 +100,7 @@ Screen → Hook → Action → API → Mapper → Interface → Component (props
 ### Prerrequisitos
 
 - Node.js 24
-- npm
+- pnpm
 - Expo Go en tu dispositivo (Android/iOS)
 - Backend Django corriendo ([xiri-backend](../xiri-backend))
 
@@ -120,8 +120,16 @@ cd xiri-frontend
 
 ### 2. Instalar dependencias
 
+Se debe de habilitar el gestor de paquetes pnpm local del proyecto, sin necesidad de que lo deba de instalar en su PC
+
 ```bash
-npm install
+corepack enable
+```
+
+ahora usa la version de pnpm utilizada en el proyecto identifica con hash criptografico, instala las dependencias
+
+```bash
+pnpm install
 ```
 
 ### 3. Configurar variables de entorno
@@ -144,67 +152,6 @@ Escaneá el QR con Expo Go o presioná `a` para Android.
 
 ---
 
-## 🔗 Conexión con el Backend
-
-La app se conecta al backend Django REST Framework a través de la variable `EXPO_PUBLIC_API_URL`.
-
-### Clonar e instalar el Backend
-
-```bash
-# HTTPS
-git clone https://github.com/xKendoVul/xiri-backend.git
-
-# SSH
-git clone git@github.com:xKendoVul/xiri-backend.git
-```
-
-```bash
-cd xiri-backend
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### Configuración del Backend
-
-El backend debe tener:
-
-1. **CORS habilitado** (`CORS_ALLOW_ALL_ORIGINS = True` en development)
-2. **JWT Authentication** configurado en `REST_FRAMEWORK`
-3. **Servidor corriendo en `0.0.0.0:8000`** para que sea accesible desde el dispositivo:
-
-```bash
-python manage.py runserver 0.0.0.0:8000
-```
-
-### Variables de entorno del Backend
-
-Creá un archivo `.env` en la raíz de `xiri-backend`:
-
-```env
-# Base de datos (PostgreSQL local)
-DB_NAME=xiri_backend
-DB_USER=postgres
-DB_PASSWORD=tu_password_seguro
-DB_HOST=localhost
-DB_PORT=5432
-
-# Django
-DEBUG=True
-SECRET_KEY=tu-clave-secreta-muy-larga-y-aleatoria
-ALLOWED_HOSTS=localhost,127.0.0.1
-
-# CORS (para desarrollo con Expo)
-CORS_ALLOWED_ORIGINS=http://localhost:8081
-```
-
-### Migraciones y datos iniciales
-
-```bash
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py seed_data
-```
 
 ### Autenticación
 

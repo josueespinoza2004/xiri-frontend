@@ -19,6 +19,7 @@ const CreateMenuItemScreen = () => {
   const [form, setForm] = useState({
     name: "",
     description: "",
+    price: "",
     isTraditionalVariant: false,
     traditionalFood: null as number | null,
   });
@@ -60,6 +61,7 @@ const CreateMenuItemScreen = () => {
       {
         name: form.name,
         description: form.description,
+        price: form.price ? parseFloat(form.price) : 0,
         business: +businessId,
         isTraditionalVariant: form.isTraditionalVariant,
         traditionalFood: form.isTraditionalVariant ? form.traditionalFood : null,

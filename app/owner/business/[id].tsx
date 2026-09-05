@@ -41,6 +41,8 @@ const OwnerBusinessScreen = () => {
           contactNumber={business.contactNumber}
           latitude={business.latitude}
           longitude={business.longitude}
+          averageRating={business.average_rating}
+          totalReviews={business.total_reviews}
         />
 
         {business.latitude && business.longitude && (

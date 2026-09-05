@@ -10,7 +10,7 @@ interface UpdateRouteBusinessParams {
 export const updateRouteBusinessAction = async (params: UpdateRouteBusinessParams) => {
   try {
     const { data } = await xiriApi.patch<RouteBusinessResponse>(
-      `/businessroute-business/${params.id}/`,
+      `/business/route-business/${params.id}/`,
       { suggested_order: params.suggestedOrder },
     );
 

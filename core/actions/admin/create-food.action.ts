@@ -24,7 +24,7 @@ export const createFoodAction = async (params: CreateFoodParams) => {
     } as any);
 
     const { data } = await xiriApi.post<FoodResponse>(
-      "/gastronomyfoods/",
+      "/gastronomy/foods/",
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },

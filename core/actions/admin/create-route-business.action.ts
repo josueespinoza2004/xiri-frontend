@@ -11,7 +11,7 @@ interface CreateRouteBusinessParams {
 export const createRouteBusinessAction = async (params: CreateRouteBusinessParams) => {
   try {
     const { data } = await xiriApi.post<RouteBusinessResponse>(
-      "/businessroute-business/",
+      "/business/route-business/",
       {
         route: params.route,
         business: params.business,

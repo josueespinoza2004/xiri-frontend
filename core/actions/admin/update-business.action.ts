@@ -15,7 +15,7 @@ export const updateBusinessAction = async (params: UpdateBusinessParams) => {
   try {
     const { id, ...body } = params;
     const { data } = await xiriApi.patch<BusinessResponse>(
-      `/businessbusiness/${id}/`,
+      `/business/business/${id}/`,
       body,
     );
 

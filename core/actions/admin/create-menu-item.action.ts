@@ -5,6 +5,7 @@ import { MenuItemMapper } from "@/infrastructure/mappers/menu-item.mapper";
 interface CreateMenuItemParams {
   name: string;
   description: string;
+  price?: number | string;
   business: number;
   traditionalFood?: number | null;
   isTraditionalVariant: boolean;
@@ -16,6 +17,9 @@ export const createMenuItemAction = async (params: CreateMenuItemParams) => {
     const formData = new FormData();
     formData.append("name", params.name);
     formData.append("description", params.description);
+    if (params.price !== undefined) {
+      formData.append("price", params.price.toString());
+    }
     formData.append("business", params.business.toString());
     formData.append("is_traditional_variant", params.isTraditionalVariant.toString());
 
@@ -32,7 +36,7 @@ export const createMenuItemAction = async (params: CreateMenuItemParams) => {
     }
 
     const { data } = await xiriApi.post<BusinessMenuItemResponse>(
-      "/businessmenu-items/",
+      "/business/menu-items/",
       formData,
       { headers: { "Content-Type": "multipart/form-data" } },
     );

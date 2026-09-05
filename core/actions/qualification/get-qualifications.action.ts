@@ -5,7 +5,7 @@ import { QualificationMapper } from "@/infrastructure/mappers/qualification.mapp
 export const getQualificationsAction = async () => {
   try {
     const { data } = await xiriApi.get<QualificationResponse[]>(
-      "/businessqualifications/",
+      "/business/qualifications/",
     );
 
     return data.map(QualificationMapper.fromResponse);

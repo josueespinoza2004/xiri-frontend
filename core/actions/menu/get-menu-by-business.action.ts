@@ -5,7 +5,7 @@ import { MenuMapper } from "@/infrastructure/mappers/menu.mapper";
 export const getMenuByBusinessAction = async (businessId: number) => {
   try {
     const { data } = await xiriApi.get<MenuItemResponse[]>(
-      `/businessmenus/?business=${businessId}`,
+      `/business/menus/?business=${businessId}`,
     );
 
     return data.map(MenuMapper.fromResponse);

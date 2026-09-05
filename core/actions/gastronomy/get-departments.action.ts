@@ -5,7 +5,7 @@ import { DepartmentMapper } from "@/infrastructure/mappers/department.mapper";
 export const getDepartmentsAction = async () => {
   try {
     const { data } = await xiriApi.get<DepartmentResponse[]>(
-      "/gastronomydepartments/",
+      "/gastronomy/departments/",
     );
 
     const departments = data.map(DepartmentMapper.fromDepartmentResponse);

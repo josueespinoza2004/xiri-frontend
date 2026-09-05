@@ -7,7 +7,7 @@ export const getMyQualificationsAction = async () => {
     // Sin filtro ?business= el backend devuelve las calificaciones
     // de los negocios del owner (o las propias del user)
     const { data } = await xiriApi.get<QualificationResponse[]>(
-      "/businessqualifications/",
+      "/business/qualifications/",
     );
 
     return data.map(QualificationMapper.fromResponse);

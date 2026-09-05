@@ -5,7 +5,7 @@ import { BusinessMapper } from "@/infrastructure/mappers/business.mapper";
 export const getMyBusinessesAction = async () => {
   try {
     const { data } = await xiriApi.get<BusinessResponse[]>(
-      "/businessbusiness/?owner=me",
+      "/business/business/?owner=me",
     );
 
     return data.map(BusinessMapper.fromBusinessResponse);
