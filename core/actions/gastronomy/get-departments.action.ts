@@ -1,14 +1,18 @@
 import { xiriApi } from "@/core/api/xiri-api";
+import { Department } from "@/infrastructure/interfaces/gastronomy.interface";
 import { DepartmentResponse } from "@/infrastructure/interfaces/gastronomy-response.interface";
 import { DepartmentMapper } from "@/infrastructure/mappers/department.mapper";
 
-export const getDepartmentsAction = async () => {
+export const getDepartmentsAction = async (): Promise<Department[]> => {
   try {
-    const { data } = await xiriApi.get<DepartmentResponse[]>(
-      "/gastronomy/departments/",
-    );
+    const { data } = await xiriApi.get<
+      DepartmentResponse[] | { results: DepartmentResponse[] }
+    >("/gastronomy/departments/");
 
-    const departments = data.map(DepartmentMapper.fromDepartmentResponse);
+    const rawList: DepartmentResponse[] = Array.isArray(data)
+      ? data
+      : data?.results ?? [];
+    const departments = rawList.map(DepartmentMapper.fromDepartmentResponse);
 
     return departments;
   } catch (error) {

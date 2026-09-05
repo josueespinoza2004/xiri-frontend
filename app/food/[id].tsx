@@ -2,8 +2,10 @@ import { useLocalSearchParams } from "expo-router";
 import { ActivityIndicator, Alert, ScrollView, Text, View } from "react-native";
 import { useFood } from "@/presentation/hooks/useFood";
 import { useCollection } from "@/presentation/hooks/useCollection";
+import { useBusinessesByFood } from "@/presentation/hooks/useBusinessesByFood";
 import FoodHeader from "@/presentation/components/gastronomy/FoodHeader";
 import FoodDescription from "@/presentation/components/gastronomy/FoodDescription";
+import FoodBusinesses from "@/presentation/components/gastronomy/FoodBusinesses";
 import AddToCollectionButton from "@/presentation/components/gastronomy/AddToCollectionButton";
 
 const FoodScreen = () => {
@@ -11,6 +13,7 @@ const FoodScreen = () => {
   const foodId = +id;
 
   const { foodQuery } = useFood(foodId);
+  const { businessesQuery } = useBusinessesByFood(foodId);
   const { collectionQuery, addMutation } = useCollection();
 
   const isInCollection =
@@ -39,9 +42,13 @@ const FoodScreen = () => {
   }
 
   return (
-    <ScrollView>
+    <ScrollView className="bg-xiri-cream">
       <FoodHeader image={foodQuery.data.image} />
       <FoodDescription food={foodQuery.data} />
+      <FoodBusinesses
+        businesses={businessesQuery.data ?? []}
+        isLoading={businessesQuery.isLoading}
+      />
       <AddToCollectionButton
         isInCollection={isInCollection}
         isPending={addMutation.isPending}

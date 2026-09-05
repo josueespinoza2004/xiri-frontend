@@ -17,9 +17,19 @@ xiriApi.interceptors.request.use(async (config) => {
   return config;
 });
 
-// Interceptor de response: renueva token automáticamente ante un 401
+// Interceptor de response: desenvuelve paginación si viene de DRF y renueva token ante 401
 xiriApi.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    if (
+      response.data &&
+      typeof response.data === "object" &&
+      !Array.isArray(response.data) &&
+      Array.isArray(response.data.results)
+    ) {
+      response.data = response.data.results;
+    }
+    return response;
+  },
   async (error) => {
     const originalRequest = error.config;
     const status = error.response?.status;
