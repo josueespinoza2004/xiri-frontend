@@ -122,6 +122,18 @@ cd xiri-frontend
 
 Se debe de habilitar el gestor de paquetes pnpm local del proyecto, sin necesidad de que lo deba de instalar en su PC
 
+En algunas distros de linux y versiones de NodeJS el **corepack** no viene por defecto. Si el comando **corepack -v** no es reconocido en terminal, debe de agregarlo de la siguiente manera:
+
+- **Linux / macOS:**
+  ```bash
+  npm install -g corepack
+
+- **Windows (PowerShell o CMD como Administrador)**
+  ```bash
+  npm install -g corepack
+
+Con esto ya esta listo para activar este en el proyecto
+
 ```bash
 corepack enable
 ```
