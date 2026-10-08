@@ -4,8 +4,7 @@ import { useProfile } from "@/presentation/hooks/useProfile";
 
 const TabsLayout = () => {
   const { profileQuery } = useProfile();
-  const isAdmin =
-    profileQuery.data?.rol === "admin" || profileQuery.data?.rol === "auditor";
+  const isAdmin = profileQuery.data?.rol === "admin";
   const isOwner = profileQuery.data?.rol === "owner";
 
   return (

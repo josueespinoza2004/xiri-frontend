@@ -13,7 +13,6 @@ const rolLabels: Record<string, string> = {
   user: "Explorador",
   owner: "Comerciante",
   admin: "Administrador",
-  auditor: "Auditor",
 };
 
 const ProfileCard = ({ user, onLogout, onRequestVerification }: Props) => {
