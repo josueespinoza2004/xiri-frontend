@@ -55,15 +55,15 @@ const FoodBusinesses = ({ businesses, isLoading }: Props) => {
                 </Text>
 
                 <View className="flex-row items-center mt-1">
-                  {business.average_rating ? (
+                  {business.averageRating > 0 ? (
                     <View className="flex-row items-center mr-2">
                       <Ionicons name="star" size={13} color="#f59e0b" />
                       <Text className="text-xs font-semibold text-gray-700 ml-1">
-                        {Number(business.average_rating).toFixed(1)}
+                        {business.averageRating.toFixed(1)}
                       </Text>
-                      {business.total_reviews ? (
+                      {business.totalReviews > 0 ? (
                         <Text className="text-xs text-gray-400 ml-0.5">
-                          ({business.total_reviews})
+                          ({business.totalReviews})
                         </Text>
                       ) : null}
                     </View>

@@ -81,6 +81,9 @@ const OwnerMenuItemsScreen = () => {
                     <Text className="text-xs text-gray-500" numberOfLines={1}>
                       {item.description}
                     </Text>
+                    <Text className="text-sm font-semibold text-xiri-teal mt-1">
+                      C${Number(item.price).toFixed(2)}
+                    </Text>
                   </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleDelete(item.id, item.name)}>

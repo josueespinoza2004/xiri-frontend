@@ -41,8 +41,8 @@ const OwnerBusinessScreen = () => {
           contactNumber={business.contactNumber}
           latitude={business.latitude}
           longitude={business.longitude}
-          averageRating={business.average_rating}
-          totalReviews={business.total_reviews}
+          averageRating={business.averageRating}
+          totalReviews={business.totalReviews}
         />
 
         {business.latitude && business.longitude && (
@@ -66,19 +66,10 @@ const OwnerBusinessScreen = () => {
 
           <AdminOptionCard
             icon="pizza-outline"
-            title="Platillos"
-            description="Crear y gestionar platillos"
+            title="Platillos y Menú"
+            description="Crear platillos con su precio"
             onPress={() =>
               router.push(`/owner/menu-items/${businessId}?name=${name}`)
-            }
-          />
-
-          <AdminOptionCard
-            icon="restaurant-outline"
-            title="Menú (Precios)"
-            description="Asignar precios a tus platillos"
-            onPress={() =>
-              router.push(`/owner/menus/${businessId}?name=${name}`)
             }
           />
 

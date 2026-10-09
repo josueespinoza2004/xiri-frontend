@@ -57,8 +57,8 @@ const BusinessDetailScreen = () => {
           ownerName={business?.ownerName}
           latitude={business?.latitude}
           longitude={business?.longitude}
-          averageRating={business?.average_rating}
-          totalReviews={business?.total_reviews}
+          averageRating={business?.averageRating}
+          totalReviews={business?.totalReviews}
         />
 
         {/* Menú */}
