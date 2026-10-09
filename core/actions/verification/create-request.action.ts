@@ -32,6 +32,18 @@ export const createRequestAction = async (params: CreateRequestParams) => {
     return VerificationMapper.fromResponse(data);
   } catch (error: any) {
     console.log(error);
+    const data = error.response?.data;
+    if (data?.error) {
+      throw Array.isArray(data.error) ? data.error[0] : data.error;
+    }
+    if (data?.id_card_number) {
+      throw Array.isArray(data.id_card_number)
+        ? data.id_card_number[0]
+        : data.id_card_number;
+    }
+    if (data?.detail) {
+      throw data.detail;
+    }
     throw "No se pudo enviar la solicitud";
   }
 };

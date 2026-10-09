@@ -6,7 +6,6 @@ export interface RegisterRequest {
   last_name?: string;
   contact_number?: string;
   country?: string;
-  rol?: string;
 }
 
 export interface RegisterResponse {

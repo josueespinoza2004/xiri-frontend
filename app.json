@@ -12,6 +12,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.xiri.app",
       "adaptiveIcon": {
         "backgroundColor": "#F5EFED",
         "foregroundImage": "./assets/images/android-icon-foreground.png",

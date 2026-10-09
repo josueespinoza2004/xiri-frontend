@@ -36,8 +36,15 @@ export const createQualificationAction = async (
     );
 
     return QualificationMapper.fromResponse(data);
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
+    const data = error.response?.data;
+    if (data?.business) {
+      throw Array.isArray(data.business) ? data.business[0] : data.business;
+    }
+    if (data?.detail) {
+      throw data.detail;
+    }
     throw "No se pudo enviar la calificación";
   }
 };

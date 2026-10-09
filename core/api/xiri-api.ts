@@ -4,6 +4,7 @@ import { router } from "expo-router";
 
 export const xiriApi = create({
   baseURL: process.env.EXPO_PUBLIC_API_URL,
+  timeout: 60000, // 60s para tolerar el cold-start del backend en Render (plan free)
 });
 
 // Interceptor de request: adjunta el token a cada petición
