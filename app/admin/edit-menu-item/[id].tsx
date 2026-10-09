@@ -110,15 +110,17 @@ const EditMenuItemScreen = () => {
           </Text>
 
           <TextInput
-            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
+            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base text-xiri-dark"
             placeholder="Nombre"
+            placeholderTextColor="#9ca3af"
             value={form.name}
             onChangeText={(v) => setForm((p) => (p ? { ...p, name: v } : p))}
           />
 
           <TextInput
-            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base min-h-[80px]"
+            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base min-h-[80px] text-xiri-dark"
             placeholder="Descripción"
+            placeholderTextColor="#9ca3af"
             multiline
             textAlignVertical="top"
             value={form.description}
@@ -126,8 +128,9 @@ const EditMenuItemScreen = () => {
           />
 
           <TextInput
-            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
+            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base text-xiri-dark"
             placeholder="Precio (C$)"
+            placeholderTextColor="#9ca3af"
             keyboardType="decimal-pad"
             value={form.price}
             onChangeText={(v) => setForm((p) => (p ? { ...p, price: v } : p))}

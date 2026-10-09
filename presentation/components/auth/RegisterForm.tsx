@@ -43,30 +43,34 @@ export const RegisterForm = ({
         </Text>
 
         <TextInput
-          className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base bg-white"
+          className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base bg-white text-xiri-dark"
           placeholder="Nombre"
+          placeholderTextColor="#9ca3af"
           value={form.first_name}
           onChangeText={(value) => onChangeField("first_name", value)}
         />
 
         <TextInput
-          className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base bg-white"
+          className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base bg-white text-xiri-dark"
           placeholder="Apellido"
+          placeholderTextColor="#9ca3af"
           value={form.last_name}
           onChangeText={(value) => onChangeField("last_name", value)}
         />
 
         <TextInput
-          className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base bg-white"
+          className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base bg-white text-xiri-dark"
           placeholder="Username"
+          placeholderTextColor="#9ca3af"
           autoCapitalize="none"
           value={form.username}
           onChangeText={(value) => onChangeField("username", value)}
         />
 
         <TextInput
-          className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base bg-white"
+          className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base bg-white text-xiri-dark"
           placeholder="Email"
+          placeholderTextColor="#9ca3af"
           keyboardType="email-address"
           autoCapitalize="none"
           value={form.email}
@@ -74,16 +78,18 @@ export const RegisterForm = ({
         />
 
         <TextInput
-          className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base bg-white"
+          className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base bg-white text-xiri-dark"
           placeholder="Número de contacto"
+          placeholderTextColor="#9ca3af"
           keyboardType="phone-pad"
           value={form.contact_number}
           onChangeText={(value) => onChangeField("contact_number", value)}
         />
 
         <TextInput
-          className="border border-gray-300 rounded-lg px-4 py-3 mb-6 text-base bg-white"
+          className="border border-gray-300 rounded-lg px-4 py-3 mb-6 text-base bg-white text-xiri-dark"
           placeholder="Contraseña"
+          placeholderTextColor="#9ca3af"
           secureTextEntry
           value={form.password}
           onChangeText={(value) => onChangeField("password", value)}

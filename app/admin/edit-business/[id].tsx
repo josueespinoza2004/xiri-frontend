@@ -94,22 +94,25 @@ const EditBusinessScreen = () => {
           </Text>
 
           <TextInput
-            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
+            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base text-xiri-dark"
             placeholder="Nombre del negocio"
+            placeholderTextColor="#9ca3af"
             value={form.name}
             onChangeText={(v) => setForm((p) => (p ? { ...p, name: v } : p))}
           />
 
           <TextInput
-            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
+            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base text-xiri-dark"
             placeholder="Dirección"
+            placeholderTextColor="#9ca3af"
             value={form.address}
             onChangeText={(v) => setForm((p) => (p ? { ...p, address: v } : p))}
           />
 
           <TextInput
-            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
+            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base text-xiri-dark"
             placeholder="Número de contacto"
+            placeholderTextColor="#9ca3af"
             keyboardType="phone-pad"
             value={form.contact_number}
             onChangeText={(v) => setForm((p) => (p ? { ...p, contact_number: v } : p))}
@@ -117,15 +120,17 @@ const EditBusinessScreen = () => {
 
           <View className="flex-row gap-3 mb-3">
             <TextInput
-              className="flex-1 border border-gray-300 rounded-lg px-4 py-3 text-base"
+              className="flex-1 border border-gray-300 rounded-lg px-4 py-3 text-base text-xiri-dark"
               placeholder="Latitud"
+              placeholderTextColor="#9ca3af"
               keyboardType="decimal-pad"
               value={form.latitude}
               onChangeText={(v) => setForm((p) => (p ? { ...p, latitude: v } : p))}
             />
             <TextInput
-              className="flex-1 border border-gray-300 rounded-lg px-4 py-3 text-base"
+              className="flex-1 border border-gray-300 rounded-lg px-4 py-3 text-base text-xiri-dark"
               placeholder="Longitud"
+              placeholderTextColor="#9ca3af"
               keyboardType="decimal-pad"
               value={form.longitude}
               onChangeText={(v) => setForm((p) => (p ? { ...p, longitude: v } : p))}

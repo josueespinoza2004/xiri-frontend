@@ -42,8 +42,9 @@ const AssignBusinessForm = ({
       />
 
       <TextInput
-        className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
+        className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base text-xiri-dark"
         placeholder="Orden sugerido (1, 2, 3...)"
+        placeholderTextColor="#9ca3af"
         keyboardType="number-pad"
         value={form.suggestedOrder}
         onChangeText={(v) => onChangeField("suggestedOrder", v)}

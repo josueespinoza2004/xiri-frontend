@@ -131,8 +131,9 @@ const AdminMenusScreen = () => {
             />
 
             <TextInput
-              className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
+              className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base text-xiri-dark"
               placeholder="Precio (ej: 150.00)"
+              placeholderTextColor="#9ca3af"
               keyboardType="decimal-pad"
               value={price}
               onChangeText={setPrice}

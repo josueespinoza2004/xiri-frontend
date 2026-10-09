@@ -39,22 +39,25 @@ const VerificationForm = ({
       </Text>
 
       <TextInput
-        className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base"
+        className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base text-xiri-dark"
         placeholder="Nombre del negocio"
+        placeholderTextColor="#9ca3af"
         value={businessName}
         onChangeText={(v) => onChangeField("businessName", v)}
       />
 
       <TextInput
-        className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base"
+        className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base text-xiri-dark"
         placeholder="Dirección del negocio"
+        placeholderTextColor="#9ca3af"
         value={businessAddress}
         onChangeText={(v) => onChangeField("businessAddress", v)}
       />
 
       <TextInput
-        className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base"
+        className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base text-xiri-dark"
         placeholder="Número de cédula"
+        placeholderTextColor="#9ca3af"
         value={idCardNumber}
         onChangeText={(v) => onChangeField("idCardNumber", v)}
       />

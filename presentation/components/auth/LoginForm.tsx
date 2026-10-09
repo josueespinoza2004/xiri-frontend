@@ -36,16 +36,18 @@ export const LoginForm = ({
         </Text>
 
         <TextInput
-          className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base bg-white"
+          className="border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base bg-white text-xiri-dark"
           placeholder="Username"
+          placeholderTextColor="#9ca3af"
           autoCapitalize="none"
           value={form.username}
           onChangeText={(value) => onChangeField("username", value)}
         />
 
         <TextInput
-          className="border border-gray-300 rounded-lg px-4 py-3 mb-6 text-base bg-white"
+          className="border border-gray-300 rounded-lg px-4 py-3 mb-6 text-base bg-white text-xiri-dark"
           placeholder="Contraseña"
+          placeholderTextColor="#9ca3af"
           secureTextEntry
           value={form.password}
           onChangeText={(value) => onChangeField("password", value)}

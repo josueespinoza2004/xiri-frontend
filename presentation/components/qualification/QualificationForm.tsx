@@ -47,8 +47,9 @@ const QualificationForm = ({
         Comentario (opcional)
       </Text>
       <TextInput
-        className="border border-gray-300 rounded-lg px-4 py-3 text-base min-h-[80px]"
+        className="border border-gray-300 rounded-lg px-4 py-3 text-base min-h-[80px] text-xiri-dark"
         placeholder="¿Cómo fue tu experiencia?"
+        placeholderTextColor="#9ca3af"
         multiline
         textAlignVertical="top"
         value={comment}

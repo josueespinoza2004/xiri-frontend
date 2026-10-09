@@ -48,15 +48,17 @@ const MenuItemForm = ({
       </Text>
 
       <TextInput
-        className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
+        className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base text-xiri-dark"
         placeholder="Nombre del platillo"
+        placeholderTextColor="#9ca3af"
         value={form.name}
         onChangeText={(v) => onChangeField("name", v)}
       />
 
       <TextInput
-        className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base min-h-[80px]"
+        className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base min-h-[80px] text-xiri-dark"
         placeholder="Descripción"
+        placeholderTextColor="#9ca3af"
         multiline
         textAlignVertical="top"
         value={form.description}
@@ -64,8 +66,9 @@ const MenuItemForm = ({
       />
 
       <TextInput
-        className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base"
+        className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base text-xiri-dark"
         placeholder="Precio (C$)"
+        placeholderTextColor="#9ca3af"
         keyboardType="decimal-pad"
         value={form.price}
         onChangeText={(v) => onChangeField("price", v)}

@@ -68,22 +68,25 @@ const CreateBusinessScreen = () => {
           </Text>
 
           <TextInput
-            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base bg-white"
+            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base bg-white text-xiri-dark"
             placeholder="Nombre del negocio"
+            placeholderTextColor="#9ca3af"
             value={form.name}
             onChangeText={(v) => handleChange("name", v)}
           />
 
           <TextInput
-            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base bg-white"
+            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base bg-white text-xiri-dark"
             placeholder="Dirección"
+            placeholderTextColor="#9ca3af"
             value={form.address}
             onChangeText={(v) => handleChange("address", v)}
           />
 
           <TextInput
-            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base bg-white"
+            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base bg-white text-xiri-dark"
             placeholder="Número de contacto"
+            placeholderTextColor="#9ca3af"
             keyboardType="phone-pad"
             value={form.contact_number}
             onChangeText={(v) => handleChange("contact_number", v)}
@@ -91,15 +94,17 @@ const CreateBusinessScreen = () => {
 
           <View className="flex-row gap-3 mb-3">
             <TextInput
-              className="flex-1 border border-gray-300 rounded-lg px-4 py-3 text-base bg-white"
+              className="flex-1 border border-gray-300 rounded-lg px-4 py-3 text-base bg-white text-xiri-dark"
               placeholder="Latitud"
+              placeholderTextColor="#9ca3af"
               keyboardType="decimal-pad"
               value={form.latitude}
               onChangeText={(v) => handleChange("latitude", v)}
             />
             <TextInput
-              className="flex-1 border border-gray-300 rounded-lg px-4 py-3 text-base bg-white"
+              className="flex-1 border border-gray-300 rounded-lg px-4 py-3 text-base bg-white text-xiri-dark"
               placeholder="Longitud"
+              placeholderTextColor="#9ca3af"
               keyboardType="decimal-pad"
               value={form.longitude}
               onChangeText={(v) => handleChange("longitude", v)}

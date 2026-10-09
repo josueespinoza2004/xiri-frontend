@@ -104,8 +104,9 @@ const OwnerMenusScreen = () => {
           />
 
           <TextInput
-            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base bg-white"
+            className="border border-gray-300 rounded-lg px-4 py-3 mb-3 text-base bg-white text-xiri-dark"
             placeholder="Precio (ej: 150.00)"
+            placeholderTextColor="#9ca3af"
             keyboardType="decimal-pad"
             value={price}
             onChangeText={setPrice}
