@@ -7,18 +7,27 @@
     "development": {
       "developmentClient": true,
       "distribution": "internal",
-      "node": "22.13.0"
+      "node": "22.13.0",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://xiri-backend-production.onrender.com/api"
+      }
     },
     "preview": {
       "distribution": "internal",
       "node": "22.13.0",
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://xiri-backend-production.onrender.com/api"
       }
     },
     "production": {
       "autoIncrement": true,
-      "node": "22.13.0"
+      "node": "22.13.0",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://xiri-backend-production.onrender.com/api"
+      }
     }
   },
   "submit": {

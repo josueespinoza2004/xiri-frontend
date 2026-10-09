@@ -2,8 +2,15 @@ import axios, { create } from "axios";
 import { SecureStorage } from "@/config/helpers/secure-storage";
 import { router } from "expo-router";
 
+// URL del backend. Usa la variable de entorno si está disponible (dev / Expo Go),
+// y cae a la URL pública de producción como respaldo (necesario para el APK de EAS,
+// donde la variable EXPO_PUBLIC_* puede no embeberse si el .env no se sube al build).
+const API_URL =
+  process.env.EXPO_PUBLIC_API_URL ??
+  "https://xiri-backend-production.onrender.com/api";
+
 export const xiriApi = create({
-  baseURL: process.env.EXPO_PUBLIC_API_URL,
+  baseURL: API_URL,
   timeout: 60000, // 60s para tolerar el cold-start del backend en Render (plan free)
 });
 
@@ -54,7 +61,7 @@ xiriApi.interceptors.response.use(
 
         // Llamada directa con axios para evitar ciclo infinito de interceptores
         const refreshResponse = await axios.post<{ access: string; refresh?: string }>(
-          `${process.env.EXPO_PUBLIC_API_URL}/auth/token/refresh/`,
+          `${API_URL}/auth/token/refresh/`,
           { refresh: refreshToken }
         );
 
